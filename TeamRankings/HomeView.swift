@@ -17,7 +17,7 @@ struct HomeView: View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(teamRankings.sorted(by: >), id: \.key) { stat, ranking in
+                    ForEach(teamRankings.sorted(by: <), id: \.key) { stat, ranking in
                         Section(header: Text(stat)) {
                             Text(ranking)
                         }
