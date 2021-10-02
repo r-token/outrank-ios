@@ -29,15 +29,17 @@ struct HomeView: View {
             
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Choose Team") {
+                    Button(action: {
                         isShowingTeamPickerView = true
+                    }) {
+                        Text("Choose Team")
                     }
                 }
             }
-            
-            .sheet(isPresented: $isShowingTeamPickerView, onDismiss: handleTeamPickerDismiss) {
-                TeamPickerView(currentTeam: $currentTeam)
-            }
+        }
+        
+        .sheet(isPresented: $isShowingTeamPickerView, onDismiss: handleTeamPickerDismiss) {
+            TeamPickerView(currentTeam: $currentTeam)
         }
         
         .task {

@@ -147,12 +147,16 @@ struct TeamPickerView: View {
     var body: some View {
         List {
             ForEach(allTeams, id: \.self) { team in
-                Text(team)
-                    .onTapGesture {
-                        UserDefaults.standard.set(team, forKey: "CurrentTeam")
-                        currentTeam = team
-                        presentationMode.wrappedValue.dismiss()
-                    }
+                HStack {
+                    Text(team)
+                    Spacer()
+                }
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    UserDefaults.standard.set(team, forKey: "CurrentTeam")
+                    currentTeam = team
+                    presentationMode.wrappedValue.dismiss()
+                }
             }
         }
     }
