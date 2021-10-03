@@ -18,7 +18,7 @@ struct ComparisonView: View {
     @State private var isShowingTeamTwoPickerView = false
     
     var sortedTeamOneRankings: [Dictionary<String, Int>.Element]{
-        return teamOneRankings.sorted{ $0.key < $1.key }
+        return teamOneRankings.sorted{ $0.value < $1.value }
     }
     
     var body: some View {
@@ -55,6 +55,14 @@ struct ComparisonView: View {
                 .padding()
                 
                 Spacer()
+                
+                HStack {
+                    Text("Sorted by")
+                    Image(systemName: "arrow.up.left")
+                    Text("team's best rankings")
+                }
+                .padding()
+                .foregroundColor(.gray)
                 
                 List {
                     ForEach(sortedTeamOneRankings, id: \.self.key) { item in

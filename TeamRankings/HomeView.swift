@@ -12,6 +12,7 @@ struct HomeView: View {
     @State private var favoriteTeam = UserDefaults.standard.string(forKey: "FavoriteTeam")
     @State private var teamRankings = [String:Int]()
     @State private var sortMethod = SortMethods.byStatAlphabetically
+    @State private var randomId = UUID()
     
     @State private var isShowingTeamPickerView = false
     @State private var isShowingSortActionSheet = false
@@ -74,29 +75,33 @@ struct HomeView: View {
                     }
                 }
             }
-        }
-        
-        .sheet(isPresented: $isShowingTeamPickerView) {
-            TeamPickerView(team: $currentTeam, teamRankings: $teamRankings, type: TeamPickerView.TeamPickerTypes.home)
-        }
-        
-        .actionSheet(isPresented: $isShowingSortActionSheet) {
-            ActionSheet(title: Text("Sort Results"), message: Text("Choose a method for sorting the results"), buttons: [
-                    .default(Text("Sort by stat alphabetically")) {
-                        sortByStatAlphabetically()
-                    },
-                    .default(Text("Sort by stat reverse alphabetically")) {
-                        sortByStatReverseAlphabetically()
-                    },
-                    .default(Text("Sort by ranking ascending")) {
-                        sortByRankingAscending()
-                    },
-                    .default(Text("Sort by ranking descending")) {
-                        sortByRankingDescending()
-                    },
-                    .cancel()
-                ]
-            )
+            .id(randomId)
+            
+            .sheet(isPresented: $isShowingTeamPickerView) {
+                TeamPickerView(team: $currentTeam, teamRankings: $teamRankings, type: TeamPickerView.TeamPickerTypes.home)
+                    .onDisappear {
+                        randomId = UUID() // this solves the SwiftUI bug that causes sheets in toolbars to not present consistently
+                    }
+            }
+            
+            .actionSheet(isPresented: $isShowingSortActionSheet) {
+                ActionSheet(title: Text("Sort Results"), message: Text("Choose a method for sorting the results"), buttons: [
+                        .default(Text("Sort by stat alphabetically")) {
+                            sortByStatAlphabetically()
+                        },
+                        .default(Text("Sort by stat reverse alphabetically")) {
+                            sortByStatReverseAlphabetically()
+                        },
+                        .default(Text("Sort by ranking ascending")) {
+                            sortByRankingAscending()
+                        },
+                        .default(Text("Sort by ranking descending")) {
+                            sortByRankingDescending()
+                        },
+                        .cancel()
+                    ]
+                )
+            }
         }
         
         .task {
@@ -166,6 +171,12 @@ struct HomeView: View {
                 print("Request failed with error: \(error)")
             }
         }
+    }
+}
+
+struct SampleSheet: View {
+    var body: some View {
+        Text("Hello Sheet")
     }
 }
 
