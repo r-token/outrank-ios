@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TeamPickerView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     @Binding var team: String
     @Binding var teamRankings: [String:Int]
     
@@ -178,11 +178,12 @@ struct TeamPickerView: View {
                                     
                                     UserDefaults.standard.set(team, forKey: userDefaultsKey)
                                     self.team = team
-                                    presentationMode.wrappedValue.dismiss()
                                 } catch {
                                     print("Request failed with error: \(error)")
                                 }
                             }
+                            
+                            dismiss()
                         }) {
                             Text(team)
                                 .font(.headline)

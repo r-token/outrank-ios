@@ -60,7 +60,7 @@ struct HomeView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
-                        isShowingSortActionSheet = true
+                        isShowingSortActionSheet.toggle()
                     }) {
                         Image(systemName: "line.3.horizontal.decrease.circle")
                     }
@@ -68,7 +68,7 @@ struct HomeView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        isShowingTeamPickerView = true
+                        isShowingTeamPickerView.toggle()
                     }) {
                         Text("Choose Team")
                     }
