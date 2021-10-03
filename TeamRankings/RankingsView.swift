@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct RankingsView: View {
     @State private var currentTeam = UserDefaults.standard.string(forKey: "CurrentTeam") ?? "Air Force"
     @State private var favoriteTeam = UserDefaults.standard.string(forKey: "FavoriteTeam")
     @State private var teamRankings = [String:Int]()
@@ -61,17 +61,17 @@ struct HomeView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
-                        isShowingSortActionSheet.toggle()
+                        isShowingTeamPickerView.toggle()
                     }) {
-                        Image(systemName: "line.3.horizontal.decrease.circle")
+                        Text("Choose Team")
                     }
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        isShowingTeamPickerView.toggle()
+                        isShowingSortActionSheet.toggle()
                     }) {
-                        Text("Choose Team")
+                        Image(systemName: "arrow.up.arrow.down")
                     }
                 }
             }
@@ -85,7 +85,7 @@ struct HomeView: View {
             }
             
             .actionSheet(isPresented: $isShowingSortActionSheet) {
-                ActionSheet(title: Text("Sort Results"), message: Text("Choose a method for sorting the results"), buttons: [
+                ActionSheet(title: Text("Sort Results"), message: Text("Choose a method for sorting the results."), buttons: [
                         .default(Text("Sort by stat alphabetically")) {
                             sortByStatAlphabetically()
                         },
@@ -174,8 +174,8 @@ struct SampleSheet: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
+struct RankingsView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        RankingsView()
     }
 }

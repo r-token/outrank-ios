@@ -10,14 +10,14 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
-            HomeView()
+            RankingsView()
                 .tabItem {
-                    Label("Home", systemImage: "house")
+                    Label("Rankings", systemImage: "list.bullet.rectangle.portrait")
                 }
             
             ComparisonView()
                 .tabItem {
-                    Label("Compare", systemImage: "list.bullet.rectangle.portrait")
+                    Label("Compare", systemImage: "eyeglasses")
                 }
         }
     }

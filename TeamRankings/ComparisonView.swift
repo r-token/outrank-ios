@@ -38,7 +38,7 @@ struct ComparisonView: View {
                         swapTeams()
                     }) {
                         Image(systemName: "arrow.left.arrow.right.square")
-                            .font(.title)
+                            .font(.largeTitle)
                             .foregroundColor(.blue)
                     }
                     
@@ -54,12 +54,13 @@ struct ComparisonView: View {
                 }
                 .padding(.horizontal)
                 
-                HStack {
+                HStack(spacing: 5) {
                     Text("Sorted by")
                     Image(systemName: "arrow.up.left")
                     Text("team's best rankings")
                 }
-                .padding()
+                .padding(.vertical, 5)
+                .font(.subheadline)
                 .foregroundColor(.gray)
                 
                 List {
