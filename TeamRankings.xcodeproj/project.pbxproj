@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F429CA3C27095BE5005CDD2A /* String+CamelCaseToWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */; };
+		F429CA422709F3C9005CDD2A /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429CA412709F3C9005CDD2A /* Test.swift */; };
+		F429CA44270A0557005CDD2A /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429CA43270A0557005CDD2A /* ButtonStyles.swift */; };
 		F44787A22708F095006CD2FA /* TeamRankingsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787A12708F095006CD2FA /* TeamRankingsApp.swift */; };
 		F44787A42708F095006CD2FA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787A32708F095006CD2FA /* HomeView.swift */; };
 		F44787A62708F097006CD2FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F44787A52708F097006CD2FA /* Assets.xcassets */; };
@@ -22,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CamelCaseToWords.swift"; sourceTree = "<group>"; };
+		F429CA412709F3C9005CDD2A /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		F429CA43270A0557005CDD2A /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		F447879E2708F095006CD2FA /* TeamRankings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamRankings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44787A12708F095006CD2FA /* TeamRankingsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRankingsApp.swift; sourceTree = "<group>"; };
 		F44787A32708F095006CD2FA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -69,9 +73,11 @@
 				F44787AF2708F123006CD2FA /* TeamRankings.entitlements */,
 				F44787A12708F095006CD2FA /* TeamRankingsApp.swift */,
 				F44787A32708F095006CD2FA /* HomeView.swift */,
+				F429CA412709F3C9005CDD2A /* Test.swift */,
 				F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */,
 				F44787B82709104C006CD2FA /* MainView.swift */,
 				F44787BA27091113006CD2FA /* ComparisonView.swift */,
+				F429CA43270A0557005CDD2A /* ButtonStyles.swift */,
 				F44787B627090DB8006CD2FA /* TeamPickerView.swift */,
 				F44787B42708FD38006CD2FA /* LoopableStruct.swift */,
 				F44787B22708FAF0006CD2FA /* TeamFetcher.swift */,
@@ -160,6 +166,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F429CA44270A0557005CDD2A /* ButtonStyles.swift in Sources */,
 				F44787B32708FAF0006CD2FA /* TeamFetcher.swift in Sources */,
 				F429CA3C27095BE5005CDD2A /* String+CamelCaseToWords.swift in Sources */,
 				F44787B727090DB8006CD2FA /* TeamPickerView.swift in Sources */,
@@ -167,6 +174,7 @@
 				F44787A42708F095006CD2FA /* HomeView.swift in Sources */,
 				F44787B92709104C006CD2FA /* MainView.swift in Sources */,
 				F44787BB27091113006CD2FA /* ComparisonView.swift in Sources */,
+				F429CA422709F3C9005CDD2A /* Test.swift in Sources */,
 				F44787A22708F095006CD2FA /* TeamRankingsApp.swift in Sources */,
 				F44787B52708FD38006CD2FA /* LoopableStruct.swift in Sources */,
 			);

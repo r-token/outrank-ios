@@ -38,20 +38,21 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                List {
-                    ForEach(sortedDictionary, id: \.self.key) { item in
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text(getHumanReadableStat(for: item.key))
-                                .font(.headline)
-                            Text(getHumanReadableRanking(for: item.value))
-                                .foregroundColor(.gray)
-                        }
+            List {
+                ForEach(sortedDictionary, id: \.self.key) { item in
+                    HStack(alignment: .center, spacing: 8) {
+                        Text(getHumanReadableStat(for: item.key))
+                            .font(.headline)
+                        
+                        Spacer()
+                        
+                        Text(getHumanReadableRanking(for: item.value))
+                            .foregroundColor(.gray)
                     }
                 }
-                .refreshable {
-                    await refreshRankings()
-                }
+            }
+            .refreshable {
+                await refreshRankings()
             }
             
             .navigationTitle(currentTeam)
@@ -76,7 +77,7 @@ struct HomeView: View {
         }
         
         .sheet(isPresented: $isShowingTeamPickerView) {
-            TeamPickerView(currentTeam: $currentTeam, teamRankings: $teamRankings)
+            TeamPickerView(team: $currentTeam, teamRankings: $teamRankings, type: TeamPickerView.TeamPickerTypes.home)
         }
         
         .actionSheet(isPresented: $isShowingSortActionSheet) {
@@ -108,7 +109,7 @@ struct HomeView: View {
                     print("Request failed with error: \(error)")
                 }
             } else {
-                print("We already have data, not fetching onAppear")
+                print("We already have team data, not fetching onAppear")
             }
         }
     }

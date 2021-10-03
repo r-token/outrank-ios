@@ -9,9 +9,11 @@ import SwiftUI
 
 struct TeamPickerView: View {
     @Environment(\.presentationMode) var presentationMode
-    @Binding var currentTeam: String
+    @Binding var team: String
     @Binding var teamRankings: [String:Int]
     
+    let type: TeamPickerTypes
+
     let allTeams = [
       "Air Force",
       "Akron",
@@ -145,6 +147,23 @@ struct TeamPickerView: View {
       "Wyoming"
     ]
     
+    enum TeamPickerTypes {
+        case home
+        case comparisonTeamOne
+        case comparisonTeamTwo
+    }
+    
+    private var userDefaultsKey: String {
+        switch type {
+        case TeamPickerTypes.home:
+            return "CurrentTeam"
+        case TeamPickerTypes.comparisonTeamOne:
+            return "TeamOne"
+        case TeamPickerTypes.comparisonTeamTwo:
+            return "TeamTwo"
+        }
+    }
+    
     var body: some View {
         NavigationView {
             List {
@@ -157,8 +176,8 @@ struct TeamPickerView: View {
                                     let fetchedRankings = try await TeamFetcher.getTeamRankingsFor(team: team)
                                     teamRankings = try fetchedRankings.allProperties()
                                     
-                                    UserDefaults.standard.set(team, forKey: "CurrentTeam")
-                                    currentTeam = team
+                                    UserDefaults.standard.set(team, forKey: userDefaultsKey)
+                                    self.team = team
                                     presentationMode.wrappedValue.dismiss()
                                 } catch {
                                     print("Request failed with error: \(error)")
