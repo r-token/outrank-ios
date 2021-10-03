@@ -52,9 +52,7 @@ struct ComparisonView: View {
                     }
                     .buttonStyle(GrowingButton())
                 }
-                .padding()
-                
-                Spacer()
+                .padding(.horizontal)
                 
                 HStack {
                     Text("Sorted by")
@@ -86,6 +84,9 @@ struct ComparisonView: View {
                         }
                     }
                 }
+                .refreshable {
+                    await refreshRankings()
+                }
             }
             
             .navigationTitle("Compare Teams")
@@ -101,18 +102,7 @@ struct ComparisonView: View {
             
             .task {
                 if teamOneRankings.isEmpty && teamTwoRankings.isEmpty {
-                    do {
-                        async let teamOneFetched = try TeamFetcher.getTeamRankingsFor(team: teamOne)
-                        async let teamTwoFetched = try TeamFetcher.getTeamRankingsFor(team: teamTwo)
-                        
-                        let rankingsForTeamOne = try await teamOneFetched.allProperties()
-                        let rankingsForTeamTwo = try await teamTwoFetched.allProperties()
-                        
-                        teamOneRankings = rankingsForTeamOne
-                        teamTwoRankings = rankingsForTeamTwo
-                    } catch {
-                        print("Request failed with error: \(error)")
-                    }
+                    await refreshRankings()
                 } else {
                     print("We already have comparison data, not fetching onAppear")
                 }
@@ -154,6 +144,23 @@ struct ComparisonView: View {
             return "Unknown"
         } else {
             return "\(ranking)th"
+        }
+    }
+    
+    func refreshRankings() async {
+        Task {
+            do {
+                async let teamOneFetched = try TeamFetcher.getTeamRankingsFor(team: teamOne)
+                async let teamTwoFetched = try TeamFetcher.getTeamRankingsFor(team: teamTwo)
+                
+                let rankingsForTeamOne = try await teamOneFetched.allProperties()
+                let rankingsForTeamTwo = try await teamTwoFetched.allProperties()
+                
+                teamOneRankings = rankingsForTeamOne
+                teamTwoRankings = rankingsForTeamTwo
+            } catch {
+                print("Request failed with error: \(error)")
+            }
         }
     }
 }

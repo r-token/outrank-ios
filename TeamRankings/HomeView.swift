@@ -106,13 +106,7 @@ struct HomeView: View {
         
         .task {
             if teamRankings.isEmpty {
-                print("fetching new data")
-                do {
-                    let fetchedRankings = try await TeamFetcher.getTeamRankingsFor(team: currentTeam)
-                    teamRankings = try fetchedRankings.allProperties()
-                } catch {
-                    print("Request failed with error: \(error)")
-                }
+                await refreshRankings()
             } else {
                 print("We already have team data, not fetching onAppear")
             }
