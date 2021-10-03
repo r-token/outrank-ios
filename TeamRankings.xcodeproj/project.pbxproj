@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F429CA3C27095BE5005CDD2A /* String+CamelCaseToWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */; };
 		F44787A22708F095006CD2FA /* TeamRankingsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787A12708F095006CD2FA /* TeamRankingsApp.swift */; };
 		F44787A42708F095006CD2FA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787A32708F095006CD2FA /* HomeView.swift */; };
 		F44787A62708F097006CD2FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F44787A52708F097006CD2FA /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CamelCaseToWords.swift"; sourceTree = "<group>"; };
 		F447879E2708F095006CD2FA /* TeamRankings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamRankings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44787A12708F095006CD2FA /* TeamRankingsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRankingsApp.swift; sourceTree = "<group>"; };
 		F44787A32708F095006CD2FA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				F44787AF2708F123006CD2FA /* TeamRankings.entitlements */,
 				F44787A12708F095006CD2FA /* TeamRankingsApp.swift */,
 				F44787A32708F095006CD2FA /* HomeView.swift */,
+				F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */,
 				F44787B82709104C006CD2FA /* MainView.swift */,
 				F44787BA27091113006CD2FA /* ComparisonView.swift */,
 				F44787B627090DB8006CD2FA /* TeamPickerView.swift */,
@@ -158,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F44787B32708FAF0006CD2FA /* TeamFetcher.swift in Sources */,
+				F429CA3C27095BE5005CDD2A /* String+CamelCaseToWords.swift in Sources */,
 				F44787B727090DB8006CD2FA /* TeamPickerView.swift in Sources */,
 				F44787B12708F44F006CD2FA /* Team.swift in Sources */,
 				F44787A42708F095006CD2FA /* HomeView.swift in Sources */,

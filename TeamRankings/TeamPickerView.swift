@@ -10,6 +10,7 @@ import SwiftUI
 struct TeamPickerView: View {
     @Environment(\.presentationMode) var presentationMode
     @Binding var currentTeam: String
+    @Binding var teamRankings: [String:Int]
     
     let allTeams = [
       "Air Force",
@@ -145,19 +146,34 @@ struct TeamPickerView: View {
     ]
     
     var body: some View {
-        List {
-            ForEach(allTeams, id: \.self) { team in
-                HStack {
-                    Text(team)
-                    Spacer()
-                }
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    UserDefaults.standard.set(team, forKey: "CurrentTeam")
-                    currentTeam = team
-                    presentationMode.wrappedValue.dismiss()
+        NavigationView {
+            List {
+                ForEach(allTeams, id: \.self) { team in
+                    HStack {
+                        Button(action: {
+                            Task {
+                                print("fetching new data")
+                                do {
+                                    let fetchedRankings = try await TeamFetcher.getTeamRankingsFor(team: team)
+                                    teamRankings = try fetchedRankings.allProperties()
+                                    
+                                    UserDefaults.standard.set(team, forKey: "CurrentTeam")
+                                    currentTeam = team
+                                    presentationMode.wrappedValue.dismiss()
+                                } catch {
+                                    print("Request failed with error: \(error)")
+                                }
+                            }
+                        }) {
+                            Text(team)
+                                .font(.headline)
+                                .foregroundColor(.black)
+                        }
+                    }
                 }
             }
+            
+            .navigationTitle("Choose Team")
         }
     }
     

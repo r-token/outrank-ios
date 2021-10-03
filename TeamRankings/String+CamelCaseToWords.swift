@@ -1,0 +1,21 @@
+//
+//  String+CamelCaseToWords.swift
+//  TeamRankings
+//
+//  Created by Ryan Token on 10/2/21.
+//
+
+import Foundation
+
+extension String {
+    func camelCaseToWords() -> String {
+        return unicodeScalars.reduce("") {
+            if CharacterSet.uppercaseLetters.contains($1) {
+                if $0.count > 0 {
+                    return ($0 + " " + String($1))
+                }
+            }
+            return $0 + String($1)
+        }
+    }
+}

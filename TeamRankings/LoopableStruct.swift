@@ -8,12 +8,12 @@
 import Foundation
 
 protocol Loopable {
-    func allProperties() throws -> [String: String]
+    func allProperties() throws -> [String: Int]
 }
 
 extension Loopable {
-    func allProperties() throws -> [String: String] {
-        var result: [String: String] = [:]
+    func allProperties() throws -> [String: Int] {
+        var result: [String: Int] = [:]
 
         let mirror = Mirror(reflecting: self)
 
@@ -26,11 +26,11 @@ extension Loopable {
             guard let property = property else {
                 continue
             }
-
-            if let valueString = value as? String {
-                result[property] = valueString
+            
+            if let intValue = value as? Int {
+                result[property] = intValue
             } else {
-                result[property] = ""
+                result[property] = 99999
             }
         }
 
