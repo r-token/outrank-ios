@@ -187,7 +187,7 @@ struct TeamPickerView: View {
                         }) {
                             Text(team)
                                 .font(.headline)
-                                .foregroundColor(.black)
+                                .foregroundColor(.primary)
                         }
                     }
                 }
