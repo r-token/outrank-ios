@@ -18,7 +18,7 @@ struct TeamPickerView: View {
     let allTeams = AllTeams().getTeams()
     
     var favorites: [String] {
-        return Array(favoriteTeams.getFavorites())
+        return Array(favoriteTeams.getFavorites()).sorted()
     }
     
     enum TeamPickerTypes {
