@@ -8,19 +8,30 @@
 import SwiftUI
 
 struct MultiPicker<LabelView: View, Selectable: Identifiable & Hashable>: View {
+    @EnvironmentObject var favoriteTeams: FavoriteTeams
+    
     let label: LabelView
     let allTeams: [Selectable]
     let teamToString: (Selectable) -> String
 
     var selectedCount: Int
+    
+    var favorites: [String] {
+        return Array(favoriteTeams.getFavorites()).sorted()
+    }
 
     var body: some View {
         NavigationLink(destination: MultiPickerView()) {
             HStack {
                 label
                 Spacer()
-                Text("\(selectedCount) Teams")
-                    .foregroundColor(.gray)
+                if favorites.count == 1 {
+                    Text(favorites[0])
+                        .foregroundColor(.gray)
+                } else {
+                    Text("\(selectedCount) Favorites")
+                        .foregroundColor(.gray)
+                }
             }
         }
     }
