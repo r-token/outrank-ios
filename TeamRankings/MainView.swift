@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
+    @ObservedObject var favoriteTeams = FavoriteTeams()
+    
     var body: some View {
         TabView {
             RankingsView()
@@ -19,7 +21,13 @@ struct MainView: View {
                 .tabItem {
                     Label("Compare", systemImage: "eyeglasses")
                 }
+            
+            SettingsView()
+                .tabItem {
+                    Label("Settings", systemImage: "gear")
+                }
         }
+        .environmentObject(favoriteTeams)
     }
 }
 
