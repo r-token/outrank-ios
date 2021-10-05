@@ -123,6 +123,9 @@ struct ComparisonView: View {
         teamTwo = tempTeamOne
         teamOneRankings = tempTeamTwoRankings
         teamTwoRankings = tempTeamOneRankings
+        
+        UserDefaults.standard.set(tempTeamTwo, forKey: "TeamOne")
+        UserDefaults.standard.set(tempTeamOne, forKey: "TeamTwo")
     }
     
     func getHumanReadableStat(for stat: String) -> String {
