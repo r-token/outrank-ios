@@ -29,6 +29,11 @@ struct MultiPickerView<Selectable: Identifiable & Hashable>: View {
                         FavoriteTeamsSelectionView(team: team)
                     }
                 }
+                
+                if favorites.isEmpty {
+                    Text("No favorites yet ☹️")
+                        .foregroundColor(.gray)
+                }
             }
             
             Section(header: Text("All Teams")) {
@@ -41,6 +46,8 @@ struct MultiPickerView<Selectable: Identifiable & Hashable>: View {
                 }
             }
         }
+        .navigationTitle("")
+        .navigationBarTitleDisplayMode(.inline)
     }
 
     private func toggleSelection(team: String) {

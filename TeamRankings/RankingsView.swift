@@ -9,7 +9,6 @@ import SwiftUI
 
 struct RankingsView: View {
     @State private var currentTeam = UserDefaults.standard.string(forKey: "CurrentTeam") ?? "Air Force"
-    @State private var favoriteTeam = UserDefaults.standard.string(forKey: "FavoriteTeam")
     @State private var teamRankings = [String:Int]()
     @State private var sortMethod = SortMethods.byStatAlphabetically
     @State private var randomId = UUID()
@@ -37,19 +36,34 @@ struct RankingsView: View {
         }
     }
     
+    var currentSortMethod: String {
+        switch sortMethod {
+        case SortMethods.byStatAlphabetically:
+            return "stat alphabetically"
+        case SortMethods.byStatReverseAlphabetically:
+            return "stat reverse alphabetically"
+        case SortMethods.byRankingAscending:
+            return "ranking ascending"
+        case SortMethods.byRankingDescending:
+            return "ranking descending"
+        }
+    }
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(sortedDictionary, id: \.self.key) { item in
-                    NavigationLink(destination: RankingDetailView(team: currentTeam, stat: item.key, humanReadableStat: getHumanReadableStat(for: item.key), ranking: getHumanReadableRanking(for: item.value))) {
-                        HStack(alignment: .center, spacing: 8) {
-                            Text(getHumanReadableStat(for: item.key))
-                                .font(.headline)
-                            
-                            Spacer()
-                            
-                            Text(getHumanReadableRanking(for: item.value))
-                                .foregroundColor(.gray)
+                Section(header: Text("Sorted by \(currentSortMethod)")) {
+                    ForEach(sortedDictionary, id: \.self.key) { item in
+                        NavigationLink(destination: RankingDetailView(team: currentTeam, stat: item.key, humanReadableStat: getHumanReadableStat(for: item.key), ranking: getHumanReadableRanking(for: item.value))) {
+                            HStack(alignment: .center, spacing: 8) {
+                                Text(getHumanReadableStat(for: item.key))
+                                    .font(.headline)
+                                
+                                Spacer()
+                                
+                                Text(getHumanReadableRanking(for: item.value))
+                                    .foregroundColor(.gray)
+                            }
                         }
                     }
                 }

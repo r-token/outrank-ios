@@ -57,8 +57,10 @@ struct TeamPickerView: View {
                         if favorites.isEmpty {
                             HStack(spacing: 5) {
                                 Text("Choose favorite teams in")
-                                Image(systemName: "gear")
-                                Text("Settings")
+                                HStack(spacing: 1) {
+                                    Image(systemName: "gear")
+                                    Text("Settings")
+                                }
                             }
                             .foregroundColor(.gray)
                         }
