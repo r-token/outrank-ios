@@ -62,7 +62,7 @@ struct RankingsView: View {
                                 Spacer()
                                 
                                 Text(getHumanReadableRanking(for: item.value))
-                                    .foregroundColor(.gray)
+                                    .foregroundColor(item.value < 65 ? .green : .red)
                             }
                         }
                     }

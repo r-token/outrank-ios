@@ -72,13 +72,29 @@ struct ComparisonView: View {
                             Spacer()
                             
                             HStack {
-                                Text(getHumanReadableRanking(for: item.value))
-                                    .foregroundColor(.gray)
+                                if item.value < teamTwoRankings[item.key] ?? 99999 {
+                                    Text(getHumanReadableRanking(for: item.value))
+                                        .foregroundColor(.green)
+                                } else if item.value > teamTwoRankings[item.key] ?? 99999 {
+                                    Text(getHumanReadableRanking(for: item.value))
+                                        .foregroundColor(.red)
+                                } else {
+                                    Text(getHumanReadableRanking(for: item.value))
+                                        .foregroundColor(.yellow)
+                                }
                                 
                                 Spacer()
                                 
-                                Text(getHumanReadableRanking(for: teamTwoRankings[item.key] ?? 99999))
-                                    .foregroundColor(.gray)
+                                if item.value > teamTwoRankings[item.key] ?? 99999 {
+                                    Text(getHumanReadableRanking(for: teamTwoRankings[item.key] ?? 99999))
+                                        .foregroundColor(.green)
+                                } else if item.value < teamTwoRankings[item.key] ?? 99999 {
+                                    Text(getHumanReadableRanking(for: teamTwoRankings[item.key] ?? 99999))
+                                        .foregroundColor(.red)
+                                } else {
+                                    Text(getHumanReadableRanking(for: teamTwoRankings[item.key] ?? 99999))
+                                        .foregroundColor(.yellow)
+                                }
                             }
                             .padding(.horizontal)
                             .padding(.vertical, 3)
