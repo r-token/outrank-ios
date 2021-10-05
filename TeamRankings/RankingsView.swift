@@ -54,7 +54,7 @@ struct RankingsView: View {
             List {
                 Section(header: Text("Sorted by \(currentSortMethod)")) {
                     ForEach(sortedDictionary, id: \.self.key) { item in
-                        NavigationLink(destination: RankingDetailView(team: currentTeam, stat: item.key, humanReadableStat: getHumanReadableStat(for: item.key), ranking: getHumanReadableRanking(for: item.value))) {
+                        NavigationLink(destination: RankingDetailView(team: currentTeam, stat: item.key, humanReadableStat: getHumanReadableStat(for: item.key), ranking: item.value, humanReadableRanking: getHumanReadableRanking(for: item.value))) {
                             HStack(alignment: .center, spacing: 8) {
                                 Text(getHumanReadableStat(for: item.key))
                                     .font(.headline)

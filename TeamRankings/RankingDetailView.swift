@@ -11,7 +11,8 @@ struct RankingDetailView: View {
     let team: String
     let stat: String
     let humanReadableStat: String
-    let ranking: String
+    let ranking: Int
+    let humanReadableRanking: String
     
     let statDescriptions = [
         "BlockedKicks": "Total number of kicks a team has blocked.",
@@ -64,27 +65,40 @@ struct RankingDetailView: View {
     ]
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Spacer()
-                Text("Description:")
-                    .padding()
-                Text(statDescriptions[stat] ?? "Description Unknown.")
-                Spacer()
-                Text("\(team)'s Ranking: \(ranking)")
-                Spacer()
-            }
-            .padding()
+        VStack(alignment: .leading, spacing: 10) {
+            Text(humanReadableStat)
+                .font(.title)
+                .padding(.bottom)
             
-            .navigationTitle(humanReadableStat)
-            .navigationBarTitleDisplayMode(.inline)
+            Text("Description:")
+                .font(.headline)
+                .foregroundColor(.gray)
+                .padding(.bottom, 5)
+            
+            Text(statDescriptions[stat] ?? "Description Unknown.")
+                .padding(.bottom, 15)
+            
+            HStack {
+                Text("\(team)'s Ranking:")
+                    .font(.headline)
+                    .foregroundColor(.gray)
+                
+                Text(humanReadableRanking)
+                    .font(.headline)
+                    .foregroundColor(ranking < 65 ? .green : .red)
+            }
+            
+            Spacer()
         }
+        .navigationTitle("")
+        .navigationBarTitleDisplayMode(.inline)
+        .padding()
     }
 }
 
 struct RankingDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        RankingDetailView(team: "Tulsa", stat: "TeamPassingEfficiency", humanReadableStat: "Team Passing Efficiency", ranking: "1st")
+        RankingDetailView(team: "Tulsa", stat: "FewestPenaltyYardsPerGame", humanReadableStat: "Fewest Penalty Yards", ranking: 19, humanReadableRanking: "19th")
     }
 }
 
