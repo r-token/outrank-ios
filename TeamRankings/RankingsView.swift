@@ -103,7 +103,7 @@ struct RankingsView: View {
             }
             
             .actionSheet(isPresented: $isShowingSortActionSheet) {
-                ActionSheet(title: Text("Sort Results"), message: Text("Choose a method for sorting the results."), buttons: [
+                ActionSheet(title: Text("Sort Rankings"), message: Text("Choose a method for sorting the rankings."), buttons: [
                         .default(Text("Sort by stat alphabetically")) {
                             sortMethod = SortMethods.byStatAlphabetically
                         },
