@@ -71,6 +71,8 @@ struct RankingsView: View {
             .refreshable {
                 await refreshRankings()
             }
+            .animation(.default, value: teamRankings)
+            .animation(.default, value: sortMethod)
             
             .navigationTitle(currentTeam)
             

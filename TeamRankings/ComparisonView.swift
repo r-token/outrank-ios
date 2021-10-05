@@ -88,6 +88,8 @@ struct ComparisonView: View {
                 .refreshable {
                     await refreshRankings()
                 }
+                
+                .animation(.default, value: teamOneRankings)
             }
             
             .navigationTitle("Compare Teams")

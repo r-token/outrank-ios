@@ -74,14 +74,20 @@ struct TeamPickerView: View {
                                     chooseTeam(team: team)
                                     dismiss()
                                 }) {
-                                    Text(team)
+                                    favoriteTeams.contains(team) ?
+                                        Text(team)
                                         .font(.headline)
+                                        .foregroundColor(.primary)
+                                    :
+                                        Text(team)
+                                        .font(.body)
                                         .foregroundColor(.primary)
                                 }
                             }
                         }
                     }
                 }
+                .animation(.default, value: favorites)
                 
                 .navigationTitle("Choose Team")
             }

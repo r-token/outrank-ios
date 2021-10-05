@@ -20,6 +20,7 @@ struct MultiPicker<LabelView: View, Selectable: Identifiable & Hashable>: View {
                 label
                 Spacer()
                 Text("\(selectedCount) Teams")
+                    .foregroundColor(.gray)
             }
         }
     }

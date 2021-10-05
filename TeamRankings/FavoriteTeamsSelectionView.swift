@@ -13,8 +13,15 @@ struct FavoriteTeamsSelectionView: View {
     
     var body: some View {
         HStack {
-            Text(team)
+            favoriteTeams.contains(team) ?
+                Text(team)
+                .font(.headline)
                 .foregroundColor(.primary)
+            :
+                Text(team)
+                .font(.body)
+                .foregroundColor(.primary)
+            
             Spacer()
 
             VStack {

@@ -27,6 +27,7 @@ struct MultiPickerView<Selectable: Identifiable & Hashable>: View {
                 ForEach(favorites) { team in
                     Button(action: { toggleSelection(team: team) }) {
                         FavoriteTeamsSelectionView(team: team)
+                            .font(.headline)
                     }
                 }
                 
@@ -46,12 +47,13 @@ struct MultiPickerView<Selectable: Identifiable & Hashable>: View {
                 }
             }
         }
+        .animation(.default, value: favorites)
+        
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
     }
 
     private func toggleSelection(team: String) {
-        print(team)
         if favoriteTeams.contains(team) {
             favoriteTeams.remove(team)
         } else {

@@ -20,7 +20,7 @@ struct SettingsView: View {
         NavigationView {
             Form {
                 MultiPicker(
-                    label: Text("Favorite Teams:"),
+                    label: Text("Favorite Teams"),
                     allTeams: allTeams,
                     teamToString: { $0 },
                     selectedCount: selectedCount
