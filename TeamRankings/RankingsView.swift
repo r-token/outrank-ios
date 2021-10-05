@@ -41,14 +41,16 @@ struct RankingsView: View {
         NavigationView {
             List {
                 ForEach(sortedDictionary, id: \.self.key) { item in
-                    HStack(alignment: .center, spacing: 8) {
-                        Text(getHumanReadableStat(for: item.key))
-                            .font(.headline)
-                        
-                        Spacer()
-                        
-                        Text(getHumanReadableRanking(for: item.value))
-                            .foregroundColor(.gray)
+                    NavigationLink(destination: RankingDetailView(team: currentTeam, stat: item.key, humanReadableStat: getHumanReadableStat(for: item.key), ranking: getHumanReadableRanking(for: item.value))) {
+                        HStack(alignment: .center, spacing: 8) {
+                            Text(getHumanReadableStat(for: item.key))
+                                .font(.headline)
+                            
+                            Spacer()
+                            
+                            Text(getHumanReadableRanking(for: item.value))
+                                .foregroundColor(.gray)
+                        }
                     }
                 }
             }
@@ -87,16 +89,16 @@ struct RankingsView: View {
             .actionSheet(isPresented: $isShowingSortActionSheet) {
                 ActionSheet(title: Text("Sort Results"), message: Text("Choose a method for sorting the results."), buttons: [
                         .default(Text("Sort by stat alphabetically")) {
-                            sortByStatAlphabetically()
+                            sortMethod = SortMethods.byStatAlphabetically
                         },
                         .default(Text("Sort by stat reverse alphabetically")) {
-                            sortByStatReverseAlphabetically()
+                            sortMethod = SortMethods.byStatReverseAlphabetically
                         },
                         .default(Text("Sort by ranking ascending")) {
-                            sortByRankingAscending()
+                            sortMethod = SortMethods.byRankingAscending
                         },
                         .default(Text("Sort by ranking descending")) {
-                            sortByRankingDescending()
+                            sortMethod = SortMethods.byRankingDescending
                         },
                         .cancel()
                     ]
@@ -136,22 +138,6 @@ struct RankingsView: View {
         } else {
             return "\(ranking)th"
         }
-    }
-    
-    func sortByStatAlphabetically() {
-        sortMethod = SortMethods.byStatAlphabetically
-    }
-    
-    func sortByStatReverseAlphabetically() {
-        sortMethod = SortMethods.byStatReverseAlphabetically
-    }
-    
-    func sortByRankingAscending() {
-        sortMethod = SortMethods.byRankingAscending
-    }
-    
-    func sortByRankingDescending() {
-        sortMethod = SortMethods.byRankingDescending
     }
     
     func refreshRankings() async {

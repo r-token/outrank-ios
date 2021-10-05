@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F4028019270BBC3F007330A4 /* RankingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4028018270BBC3F007330A4 /* RankingDetailView.swift */; };
 		F429CA3C27095BE5005CDD2A /* String+CamelCaseToWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */; };
 		F429CA44270A0557005CDD2A /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429CA43270A0557005CDD2A /* ButtonStyles.swift */; };
 		F438824C270AA5120089518A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F438824B270AA5120089518A /* WidgetKit.framework */; };
@@ -51,6 +52,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F4028018270BBC3F007330A4 /* RankingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingDetailView.swift; sourceTree = "<group>"; };
 		F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CamelCaseToWords.swift"; sourceTree = "<group>"; };
 		F429CA43270A0557005CDD2A /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		F4388249270AA5120089518A /* TopFourWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TopFourWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +142,7 @@
 				F44787A12708F095006CD2FA /* TeamRankingsApp.swift */,
 				F44787B82709104C006CD2FA /* MainView.swift */,
 				F44787A32708F095006CD2FA /* RankingsView.swift */,
+				F4028018270BBC3F007330A4 /* RankingDetailView.swift */,
 				F44787BA27091113006CD2FA /* ComparisonView.swift */,
 				F44787B627090DB8006CD2FA /* TeamPickerView.swift */,
 				F429CA43270A0557005CDD2A /* ButtonStyles.swift */,
@@ -280,6 +283,7 @@
 				F44787BB27091113006CD2FA /* ComparisonView.swift in Sources */,
 				F44787A22708F095006CD2FA /* TeamRankingsApp.swift in Sources */,
 				F44787B52708FD38006CD2FA /* LoopableStruct.swift in Sources */,
+				F4028019270BBC3F007330A4 /* RankingDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
