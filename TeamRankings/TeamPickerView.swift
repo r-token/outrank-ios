@@ -53,6 +53,7 @@ struct TeamPickerView: View {
                                     .foregroundColor(.primary)
                             }
                         }
+                        .onDelete(perform: removeFromFavorites)
                         
                         if favorites.isEmpty {
                             HStack(spacing: 5) {
@@ -100,5 +101,10 @@ struct TeamPickerView: View {
                 print("Request failed with error: \(error)")
             }
         }
+    }
+    
+    func removeFromFavorites(at offsets: IndexSet) {
+        let index = offsets[offsets.startIndex]
+        favoriteTeams.remove(favorites[index])
     }
 }
