@@ -8,26 +8,31 @@
 import SwiftUI
 
 struct MainView: View {
+    @StateObject private var tabController = TabController()
     @ObservedObject var favoriteTeams = FavoriteTeams()
     
     var body: some View {
-        TabView {
+        TabView(selection: $tabController.activeTab) {
             RankingsView()
+                .tag(Tab.rankings)
                 .tabItem {
                     Label("Rankings", systemImage: "list.bullet.rectangle.portrait")
                 }
             
             ComparisonView()
+                .tag(Tab.compare)
                 .tabItem {
                     Label("Compare", systemImage: "eyeglasses")
                 }
             
             SettingsView()
+                .tag(Tab.settings)
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
         }
         .environmentObject(favoriteTeams)
+        .environmentObject(tabController)
     }
 }
 

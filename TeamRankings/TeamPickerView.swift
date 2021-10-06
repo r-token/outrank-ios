@@ -10,6 +10,7 @@ import SwiftUI
 struct TeamPickerView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var favoriteTeams: FavoriteTeams
+    @EnvironmentObject private var tabController: TabController
     
     @Binding var team: String
     @Binding var teamRankings: [String:Int]
@@ -56,14 +57,19 @@ struct TeamPickerView: View {
                         .onDelete(perform: removeFromFavorites)
                         
                         if favorites.isEmpty {
-                            HStack(spacing: 5) {
-                                Text("Choose favorite teams in")
-                                HStack(spacing: 1) {
-                                    Image(systemName: "gear")
-                                    Text("Settings")
+                            Button(action: {
+                                dismiss()
+                                tabController.open(.settings)
+                            }) {
+                                HStack(spacing: 5) {
+                                    Text("Choose favorite teams in")
+                                    HStack(spacing: 1) {
+                                        Image(systemName: "gear")
+                                        Text("Settings")
+                                    }
                                 }
+                                .foregroundColor(.gray)
                             }
-                            .foregroundColor(.gray)
                         }
                     }
                     

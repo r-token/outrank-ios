@@ -14,6 +14,7 @@ struct RankingsView: View {
     @State private var randomId = UUID()
     
     @State private var isShowingTeamPickerView = false
+    @State private var isShowingInfoSheet = false
     @State private var isShowingSortActionSheet = false
     
     enum SortMethods {
@@ -87,6 +88,14 @@ struct RankingsView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
+                        isShowingInfoSheet.toggle()
+                    }) {
+                        Image(systemName: "info.circle")
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
                         isShowingSortActionSheet.toggle()
                     }) {
                         Image(systemName: "arrow.up.arrow.down")
@@ -97,6 +106,13 @@ struct RankingsView: View {
             
             .sheet(isPresented: $isShowingTeamPickerView) {
                 TeamPickerView(team: $currentTeam, teamRankings: $teamRankings, type: TeamPickerView.TeamPickerTypes.home)
+                    .onDisappear {
+                        randomId = UUID() // this solves the SwiftUI bug that causes sheets in toolbars to not present consistently
+                    }
+            }
+            
+            .sheet(isPresented: $isShowingInfoSheet) {
+                InfoView(source: Source.rankings)
                     .onDisappear {
                         randomId = UUID() // this solves the SwiftUI bug that causes sheets in toolbars to not present consistently
                     }

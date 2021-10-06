@@ -22,6 +22,8 @@
 		F445CD4C270C7250008A2DE1 /* String+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445CD4B270C7250008A2DE1 /* String+Identifiable.swift */; };
 		F445CD4E270C73D4008A2DE1 /* MultiPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445CD4D270C73D4008A2DE1 /* MultiPickerView.swift */; };
 		F445CD50270C7D08008A2DE1 /* FavoriteTeamsSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445CD4F270C7D08008A2DE1 /* FavoriteTeamsSelectionView.swift */; };
+		F445CD52270D4243008A2DE1 /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445CD51270D4243008A2DE1 /* TabController.swift */; };
+		F445CD54270D4530008A2DE1 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445CD53270D4530008A2DE1 /* InfoView.swift */; };
 		F44787A22708F095006CD2FA /* TeamRankingsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787A12708F095006CD2FA /* TeamRankingsApp.swift */; };
 		F44787A42708F095006CD2FA /* RankingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787A32708F095006CD2FA /* RankingsView.swift */; };
 		F44787A62708F097006CD2FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F44787A52708F097006CD2FA /* Assets.xcassets */; };
@@ -76,6 +78,8 @@
 		F445CD4B270C7250008A2DE1 /* String+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Identifiable.swift"; sourceTree = "<group>"; };
 		F445CD4D270C73D4008A2DE1 /* MultiPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiPickerView.swift; sourceTree = "<group>"; };
 		F445CD4F270C7D08008A2DE1 /* FavoriteTeamsSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTeamsSelectionView.swift; sourceTree = "<group>"; };
+		F445CD51270D4243008A2DE1 /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
+		F445CD53270D4530008A2DE1 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		F447879E2708F095006CD2FA /* TeamRankings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeamRankings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44787A12708F095006CD2FA /* TeamRankingsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRankingsApp.swift; sourceTree = "<group>"; };
 		F44787A32708F095006CD2FA /* RankingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsView.swift; sourceTree = "<group>"; };
@@ -154,10 +158,12 @@
 			children = (
 				F44787AF2708F123006CD2FA /* TeamRankings.entitlements */,
 				F44787A12708F095006CD2FA /* TeamRankingsApp.swift */,
+				F445CD51270D4243008A2DE1 /* TabController.swift */,
 				F44787B82709104C006CD2FA /* MainView.swift */,
 				F44787A32708F095006CD2FA /* RankingsView.swift */,
 				F4028018270BBC3F007330A4 /* RankingDetailView.swift */,
 				F44787BA27091113006CD2FA /* ComparisonView.swift */,
+				F445CD53270D4530008A2DE1 /* InfoView.swift */,
 				F445CD45270C69FD008A2DE1 /* SettingsView.swift */,
 				F44787B627090DB8006CD2FA /* TeamPickerView.swift */,
 				F445CD49270C6C35008A2DE1 /* AllTeams.swift */,
@@ -302,6 +308,7 @@
 				F44787B12708F44F006CD2FA /* Team.swift in Sources */,
 				F445CD50270C7D08008A2DE1 /* FavoriteTeamsSelectionView.swift in Sources */,
 				F445CD48270C6B74008A2DE1 /* MultiPicker.swift in Sources */,
+				F445CD54270D4530008A2DE1 /* InfoView.swift in Sources */,
 				F445CD4C270C7250008A2DE1 /* String+Identifiable.swift in Sources */,
 				F445CD4A270C6C35008A2DE1 /* AllTeams.swift in Sources */,
 				F44787A42708F095006CD2FA /* RankingsView.swift in Sources */,
@@ -311,6 +318,7 @@
 				F44787A22708F095006CD2FA /* TeamRankingsApp.swift in Sources */,
 				F44787B52708FD38006CD2FA /* LoopableStruct.swift in Sources */,
 				F4028019270BBC3F007330A4 /* RankingDetailView.swift in Sources */,
+				F445CD52270D4243008A2DE1 /* TabController.swift in Sources */,
 				F445CD46270C69FD008A2DE1 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

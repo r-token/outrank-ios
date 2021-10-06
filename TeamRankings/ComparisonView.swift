@@ -16,6 +16,7 @@ struct ComparisonView: View {
     
     @State private var isShowingTeamOnePickerView = false
     @State private var isShowingTeamTwoPickerView = false
+    @State private var isShowingInfoSheet = false
     
     var sortedTeamOneRankings: [Dictionary<String, Int>.Element]{
         return teamOneRankings.sorted{ $0.value < $1.value }
@@ -111,12 +112,26 @@ struct ComparisonView: View {
             .navigationTitle("Compare Teams")
             .navigationBarTitleDisplayMode(.inline)
             
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        isShowingInfoSheet.toggle()
+                    }) {
+                        Image(systemName: "info.circle")
+                    }
+                }
+            }
+            
             .sheet(isPresented: $isShowingTeamOnePickerView) {
                 TeamPickerView(team: $teamOne, teamRankings: $teamOneRankings, type: TeamPickerView.TeamPickerTypes.comparisonTeamOne)
             }
             
             .sheet(isPresented: $isShowingTeamTwoPickerView) {
                 TeamPickerView(team: $teamTwo, teamRankings: $teamTwoRankings, type: TeamPickerView.TeamPickerTypes.comparisonTeamTwo)
+            }
+            
+            .sheet(isPresented: $isShowingInfoSheet) {
+                InfoView(source: Source.compare)
             }
             
             .task {
