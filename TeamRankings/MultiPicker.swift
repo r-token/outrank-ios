@@ -29,7 +29,7 @@ struct MultiPicker<LabelView: View, Selectable: Identifiable & Hashable>: View {
                     Text(favorites[0])
                         .foregroundColor(.gray)
                 } else {
-                    Text("\(selectedCount) Favorites")
+                    Text("\(selectedCount) Teams")
                         .foregroundColor(.gray)
                 }
             }

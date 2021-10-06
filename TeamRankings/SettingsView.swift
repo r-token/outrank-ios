@@ -20,7 +20,7 @@ struct SettingsView: View {
         NavigationView {
             Form {
                 MultiPicker(
-                    label: Text("Favorite Teams"),
+                    label: FavoriteTeamsLabel(),
                     allTeams: allTeams,
                     teamToString: { $0 },
                     selectedCount: selectedCount
@@ -28,6 +28,16 @@ struct SettingsView: View {
             }
             
             .navigationTitle("Settings")
+        }
+    }
+}
+
+struct FavoriteTeamsLabel: View {
+    var body: some View {
+        HStack {
+            Image(systemName: "star.fill")
+                .foregroundColor(.yellow)
+            Text("Favorites")
         }
     }
 }

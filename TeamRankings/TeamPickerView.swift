@@ -96,6 +96,14 @@ struct TeamPickerView: View {
                 .animation(.default, value: favorites)
                 
                 .navigationTitle("Choose Team")
+                
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button("Done") {
+                            dismiss()
+                        }
+                    }
+                }
             }
         }
     }
