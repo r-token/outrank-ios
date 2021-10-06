@@ -19,12 +19,32 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             Form {
-                MultiPicker(
-                    label: FavoriteTeamsLabel(),
-                    allTeams: allTeams,
-                    teamToString: { $0 },
-                    selectedCount: selectedCount
-                )
+                Section {
+                    MultiPicker(
+                        label: FavoriteTeamsLabel(),
+                        allTeams: allTeams,
+                        teamToString: { $0 },
+                        selectedCount: selectedCount
+                    )
+                }
+                
+                Section {
+                    NavigationLink(destination: TipJarView()) {
+                        HStack {
+                            Image(systemName: "dollarsign.square.fill")
+                                .font(.title)
+                                .foregroundColor(.green)
+                            Text("Tip Jar")
+                        }
+                    }
+                    
+                    NavigationLink(destination: AboutView()) {
+                        Image(systemName: "bell.square.fill")
+                            .font(.title)
+                            .foregroundColor(.blue)
+                        Text("About")
+                    }
+                }
             }
             
             .navigationTitle("Settings")
@@ -35,7 +55,8 @@ struct SettingsView: View {
 struct FavoriteTeamsLabel: View {
     var body: some View {
         HStack {
-            Image(systemName: "star.fill")
+            Image(systemName: "star.square.fill")
+                .font(.title)
                 .foregroundColor(.yellow)
             Text("Favorites")
         }

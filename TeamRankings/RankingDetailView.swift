@@ -72,16 +72,17 @@ struct RankingDetailView: View {
             
             Text("Description:")
                 .font(.headline)
-                .foregroundColor(.gray)
+                .foregroundColor(.primary)
                 .padding(.bottom, 5)
             
             Text(statDescriptions[stat] ?? "Description Unknown.")
-                .padding(.bottom, 15)
+                .foregroundColor(.gray)
+                .padding(.bottom, 20)
             
             HStack {
                 Text("\(team)'s Ranking:")
                     .font(.headline)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.primary)
                 
                 Text(humanReadableRanking)
                     .font(.headline)
@@ -90,9 +91,10 @@ struct RankingDetailView: View {
             
             Spacer()
         }
+        .padding()
+        
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
-        .padding()
     }
 }
 

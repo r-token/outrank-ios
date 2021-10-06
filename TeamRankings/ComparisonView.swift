@@ -18,6 +18,8 @@ struct ComparisonView: View {
     @State private var isShowingTeamTwoPickerView = false
     @State private var isShowingInfoSheet = false
     
+    @State private var apiError = false
+    
     var sortedTeamOneRankings: [Dictionary<String, Int>.Element]{
         return teamOneRankings.sorted{ $0.value < $1.value }
     }
@@ -100,6 +102,11 @@ struct ComparisonView: View {
                             .padding(.horizontal)
                             .padding(.vertical, 3)
                         }
+                    }
+                    
+                    if apiError {
+                        Text("😕 Error loading rankings. Please try again or try changing one of the teams.")
+                            .foregroundColor(.gray)
                     }
                 }
                 .refreshable {
@@ -195,8 +202,11 @@ struct ComparisonView: View {
                 
                 teamOneRankings = rankingsForTeamOne
                 teamTwoRankings = rankingsForTeamTwo
+                
+                apiError = false
             } catch {
                 print("Request failed with error: \(error)")
+                apiError = true
             }
         }
     }

@@ -12,6 +12,7 @@ struct RankingsView: View {
     @State private var teamRankings = [String:Int]()
     @State private var sortMethod = SortMethods.byStatAlphabetically
     @State private var randomId = UUID()
+    @State private var apiError = false
     
     @State private var isShowingTeamPickerView = false
     @State private var isShowingInfoSheet = false
@@ -66,6 +67,11 @@ struct RankingsView: View {
                                     .foregroundColor(item.value < 65 ? .green : .red)
                             }
                         }
+                    }
+                    
+                    if apiError {
+                        Text("😕 Error loading rankings for \(currentTeam). Please try again or try a different team.")
+                            .foregroundColor(.gray)
                     }
                 }
             }
@@ -178,9 +184,10 @@ struct RankingsView: View {
             do {
                 let fetchedRankings = try await TeamFetcher.getTeamRankingsFor(team: currentTeam)
                 teamRankings = try fetchedRankings.allProperties()
-
+                apiError = false
             } catch {
                 print("Request failed with error: \(error)")
+                apiError = true
             }
         }
     }

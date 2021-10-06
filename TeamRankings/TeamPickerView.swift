@@ -61,8 +61,8 @@ struct TeamPickerView: View {
                                 dismiss()
                                 tabController.open(.settings)
                             }) {
-                                HStack(spacing: 5) {
-                                    Text("Choose favorite teams in")
+                                HStack(spacing: 6) {
+                                    Text("Choose favorites in")
                                     HStack(spacing: 1) {
                                         Image(systemName: "gear")
                                         Text("Settings")
