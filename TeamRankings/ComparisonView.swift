@@ -18,6 +18,7 @@ struct ComparisonView: View {
     @State private var isShowingTeamTwoPickerView = false
     @State private var isShowingInfoSheet = false
     
+    @State private var animatingSwap = false
     @State private var apiError = false
     
     var sortedTeamOneRankings: [Dictionary<String, Int>.Element]{
@@ -41,7 +42,7 @@ struct ComparisonView: View {
                         swapTeams()
                     }) {
                         Image(systemName: "arrow.left.arrow.right.square")
-                            .font(.largeTitle)
+                            .font(.title)
                             .foregroundColor(.blue)
                     }
                     
@@ -55,6 +56,7 @@ struct ComparisonView: View {
                     }
                     .buttonStyle(GrowingButton())
                 }
+                .animation(.default, value: animatingSwap)
                 .padding(.horizontal)
                 
                 HStack(spacing: 5) {
@@ -152,6 +154,7 @@ struct ComparisonView: View {
     }
     
     func swapTeams() {
+        animatingSwap.toggle()
         let tempTeamOne = teamOne
         let tempTeamTwo = teamTwo
         let tempTeamOneRankings = teamOneRankings
