@@ -10,6 +10,12 @@
 		F4028019270BBC3F007330A4 /* RankingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4028018270BBC3F007330A4 /* RankingDetailView.swift */; };
 		F429CA3C27095BE5005CDD2A /* String+CamelCaseToWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */; };
 		F429CA44270A0557005CDD2A /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429CA43270A0557005CDD2A /* ButtonStyles.swift */; };
+		F432F67A271218BF0018277C /* TopFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F432F679271218BF0018277C /* TopFourView.swift */; };
+		F432F67C27121B0F0018277C /* TeamFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B22708FAF0006CD2FA /* TeamFetcher.swift */; };
+		F432F67D27121B2D0018277C /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B02708F44F006CD2FA /* Team.swift */; };
+		F432F67E27121B390018277C /* LoopableStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B42708FD38006CD2FA /* LoopableStruct.swift */; };
+		F432F67F2712212D0018277C /* TopFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F432F679271218BF0018277C /* TopFourView.swift */; };
+		F432F6802712236E0018277C /* String+CamelCaseToWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */; };
 		F438824C270AA5120089518A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F438824B270AA5120089518A /* WidgetKit.framework */; };
 		F438824E270AA5120089518A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F438824D270AA5120089518A /* SwiftUI.framework */; };
 		F4388251270AA5120089518A /* TopFourWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4388250270AA5120089518A /* TopFourWidget.swift */; };
@@ -66,6 +72,7 @@
 		F4028018270BBC3F007330A4 /* RankingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingDetailView.swift; sourceTree = "<group>"; };
 		F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CamelCaseToWords.swift"; sourceTree = "<group>"; };
 		F429CA43270A0557005CDD2A /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		F432F679271218BF0018277C /* TopFourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopFourView.swift; sourceTree = "<group>"; };
 		F4388249270AA5120089518A /* TopFourWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TopFourWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F438824B270AA5120089518A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F438824D270AA5120089518A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -131,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				F4388250270AA5120089518A /* TopFourWidget.swift */,
+				F432F679271218BF0018277C /* TopFourView.swift */,
 				F4388252270AA5130089518A /* Assets.xcassets */,
 				F4388254270AA5130089518A /* Info.plist */,
 			);
@@ -298,7 +306,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F432F67D27121B2D0018277C /* Team.swift in Sources */,
+				F432F67A271218BF0018277C /* TopFourView.swift in Sources */,
 				F4388251270AA5120089518A /* TopFourWidget.swift in Sources */,
+				F432F67C27121B0F0018277C /* TeamFetcher.swift in Sources */,
+				F432F6802712236E0018277C /* String+CamelCaseToWords.swift in Sources */,
+				F432F67E27121B390018277C /* LoopableStruct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +341,7 @@
 				F4028019270BBC3F007330A4 /* RankingDetailView.swift in Sources */,
 				F445CD52270D4243008A2DE1 /* TabController.swift in Sources */,
 				F445CD46270C69FD008A2DE1 /* SettingsView.swift in Sources */,
+				F432F67F2712212D0018277C /* TopFourView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
