@@ -8,7 +8,7 @@
 import Foundation
 
 class FavoriteTeams: ObservableObject {
-    // the actual resorts the user has favorited
+    // the actual teams the user has favorited
     private var teams: Set<String>
 
     // the key we're using to read/write in UserDefaults
@@ -32,7 +32,7 @@ class FavoriteTeams: ObservableObject {
         }
     }
 
-    // returns true if our set contains this resort
+    // returns true if our set contains this team
     func contains(_ team: String) -> Bool {
         teams.contains(team)
     }
@@ -41,14 +41,14 @@ class FavoriteTeams: ObservableObject {
         return teams
     }
 
-    // adds the resort to our set, updates all views, and saves the change
+    // adds the team to our set, updates all views, and saves the change
     func add(_ team: String) {
         objectWillChange.send()
         teams.insert(team)
         save()
     }
 
-    // removes the resort from our set, updates all views, and saves the change
+    // removes the team from our set, updates all views, and saves the change
     func remove(_ team: String) {
         objectWillChange.send()
         teams.remove(team)

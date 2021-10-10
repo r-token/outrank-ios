@@ -16,6 +16,7 @@
 		F432F67E27121B390018277C /* LoopableStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B42708FD38006CD2FA /* LoopableStruct.swift */; };
 		F432F67F2712212D0018277C /* TopFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F432F679271218BF0018277C /* TopFourView.swift */; };
 		F432F6802712236E0018277C /* String+CamelCaseToWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */; };
+		F432F681271392650018277C /* FavoriteTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445CD43270C6683008A2DE1 /* FavoriteTeams.swift */; };
 		F438824C270AA5120089518A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F438824B270AA5120089518A /* WidgetKit.framework */; };
 		F438824E270AA5120089518A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F438824D270AA5120089518A /* SwiftUI.framework */; };
 		F4388251270AA5120089518A /* TopFourWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4388250270AA5120089518A /* TopFourWidget.swift */; };
@@ -306,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F432F681271392650018277C /* FavoriteTeams.swift in Sources */,
 				F432F67D27121B2D0018277C /* Team.swift in Sources */,
 				F432F67A271218BF0018277C /* TopFourView.swift in Sources */,
 				F4388251270AA5120089518A /* TopFourWidget.swift in Sources */,

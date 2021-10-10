@@ -8,35 +8,45 @@
 import SwiftUI
 
 struct TopFourView: View {
-    let team = UserDefaults.standard.string(forKey: "CurrentTeam") ?? "Air Force"
-    let topFour: [String:Int]
+    let team: String
+    let allRankings: [String:Int]
     
     var sortedDictionary: [Dictionary<String, Int>.Element] {
-        let allRankingsSorted = topFour.sorted{ $0.value < $1.value }
-        let topFourSorted = allRankingsSorted[...3]
-        return Array(topFourSorted)
+        let allRankingsSorted = allRankings.sorted{ $0.value < $1.value }
+        if allRankingsSorted.isEmpty {
+            return []
+        } else {
+            let topFourSorted = allRankingsSorted[...3]
+            return Array(topFourSorted)
+        }
     }
     
     var body: some View {
         VStack(spacing: 30) {
-            HStack {
-                Text("\(getHumanReadableStat(for: sortedDictionary[0].key)):")
-                Text(getHumanReadableRanking(for: sortedDictionary[0].value))
-                
-                Spacer()
-                
-                Text("\(getHumanReadableStat(for: sortedDictionary[1].key)):")
-                Text(getHumanReadableRanking(for: sortedDictionary[1].value))
-            }
+            Text(team)
             
-            HStack {
-                Text("\(getHumanReadableStat(for: sortedDictionary[2].key)):")
-                Text(getHumanReadableRanking(for: sortedDictionary[2].value))
+            if !sortedDictionary.isEmpty {
+                HStack {
+                    Text("\(getHumanReadableStat(for: sortedDictionary[0].key)):")
+                    Text(getHumanReadableRanking(for: sortedDictionary[0].value))
+                    
+                    Spacer()
+                    
+                    Text("\(getHumanReadableStat(for: sortedDictionary[1].key)):")
+                    Text(getHumanReadableRanking(for: sortedDictionary[1].value))
+                }
                 
-                Spacer()
-                
-                Text("\(getHumanReadableStat(for: sortedDictionary[3].key)):")
-                Text(getHumanReadableRanking(for: sortedDictionary[3].value))
+                HStack {
+                    Text("\(getHumanReadableStat(for: sortedDictionary[2].key)):")
+                    Text(getHumanReadableRanking(for: sortedDictionary[2].value))
+                    
+                    Spacer()
+                    
+                    Text("\(getHumanReadableStat(for: sortedDictionary[3].key)):")
+                    Text(getHumanReadableRanking(for: sortedDictionary[3].value))
+                }
+            } else {
+                Text("No data")
             }
         }
         .padding()
@@ -69,8 +79,8 @@ struct TopFourView: View {
     }
 }
 
-struct TopFourView_Previews: PreviewProvider {
-    static var previews: some View {
-        TopFourView(topFour: ["test1":1, "test2":3, "test3": 51, "test4": 86])
-    }
-}
+//struct TopFourView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TopFourView(team: "Air Force", allRankings: )
+//    }
+//}

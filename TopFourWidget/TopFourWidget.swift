@@ -19,17 +19,21 @@ struct Provider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate)
-            entries.append(entry)
-        }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+        // update at 9:00am daily
+        let now = Date()
+        let calendar = Calendar.current
+        var dateComponents = DateComponents()
+        dateComponents.year = calendar.component(.year, from: now)
+        dateComponents.month = calendar.component(.month, from: now)
+        dateComponents.day = calendar.component(.day, from: now) + 1
+        dateComponents.hour = 9
+        dateComponents.minute = 0
+        dateComponents.second = 0
+        let nextUpdate = calendar.date(from: dateComponents)
+        
+        let entries: [SimpleEntry] = [SimpleEntry(date: now)]
+        
+        let timeline = Timeline(entries: entries, policy: .after(nextUpdate!))
         completion(timeline)
     }
 }
@@ -39,10 +43,33 @@ struct SimpleEntry: TimelineEntry {
 }
 
 struct TopFourWidgetEntryView : View {
+    @State private var teamRankings = [String:Int]()
+    @State private var apiError = false
+    
     var entry: Provider.Entry
+    let team = UserDefaults.standard.string(forKey: "CurrentTeam") ?? "Air Force"
 
     var body: some View {
-        Text(entry.date, style: .time)
+        TopFourView(team: team, allRankings: teamRankings)
+        
+        .task {
+            print("refreshing rankings")
+            await refreshRankings()
+        }
+    }
+    
+    func refreshRankings() async {
+        Task {
+            print("fetching new data")
+            do {
+                let fetchedRankings = try await TeamFetcher.getTeamRankingsFor(team: team)
+                teamRankings = try fetchedRankings.allProperties()
+                apiError = false
+            } catch {
+                print("Request failed with error: \(error)")
+                apiError = true
+            }
+        }
     }
 }
 
@@ -54,14 +81,15 @@ struct TopFourWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             TopFourWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Top Four Rankings")
+        .description("The four stats where a team ranks the highest")
+        .supportedFamilies([.systemMedium])
     }
 }
 
 struct TopFourWidget_Previews: PreviewProvider {
     static var previews: some View {
         TopFourWidgetEntryView(entry: SimpleEntry(date: Date()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+            .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }
