@@ -8,22 +8,24 @@
 import SwiftUI
 
 struct TopFourView: View {
-    let team: String
-    let allRankings: [String:Int]
+    @State private var teamRankings = [String:Int]()
+    
+    let widgetTeam = UserDefaults(suiteName: "group.com.ryantoken.teamrankings")?.string(forKey: "WidgetTeam") ?? "Air Force"
     
     var sortedDictionary: [Dictionary<String, Int>.Element] {
-        let allRankingsSorted = allRankings.sorted{ $0.value < $1.value }
-        if allRankingsSorted.isEmpty {
+        print(teamRankings)
+        let teamRankingsSorted = teamRankings.sorted{ $0.value < $1.value }
+        if teamRankingsSorted.isEmpty {
             return []
         } else {
-            let topFourSorted = allRankingsSorted[...3]
+            let topFourSorted = teamRankingsSorted[...3]
             return Array(topFourSorted)
         }
     }
     
     var body: some View {
         VStack(spacing: 30) {
-            Text(team)
+            Text(widgetTeam)
             
             if !sortedDictionary.isEmpty {
                 HStack {
@@ -51,6 +53,12 @@ struct TopFourView: View {
         }
         .padding()
         .font(.headline)
+        
+        
+        .task {
+            print("refreshing rankings")
+            await refreshRankings()
+        }
     }
     
     func getHumanReadableStat(for stat: String) -> String {
@@ -77,10 +85,22 @@ struct TopFourView: View {
             return "\(ranking)th"
         }
     }
+    
+    func refreshRankings() async {
+        Task {
+            print("fetching new data")
+            do {
+                let fetchedRankings = try await TeamFetcher.getTeamRankingsFor(team: widgetTeam)
+                teamRankings = try fetchedRankings.allProperties()
+            } catch {
+                print("Request failed with error: \(error)")
+            }
+        }
+    }
 }
 
 //struct TopFourView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        TopFourView(team: "Air Force", allRankings: )
+//        TopFourView(team: "Air Force", teamRankings: )
 //    }
 //}

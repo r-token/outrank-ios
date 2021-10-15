@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var favoriteTeams: FavoriteTeams
+    @State private var widgetTeam = UserDefaults(suiteName: "group.com.ryantoken.teamrankings")?.string(forKey: "WidgetTeam") ?? "Air Force"
     
     let allTeams = AllTeams().getTeams()
     
@@ -26,6 +27,25 @@ struct SettingsView: View {
                         teamToString: { $0 },
                         selectedCount: selectedCount
                     )
+                    
+                    Picker(selection: $widgetTeam, label:
+                        HStack {
+                            Image(systemName: "square.and.arrow.down.on.square.fill")
+                            .font(.title)
+                            .foregroundColor(.purple)
+                        
+                            Text("Widget Team")
+                    }) {
+                        ForEach(allTeams, id: \.self) { team in
+                            Text(team)
+                        }
+                    }
+                    .onChange(of: widgetTeam) { newWidgetTeam in
+                          // Run code to save
+                        UserDefaults(suiteName: "group.com.ryantoken.teamrankings")?.set(newWidgetTeam, forKey: "WidgetTeam")
+                        
+                        print("shared user defaults for widget team is now \(newWidgetTeam)")
+                   }
                 }
                 
                 Section {

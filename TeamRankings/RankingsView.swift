@@ -111,7 +111,7 @@ struct RankingsView: View {
             .id(randomId)
             
             .sheet(isPresented: $isShowingTeamPickerView) {
-                TeamPickerView(team: $currentTeam, teamRankings: $teamRankings, type: TeamPickerView.TeamPickerTypes.home)
+                TeamPickerView(team: $currentTeam, teamRankings: $teamRankings, type: TeamPickerView.TeamPickerTypes.rankings)
                     .onDisappear {
                         randomId = UUID() // this solves the SwiftUI bug that causes sheets in toolbars to not present consistently
                     }

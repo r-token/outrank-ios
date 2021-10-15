@@ -23,14 +23,14 @@ struct TeamPickerView: View {
     }
     
     enum TeamPickerTypes {
-        case home
+        case rankings
         case comparisonTeamOne
         case comparisonTeamTwo
     }
     
     private var userDefaultsKey: String {
         switch type {
-        case TeamPickerTypes.home:
+        case TeamPickerTypes.rankings:
             return "CurrentTeam"
         case TeamPickerTypes.comparisonTeamOne:
             return "TeamOne"

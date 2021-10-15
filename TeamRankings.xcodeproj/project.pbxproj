@@ -41,6 +41,8 @@
 		F44787B727090DB8006CD2FA /* TeamPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B627090DB8006CD2FA /* TeamPickerView.swift */; };
 		F44787B92709104C006CD2FA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B82709104C006CD2FA /* MainView.swift */; };
 		F44787BB27091113006CD2FA /* ComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787BA27091113006CD2FA /* ComparisonView.swift */; };
+		F4BA506327190F0400FC93E4 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA506227190F0400FC93E4 /* AppGroup.swift */; };
+		F4BA506427190F0400FC93E4 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA506227190F0400FC93E4 /* AppGroup.swift */; };
 		F4BC3426270E5B7800F66948 /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BC3425270E5B7800F66948 /* TipJarView.swift */; };
 		F4BC3428270E5D5300F66948 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BC3427270E5D5300F66948 /* AboutView.swift */; };
 /* End PBXBuildFile section */
@@ -102,6 +104,7 @@
 		F44787B627090DB8006CD2FA /* TeamPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPickerView.swift; sourceTree = "<group>"; };
 		F44787B82709104C006CD2FA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F44787BA27091113006CD2FA /* ComparisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonView.swift; sourceTree = "<group>"; };
+		F4BA506227190F0400FC93E4 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		F4BC3425270E5B7800F66948 /* TipJarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarView.swift; sourceTree = "<group>"; };
 		F4BC3427270E5D5300F66948 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,6 +174,7 @@
 			children = (
 				F44787AF2708F123006CD2FA /* TeamRankings.entitlements */,
 				F44787A12708F095006CD2FA /* TeamRankingsApp.swift */,
+				F4BA506227190F0400FC93E4 /* AppGroup.swift */,
 				F445CD51270D4243008A2DE1 /* TabController.swift */,
 				F44787B82709104C006CD2FA /* MainView.swift */,
 				F44787A32708F095006CD2FA /* RankingsView.swift */,
@@ -314,6 +318,7 @@
 				F432F67C27121B0F0018277C /* TeamFetcher.swift in Sources */,
 				F432F6802712236E0018277C /* String+CamelCaseToWords.swift in Sources */,
 				F432F67E27121B390018277C /* LoopableStruct.swift in Sources */,
+				F4BA506427190F0400FC93E4 /* AppGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +333,7 @@
 				F429CA3C27095BE5005CDD2A /* String+CamelCaseToWords.swift in Sources */,
 				F44787B727090DB8006CD2FA /* TeamPickerView.swift in Sources */,
 				F44787B12708F44F006CD2FA /* Team.swift in Sources */,
+				F4BA506327190F0400FC93E4 /* AppGroup.swift in Sources */,
 				F4BC3426270E5B7800F66948 /* TipJarView.swift in Sources */,
 				F445CD50270C7D08008A2DE1 /* FavoriteTeamsSelectionView.swift in Sources */,
 				F445CD48270C6B74008A2DE1 /* MultiPicker.swift in Sources */,

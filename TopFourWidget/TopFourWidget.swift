@@ -43,33 +43,10 @@ struct SimpleEntry: TimelineEntry {
 }
 
 struct TopFourWidgetEntryView : View {
-    @State private var teamRankings = [String:Int]()
-    @State private var apiError = false
-    
     var entry: Provider.Entry
-    let team = UserDefaults.standard.string(forKey: "CurrentTeam") ?? "Air Force"
 
     var body: some View {
-        TopFourView(team: team, allRankings: teamRankings)
-        
-        .task {
-            print("refreshing rankings")
-            await refreshRankings()
-        }
-    }
-    
-    func refreshRankings() async {
-        Task {
-            print("fetching new data")
-            do {
-                let fetchedRankings = try await TeamFetcher.getTeamRankingsFor(team: team)
-                teamRankings = try fetchedRankings.allProperties()
-                apiError = false
-            } catch {
-                print("Request failed with error: \(error)")
-                apiError = true
-            }
-        }
+        TopFourView()
     }
 }
 
