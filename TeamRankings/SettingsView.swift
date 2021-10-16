@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct SettingsView: View {
     @EnvironmentObject var favoriteTeams: FavoriteTeams
@@ -41,8 +42,9 @@ struct SettingsView: View {
                         }
                     }
                     .onChange(of: widgetTeam) { newWidgetTeam in
-                          // Run code to save
+                          // Save widget team to App Group userdefaults
                         UserDefaults(suiteName: "group.com.ryantoken.teamrankings")?.set(newWidgetTeam, forKey: "WidgetTeam")
+                        WidgetCenter.shared.reloadAllTimelines()
                         
                         print("shared user defaults for widget team is now \(newWidgetTeam)")
                    }

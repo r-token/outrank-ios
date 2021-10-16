@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct TopFourView: View {
-    @State private var teamRankings = [String:Int]()
+    var teamRankings: [String:Int]
     
     let widgetTeam = UserDefaults(suiteName: "group.com.ryantoken.teamrankings")?.string(forKey: "WidgetTeam") ?? "Air Force"
     
     var sortedDictionary: [Dictionary<String, Int>.Element] {
-        print(teamRankings)
         let teamRankingsSorted = teamRankings.sorted{ $0.value < $1.value }
         if teamRankingsSorted.isEmpty {
             return []
@@ -24,41 +23,56 @@ struct TopFourView: View {
     }
     
     var body: some View {
-        VStack(spacing: 30) {
-            Text(widgetTeam)
+        VStack(spacing: 8) {
+            Text("\(widgetTeam)'s Top Four")
+                .foregroundColor(.gray)
             
             if !sortedDictionary.isEmpty {
                 HStack {
                     Text("\(getHumanReadableStat(for: sortedDictionary[0].key)):")
-                    Text(getHumanReadableRanking(for: sortedDictionary[0].value))
                     
                     Spacer()
                     
+                    Text(getHumanReadableRanking(for: sortedDictionary[0].value))
+                        .foregroundColor(.green)
+                    
+                }
+                
+                HStack {
+                    
                     Text("\(getHumanReadableStat(for: sortedDictionary[1].key)):")
+                    
+                    Spacer()
+                    
                     Text(getHumanReadableRanking(for: sortedDictionary[1].value))
+                        .foregroundColor(.green)
                 }
                 
                 HStack {
                     Text("\(getHumanReadableStat(for: sortedDictionary[2].key)):")
-                    Text(getHumanReadableRanking(for: sortedDictionary[2].value))
                     
                     Spacer()
                     
+                    Text(getHumanReadableRanking(for: sortedDictionary[2].value))
+                        .foregroundColor(.green)
+                    
+                }
+                
+                HStack {
                     Text("\(getHumanReadableStat(for: sortedDictionary[3].key)):")
+                    
+                    Spacer()
+                    
                     Text(getHumanReadableRanking(for: sortedDictionary[3].value))
+                        .foregroundColor(.green)
                 }
             } else {
-                Text("No data")
+                Text("No Data")
             }
         }
         .padding()
         .font(.headline)
-        
-        
-        .task {
-            print("refreshing rankings")
-            await refreshRankings()
-        }
+        .foregroundColor(.primary)
     }
     
     func getHumanReadableStat(for stat: String) -> String {
@@ -85,22 +99,15 @@ struct TopFourView: View {
             return "\(ranking)th"
         }
     }
-    
-    func refreshRankings() async {
-        Task {
-            print("fetching new data")
-            do {
-                let fetchedRankings = try await TeamFetcher.getTeamRankingsFor(team: widgetTeam)
-                teamRankings = try fetchedRankings.allProperties()
-            } catch {
-                print("Request failed with error: \(error)")
-            }
+}
+
+struct TopFourView_Previews: PreviewProvider {
+    static var previews: some View {
+        do {
+            return TopFourView(teamRankings: try Team.exampleTeam.allProperties())
+
+        } catch {
+            return TopFourView(teamRankings: ["test":99999])
         }
     }
 }
-
-//struct TopFourView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TopFourView(team: "Air Force", teamRankings: )
-//    }
-//}

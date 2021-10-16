@@ -9,44 +9,62 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: TimelineProvider {
+    public typealias Entry = SimpleEntry
+    
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date())
+        do {
+            return SimpleEntry(date: Date(), teamRankings: try Team.exampleTeam.allProperties())
+        } catch {
+            print("error setting placeholder entry")
+            return SimpleEntry(date: Date(), teamRankings: ["test":99999])
+        }
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date())
-        completion(entry)
+        do {
+            let entry = SimpleEntry(date: Date(), teamRankings: try Team.exampleTeam.allProperties())
+            completion(entry)
+        } catch {
+            print("error setting snapshot entry")
+        }
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        // update at 9:00am daily
-        let now = Date()
-        let calendar = Calendar.current
-        var dateComponents = DateComponents()
-        dateComponents.year = calendar.component(.year, from: now)
-        dateComponents.month = calendar.component(.month, from: now)
-        dateComponents.day = calendar.component(.day, from: now) + 1
-        dateComponents.hour = 9
-        dateComponents.minute = 0
-        dateComponents.second = 0
-        let nextUpdate = calendar.date(from: dateComponents)
-        
-        let entries: [SimpleEntry] = [SimpleEntry(date: now)]
-        
-        let timeline = Timeline(entries: entries, policy: .after(nextUpdate!))
-        completion(timeline)
+        TeamFetcher.dispatchQueueGetTeamRankingsFor(team: UserDefaults(suiteName: "group.com.ryantoken.teamrankings")?.string(forKey: "WidgetTeam") ?? "Air Force") { (teamRankings) in
+
+            // update at 10:00am daily
+            let now = Date()
+            let calendar = Calendar.current
+            var dateComponents = DateComponents()
+            dateComponents.year = calendar.component(.year, from: now)
+            dateComponents.month = calendar.component(.month, from: now)
+            dateComponents.day = calendar.component(.day, from: now) + 1
+            dateComponents.hour = 10
+            dateComponents.minute = 0
+            dateComponents.second = 0
+            let nextUpdate = calendar.date(from: dateComponents)
+            
+            let entry = SimpleEntry(date: now, teamRankings: teamRankings)
+            
+            let entries = [entry]
+            
+            //your timeline with one entry that will refresh after given date
+            let timeline = Timeline(entries: entries, policy: .after(nextUpdate!))
+            completion(timeline)
+        }
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
+    let teamRankings: [String:Int]
 }
 
 struct TopFourWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        TopFourView()
+        TopFourView(teamRankings: entry.teamRankings)
     }
 }
 
@@ -58,15 +76,20 @@ struct TopFourWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             TopFourWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Top Four Rankings")
-        .description("The four stats where a team ranks the highest")
+        .configurationDisplayName("Top Four Widget")
+        .description("A team's top four stats. Change the team in the app's Settings page.")
         .supportedFamilies([.systemMedium])
     }
 }
 
 struct TopFourWidget_Previews: PreviewProvider {
     static var previews: some View {
-        TopFourWidgetEntryView(entry: SimpleEntry(date: Date()))
-            .previewContext(WidgetPreviewContext(family: .systemMedium))
+        do {
+            return TopFourWidgetEntryView(entry: SimpleEntry(date: Date(), teamRankings: try Team.exampleTeam.allProperties()))
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
+        } catch {
+            return TopFourWidgetEntryView(entry: SimpleEntry(date: Date(), teamRankings: ["test":99999]))
+                .previewContext(WidgetPreviewContext(family: .systemMedium))
+        }
     }
 }

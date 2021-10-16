@@ -15,10 +15,13 @@ struct TeamFetcher {
     }
     
     static func getTeamRankingsFor(team: String) async throws -> Team {
+        print("getting rankings for \(team)")
         let endpoint = "https://tapbejtlgh.execute-api.us-east-2.amazonaws.com/dev/singleTeamQuery?team=\(team)"
         let cleanEndpoint = endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let finalEndpoint = cleanEndpoint.replacingOccurrences(of: "&", with: "%26")
+        print(finalEndpoint)
         
-        guard let url = URL(string: cleanEndpoint) else {
+        guard let url = URL(string: finalEndpoint) else {
             throw TeamFetcherError.invalidURL
         }
 
@@ -31,5 +34,35 @@ struct TeamFetcher {
         return teamRankings
     }
     
+    static func dispatchQueueGetTeamRankingsFor(team: String, completion: @escaping ([String:Int]) -> Void) -> Void {
+        print("refreshing data via dispatchQueue")
+        let endpoint = "https://tapbejtlgh.execute-api.us-east-2.amazonaws.com/dev/singleTeamQuery?team=\(team)"
+        let cleanEndpoint = endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let finalEndpoint = cleanEndpoint.replacingOccurrences(of: "&", with: "%26")
+        print(finalEndpoint)
+        
+        guard let url = URL(string: finalEndpoint) else {
+            print("Invalid URL")
+            return
+        }
+        
+        let request = URLRequest(url: url)
+        
+        let requestTask = URLSession.shared.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+
+            if(error != nil) {
+                print("Error: \(error!)")
+            } else {
+                do {
+                    let teamRankings  = try JSONDecoder().decode(Team.self, from: data!)
+                    //send this block to required place
+                    completion(try teamRankings.allProperties())
+                } catch {
+                    print("network error")
+                }
+            }
+        }
+        requestTask.resume()
+    }
     
 }
