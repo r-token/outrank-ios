@@ -1,28 +1,28 @@
 //
-//  TopFourWidget.swift
-//  TopFourWidget
+//  BottomFourWidget.swift
+//  BottomFourWidgetExtension
 //
-//  Created by Ryan Token on 10/3/21.
+//  Created by Ryan Token on 10/15/21.
 //
 
 import WidgetKit
 import SwiftUI
 
-struct TopFourProvider: TimelineProvider {
-    public typealias Entry = TopFourEntry
+struct BottomFourProvider: TimelineProvider {
+    public typealias Entry = BottomFourEntry
     
-    func placeholder(in context: Context) -> TopFourEntry {
+    func placeholder(in context: Context) -> BottomFourEntry {
         do {
-            return TopFourEntry(date: Date(), teamRankings: try Team.exampleTeam.allProperties())
+            return BottomFourEntry(date: Date(), teamRankings: try Team.exampleTeam.allProperties())
         } catch {
             print("error setting placeholder entry")
-            return TopFourEntry(date: Date(), teamRankings: ["test":99999])
+            return BottomFourEntry(date: Date(), teamRankings: ["test":99999])
         }
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (TopFourEntry) -> ()) {
+    func getSnapshot(in context: Context, completion: @escaping (BottomFourEntry) -> ()) {
         do {
-            let entry = TopFourEntry(date: Date(), teamRankings: try Team.exampleTeam.allProperties())
+            let entry = BottomFourEntry(date: Date(), teamRankings: try Team.exampleTeam.allProperties())
             completion(entry)
         } catch {
             print("error setting snapshot entry")
@@ -44,7 +44,7 @@ struct TopFourProvider: TimelineProvider {
             dateComponents.second = 0
             let nextUpdate = calendar.date(from: dateComponents)
             
-            let entry = TopFourEntry(date: now, teamRankings: teamRankings)
+            let entry = BottomFourEntry(date: now, teamRankings: teamRankings)
             
             let entries = [entry]
             
@@ -55,49 +55,40 @@ struct TopFourProvider: TimelineProvider {
     }
 }
 
-struct TopFourEntry: TimelineEntry {
+struct BottomFourEntry: TimelineEntry {
     let date: Date
     let teamRankings: [String:Int]
 }
 
-struct TopFourWidgetEntryView : View {
-    var entry: TopFourProvider.Entry
+struct BottomFourWidgetEntryView : View {
+    var entry: BottomFourProvider.Entry
 
     var body: some View {
-        TopOrBottomFourView(type: TopOrBottomFourView.WidgetType.topFour, teamRankings: entry.teamRankings)
+        TopOrBottomFourView(type: TopOrBottomFourView.WidgetType.bottomFour, teamRankings: entry.teamRankings)
     }
 }
 
-struct TopFourWidget: Widget {
-    let kind: String = "TopFourWidget"
+struct BottomFourWidget: Widget {
+    let kind: String = "BottomFourWidget"
 
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: TopFourProvider()) { entry in
-            TopFourWidgetEntryView(entry: entry)
+        StaticConfiguration(kind: kind, provider: BottomFourProvider()) { entry in
+            BottomFourWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Top Four Widget")
-        .description("A team's top four stats. Change the team in the app's Settings page.")
+        .configurationDisplayName("Bottom Four Widget")
+        .description("A team's bottom four stats. Change the team in the app's Settings page.")
         .supportedFamilies([.systemMedium])
     }
 }
 
-struct TopFourWidget_Previews: PreviewProvider {
+struct BottomFourWidget_Previews: PreviewProvider {
     static var previews: some View {
         do {
-            return TopFourWidgetEntryView(entry: TopFourEntry(date: Date(), teamRankings: try Team.exampleTeam.allProperties()))
+            return BottomFourWidgetEntryView(entry: BottomFourEntry(date: Date(), teamRankings: try Team.exampleTeam.allProperties()))
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
         } catch {
-            return TopFourWidgetEntryView(entry: TopFourEntry(date: Date(), teamRankings: ["test":99999]))
+            return BottomFourWidgetEntryView(entry: BottomFourEntry(date: Date(), teamRankings: ["test":99999]))
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
         }
-    }
-}
-
-@main
-struct TeamRankingsBumndle: WidgetBundle {
-    @WidgetBundleBuilder
-    var body: some Widget {
-        TopFourWidget()
-        BottomFourWidget()
     }
 }

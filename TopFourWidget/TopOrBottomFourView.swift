@@ -7,25 +7,46 @@
 
 import SwiftUI
 
-struct TopFourView: View {
+struct TopOrBottomFourView: View {
+    var type: WidgetType
     var teamRankings: [String:Int]
+    
+    enum WidgetType {
+        case topFour
+        case bottomFour
+    }
     
     let widgetTeam = UserDefaults(suiteName: "group.com.ryantoken.teamrankings")?.string(forKey: "WidgetTeam") ?? "Air Force"
     
     var sortedDictionary: [Dictionary<String, Int>.Element] {
-        let teamRankingsSorted = teamRankings.sorted{ $0.value < $1.value }
-        if teamRankingsSorted.isEmpty {
-            return []
+        if type == WidgetType.topFour {
+            let teamRankingsSorted = teamRankings.sorted{ $0.value < $1.value }
+            if teamRankingsSorted.isEmpty {
+                return []
+            } else {
+                let topFourSorted = teamRankingsSorted[...3]
+                return Array(topFourSorted)
+            }
         } else {
-            let topFourSorted = teamRankingsSorted[...3]
-            return Array(topFourSorted)
+            let teamRankingsSorted = teamRankings.sorted{ $0.value > $1.value }
+            if teamRankingsSorted.isEmpty {
+                return []
+            } else {
+                let bottomFourSorted = teamRankingsSorted[...3]
+                return Array(bottomFourSorted)
+            }
         }
     }
     
     var body: some View {
-        VStack(spacing: 8) {
-            Text("\(widgetTeam)'s Top Four")
-                .foregroundColor(.gray)
+        VStack(spacing: 6) {
+            if type == WidgetType.topFour {
+                Text("\(widgetTeam)'s Top Four")
+                    .foregroundColor(.gray)
+            } else {
+                Text("\(widgetTeam)'s Bottom Four")
+                    .foregroundColor(.gray)
+            }
             
             if !sortedDictionary.isEmpty {
                 HStack {
@@ -34,7 +55,7 @@ struct TopFourView: View {
                     Spacer()
                     
                     Text(getHumanReadableRanking(for: sortedDictionary[0].value))
-                        .foregroundColor(.green)
+                        .foregroundColor(type == WidgetType.topFour ? .green : .red)
                     
                 }
                 
@@ -45,7 +66,7 @@ struct TopFourView: View {
                     Spacer()
                     
                     Text(getHumanReadableRanking(for: sortedDictionary[1].value))
-                        .foregroundColor(.green)
+                        .foregroundColor(type == WidgetType.topFour ? .green : .red)
                 }
                 
                 HStack {
@@ -54,7 +75,7 @@ struct TopFourView: View {
                     Spacer()
                     
                     Text(getHumanReadableRanking(for: sortedDictionary[2].value))
-                        .foregroundColor(.green)
+                        .foregroundColor(type == WidgetType.topFour ? .green : .red)
                     
                 }
                 
@@ -64,7 +85,7 @@ struct TopFourView: View {
                     Spacer()
                     
                     Text(getHumanReadableRanking(for: sortedDictionary[3].value))
-                        .foregroundColor(.green)
+                        .foregroundColor(type == WidgetType.topFour ? .green : .red)
                 }
             } else {
                 Text("No Data")
@@ -101,13 +122,13 @@ struct TopFourView: View {
     }
 }
 
-struct TopFourView_Previews: PreviewProvider {
+struct TopOrBottomFourView_Previews: PreviewProvider {
     static var previews: some View {
         do {
-            return TopFourView(teamRankings: try Team.exampleTeam.allProperties())
+            return TopOrBottomFourView(type: TopOrBottomFourView.WidgetType.topFour, teamRankings: try Team.exampleTeam.allProperties())
 
         } catch {
-            return TopFourView(teamRankings: ["test":99999])
+            return TopOrBottomFourView(type: TopOrBottomFourView.WidgetType.topFour, teamRankings: ["test":99999])
         }
     }
 }

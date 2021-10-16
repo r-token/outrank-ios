@@ -31,11 +31,11 @@ struct SettingsView: View {
                     
                     Picker(selection: $widgetTeam, label:
                         HStack {
-                            Image(systemName: "square.and.arrow.down.on.square.fill")
+                            Image(systemName: "square.text.square.fill")
                             .font(.title)
                             .foregroundColor(.purple)
                         
-                            Text("Widget Team")
+                            Text("Widget")
                     }) {
                         ForEach(allTeams, id: \.self) { team in
                             Text(team)

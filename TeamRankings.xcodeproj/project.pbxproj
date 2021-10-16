@@ -10,11 +10,11 @@
 		F4028019270BBC3F007330A4 /* RankingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4028018270BBC3F007330A4 /* RankingDetailView.swift */; };
 		F429CA3C27095BE5005CDD2A /* String+CamelCaseToWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */; };
 		F429CA44270A0557005CDD2A /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429CA43270A0557005CDD2A /* ButtonStyles.swift */; };
-		F432F67A271218BF0018277C /* TopFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F432F679271218BF0018277C /* TopFourView.swift */; };
+		F432F67A271218BF0018277C /* TopOrBottomFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F432F679271218BF0018277C /* TopOrBottomFourView.swift */; };
 		F432F67C27121B0F0018277C /* TeamFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B22708FAF0006CD2FA /* TeamFetcher.swift */; };
 		F432F67D27121B2D0018277C /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B02708F44F006CD2FA /* Team.swift */; };
 		F432F67E27121B390018277C /* LoopableStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B42708FD38006CD2FA /* LoopableStruct.swift */; };
-		F432F67F2712212D0018277C /* TopFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F432F679271218BF0018277C /* TopFourView.swift */; };
+		F432F67F2712212D0018277C /* TopOrBottomFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F432F679271218BF0018277C /* TopOrBottomFourView.swift */; };
 		F432F6802712236E0018277C /* String+CamelCaseToWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */; };
 		F432F681271392650018277C /* FavoriteTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445CD43270C6683008A2DE1 /* FavoriteTeams.swift */; };
 		F438824C270AA5120089518A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F438824B270AA5120089518A /* WidgetKit.framework */; };
@@ -41,6 +41,7 @@
 		F44787B727090DB8006CD2FA /* TeamPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B627090DB8006CD2FA /* TeamPickerView.swift */; };
 		F44787B92709104C006CD2FA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B82709104C006CD2FA /* MainView.swift */; };
 		F44787BB27091113006CD2FA /* ComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787BA27091113006CD2FA /* ComparisonView.swift */; };
+		F493B573271A7B1B000AC065 /* BottomFourWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493B572271A7B1B000AC065 /* BottomFourWidget.swift */; };
 		F4BA506327190F0400FC93E4 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA506227190F0400FC93E4 /* AppGroup.swift */; };
 		F4BA506427190F0400FC93E4 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA506227190F0400FC93E4 /* AppGroup.swift */; };
 		F4BC3426270E5B7800F66948 /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BC3425270E5B7800F66948 /* TipJarView.swift */; };
@@ -75,7 +76,7 @@
 		F4028018270BBC3F007330A4 /* RankingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingDetailView.swift; sourceTree = "<group>"; };
 		F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CamelCaseToWords.swift"; sourceTree = "<group>"; };
 		F429CA43270A0557005CDD2A /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
-		F432F679271218BF0018277C /* TopFourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopFourView.swift; sourceTree = "<group>"; };
+		F432F679271218BF0018277C /* TopOrBottomFourView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopOrBottomFourView.swift; sourceTree = "<group>"; };
 		F4388249270AA5120089518A /* TopFourWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TopFourWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F438824B270AA5120089518A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F438824D270AA5120089518A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -104,6 +105,7 @@
 		F44787B627090DB8006CD2FA /* TeamPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPickerView.swift; sourceTree = "<group>"; };
 		F44787B82709104C006CD2FA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F44787BA27091113006CD2FA /* ComparisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonView.swift; sourceTree = "<group>"; };
+		F493B572271A7B1B000AC065 /* BottomFourWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomFourWidget.swift; sourceTree = "<group>"; };
 		F4BA506227190F0400FC93E4 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		F4BC3425270E5B7800F66948 /* TipJarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarView.swift; sourceTree = "<group>"; };
 		F4BC3427270E5D5300F66948 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -142,7 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				F4388250270AA5120089518A /* TopFourWidget.swift */,
-				F432F679271218BF0018277C /* TopFourView.swift */,
+				F493B572271A7B1B000AC065 /* BottomFourWidget.swift */,
+				F432F679271218BF0018277C /* TopOrBottomFourView.swift */,
 				F4388252270AA5130089518A /* Assets.xcassets */,
 				F4388254270AA5130089518A /* Info.plist */,
 			);
@@ -313,10 +316,11 @@
 			files = (
 				F432F681271392650018277C /* FavoriteTeams.swift in Sources */,
 				F432F67D27121B2D0018277C /* Team.swift in Sources */,
-				F432F67A271218BF0018277C /* TopFourView.swift in Sources */,
+				F432F67A271218BF0018277C /* TopOrBottomFourView.swift in Sources */,
 				F4388251270AA5120089518A /* TopFourWidget.swift in Sources */,
 				F432F67C27121B0F0018277C /* TeamFetcher.swift in Sources */,
 				F432F6802712236E0018277C /* String+CamelCaseToWords.swift in Sources */,
+				F493B573271A7B1B000AC065 /* BottomFourWidget.swift in Sources */,
 				F432F67E27121B390018277C /* LoopableStruct.swift in Sources */,
 				F4BA506427190F0400FC93E4 /* AppGroup.swift in Sources */,
 			);
@@ -349,7 +353,7 @@
 				F4028019270BBC3F007330A4 /* RankingDetailView.swift in Sources */,
 				F445CD52270D4243008A2DE1 /* TabController.swift in Sources */,
 				F445CD46270C69FD008A2DE1 /* SettingsView.swift in Sources */,
-				F432F67F2712212D0018277C /* TopFourView.swift in Sources */,
+				F432F67F2712212D0018277C /* TopOrBottomFourView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,7 +375,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = TopFourWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = DJAHJZFYK7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TopFourWidget/Info.plist;
@@ -400,7 +404,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = TopFourWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = DJAHJZFYK7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TopFourWidget/Info.plist;
@@ -546,7 +550,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TeamRankings/TeamRankings.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"TeamRankings/Preview Content\"";
 				DEVELOPMENT_TEAM = DJAHJZFYK7;
 				ENABLE_PREVIEWS = YES;
@@ -580,7 +584,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TeamRankings/TeamRankings.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"TeamRankings/Preview Content\"";
 				DEVELOPMENT_TEAM = DJAHJZFYK7;
 				ENABLE_PREVIEWS = YES;
