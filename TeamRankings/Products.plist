@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>tip.medium</key>
+	<string>😤</string>
+	<key>tip.large</key>
+	<string>🏈</string>
+	<key>tip.small</key>
+	<string>💪</string>
+	<key>tip.giant</key>
+	<string>👑</string>
+	<key>subscription.small</key>
+	<string>🏟</string>
+	<key>subscription.medium</key>
+	<string>🏟</string>
+	<key>subscription.large</key>
+	<string>🏟</string>
+	<key>subscription.giant</key>
+	<string>🏟</string>
+</dict>
+</plist>

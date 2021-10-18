@@ -10,6 +10,8 @@ import WidgetKit
 
 struct SettingsView: View {
     @EnvironmentObject var favoriteTeams: FavoriteTeams
+    @StateObject var store: Store = Store()
+    
     @State private var widgetTeam = UserDefaults(suiteName: "group.com.ryantoken.teamrankings")?.string(forKey: "WidgetTeam") ?? "Air Force"
     
     let allTeams = AllTeams().getTeams()
@@ -53,10 +55,19 @@ struct SettingsView: View {
                 Section {
                     NavigationLink(destination: TipJarView()) {
                         HStack {
+                            Image(systemName: "centsign.square.fill")
+                                .font(.title)
+                                .foregroundColor(.orange)
+                            Text("Leave a Tip")
+                        }
+                    }
+                    
+                    NavigationLink(destination: SubscriptionsView()) {
+                        HStack {
                             Image(systemName: "dollarsign.square.fill")
                                 .font(.title)
                                 .foregroundColor(.green)
-                            Text("Tip Jar")
+                            Text("Subscribe")
                         }
                     }
                     
@@ -71,6 +82,7 @@ struct SettingsView: View {
             
             .navigationTitle("Settings")
         }
+        .environmentObject(store)
     }
 }
 

@@ -1,0 +1,174 @@
+{
+  "identifier" : "FF0EDAA5",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "9D990ECD",
+      "localizations" : [
+        {
+          "description" : "HB Dive Tip",
+          "displayName" : "Small Tip",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "tip.small",
+      "referenceName" : "Small Tip",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "D2F40629",
+      "localizations" : [
+        {
+          "description" : "Jet Sweep Tip",
+          "displayName" : "Medium Tip",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "tip.medium",
+      "referenceName" : "Medium Tip",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "4.99",
+      "familyShareable" : false,
+      "internalID" : "B8D50798",
+      "localizations" : [
+        {
+          "description" : "Deep Slant Tip",
+          "displayName" : "Large Tip",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "tip.large",
+      "referenceName" : "Large Tip",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "9.99",
+      "familyShareable" : false,
+      "internalID" : "EBEF1EB7",
+      "localizations" : [
+        {
+          "description" : "Hail Mary Tip",
+          "displayName" : "Giant Tip",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "tip.giant",
+      "referenceName" : "Giant Tip",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "5427735E",
+      "localizations" : [
+
+      ],
+      "name" : "Supporting Development",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "displayPrice" : "0.99",
+          "familyShareable" : false,
+          "groupNumber" : 4,
+          "internalID" : "A69C1E19",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Basic Subscription",
+              "displayName" : "Backup",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "subscription.small",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Small Subscription",
+          "subscriptionGroupID" : "5427735E",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "displayPrice" : "2.99",
+          "familyShareable" : false,
+          "groupNumber" : 3,
+          "internalID" : "4D6DEDAD",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Standard Subscription",
+              "displayName" : "Starter",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "subscription.medium",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Medium Subscription",
+          "subscriptionGroupID" : "5427735E",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "displayPrice" : "4.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6FE14504",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Pro Subscription",
+              "displayName" : "All-Conference",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "subscription.large",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Large Subscription",
+          "subscriptionGroupID" : "5427735E",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "displayPrice" : "9.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "8377F396",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Premier Subscription",
+              "displayName" : "All-American",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "subscription.giant",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Giant Subscription",
+          "subscriptionGroupID" : "5427735E",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 1
+  }
+}
