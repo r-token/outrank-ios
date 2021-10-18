@@ -60,13 +60,24 @@ struct ComparisonView: View {
                 .padding(.horizontal)
                 
                 HStack(spacing: 5) {
-                    Text("Sorted by")
-                    Image(systemName: "arrow.up.left")
-                    Text("team's best rankings")
+                    Text("Sorted by \(teamOne)'s best rankings")
                 }
-                .padding(.vertical, 5)
+                .padding(.top)
                 .font(.subheadline)
                 .foregroundColor(.gray)
+                .animation(.default, value: animatingSwap)
+                
+                HStack {
+                    Text("Simple Average: \(getSimpleAverageFor(teamRankings: teamOneRankings))")
+                    
+                    Spacer()
+                    
+                    Text("Simple Average: \(getSimpleAverageFor(teamRankings: teamTwoRankings))")
+                }
+                .foregroundColor(.gray)
+                .font(.subheadline)
+                .padding(.horizontal)
+                .padding(.top, 5)
                 
                 List {
                     ForEach(sortedTeamOneRankings, id: \.self.key) { item in
@@ -191,6 +202,20 @@ struct ComparisonView: View {
             return "Unknown"
         } else {
             return "\(ranking)th"
+        }
+    }
+    
+    func getSimpleAverageFor(teamRankings: [String:Int]) -> String {
+        if teamRankings.isEmpty {
+            return ""
+        } else {
+            var rankings = Array(teamRankings.values)
+            rankings.removeAll { number in
+                return number == 99999
+            }
+            let sumRankings = rankings.reduce(0, +)
+            let averageRankings = sumRankings / rankings.count
+            return String(averageRankings)
         }
     }
     

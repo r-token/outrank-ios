@@ -13,7 +13,7 @@
 		F432F67A271218BF0018277C /* TopOrBottomFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F432F679271218BF0018277C /* TopOrBottomFourView.swift */; };
 		F432F67C27121B0F0018277C /* TeamFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B22708FAF0006CD2FA /* TeamFetcher.swift */; };
 		F432F67D27121B2D0018277C /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B02708F44F006CD2FA /* Team.swift */; };
-		F432F67E27121B390018277C /* LoopableStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B42708FD38006CD2FA /* LoopableStruct.swift */; };
+		F432F67E27121B390018277C /* LoopableProto.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B42708FD38006CD2FA /* LoopableProto.swift */; };
 		F432F67F2712212D0018277C /* TopOrBottomFourView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F432F679271218BF0018277C /* TopOrBottomFourView.swift */; };
 		F432F6802712236E0018277C /* String+CamelCaseToWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */; };
 		F432F681271392650018277C /* FavoriteTeams.swift in Sources */ = {isa = PBXBuildFile; fileRef = F445CD43270C6683008A2DE1 /* FavoriteTeams.swift */; };
@@ -37,7 +37,7 @@
 		F44787A92708F097006CD2FA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F44787A82708F097006CD2FA /* Preview Assets.xcassets */; };
 		F44787B12708F44F006CD2FA /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B02708F44F006CD2FA /* Team.swift */; };
 		F44787B32708FAF0006CD2FA /* TeamFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B22708FAF0006CD2FA /* TeamFetcher.swift */; };
-		F44787B52708FD38006CD2FA /* LoopableStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B42708FD38006CD2FA /* LoopableStruct.swift */; };
+		F44787B52708FD38006CD2FA /* LoopableProto.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B42708FD38006CD2FA /* LoopableProto.swift */; };
 		F44787B727090DB8006CD2FA /* TeamPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B627090DB8006CD2FA /* TeamPickerView.swift */; };
 		F44787B92709104C006CD2FA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B82709104C006CD2FA /* MainView.swift */; };
 		F44787BB27091113006CD2FA /* ComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787BA27091113006CD2FA /* ComparisonView.swift */; };
@@ -47,9 +47,7 @@
 		F493B577271CA94F000AC065 /* Products.plist in Resources */ = {isa = PBXBuildFile; fileRef = F493B576271CA94F000AC065 /* Products.plist */; };
 		F493B579271CAA3A000AC065 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493B578271CAA3A000AC065 /* Store.swift */; };
 		F493B57B271CB493000AC065 /* ListTipOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493B57A271CB493000AC065 /* ListTipOptionsView.swift */; };
-		F493B57D271CB4F7000AC065 /* BuyButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493B57C271CB4F7000AC065 /* BuyButtonStyle.swift */; };
 		F493B57F271CC0BE000AC065 /* SubscriptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493B57E271CC0BE000AC065 /* SubscriptionsView.swift */; };
-		F493B583271CC1D7000AC065 /* SubscribeButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493B582271CC1D7000AC065 /* SubscribeButtonStyle.swift */; };
 		F493B585271CC797000AC065 /* StatusInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493B584271CC797000AC065 /* StatusInfoView.swift */; };
 		F4BA506327190F0400FC93E4 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA506227190F0400FC93E4 /* AppGroup.swift */; };
 		F4BA506427190F0400FC93E4 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA506227190F0400FC93E4 /* AppGroup.swift */; };
@@ -110,7 +108,7 @@
 		F44787AF2708F123006CD2FA /* TeamRankings.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeamRankings.entitlements; sourceTree = "<group>"; };
 		F44787B02708F44F006CD2FA /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		F44787B22708FAF0006CD2FA /* TeamFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamFetcher.swift; sourceTree = "<group>"; };
-		F44787B42708FD38006CD2FA /* LoopableStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopableStruct.swift; sourceTree = "<group>"; };
+		F44787B42708FD38006CD2FA /* LoopableProto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopableProto.swift; sourceTree = "<group>"; };
 		F44787B627090DB8006CD2FA /* TeamPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPickerView.swift; sourceTree = "<group>"; };
 		F44787B82709104C006CD2FA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F44787BA27091113006CD2FA /* ComparisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonView.swift; sourceTree = "<group>"; };
@@ -120,9 +118,7 @@
 		F493B576271CA94F000AC065 /* Products.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Products.plist; sourceTree = "<group>"; };
 		F493B578271CAA3A000AC065 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		F493B57A271CB493000AC065 /* ListTipOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTipOptionsView.swift; sourceTree = "<group>"; };
-		F493B57C271CB4F7000AC065 /* BuyButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyButtonStyle.swift; sourceTree = "<group>"; };
 		F493B57E271CC0BE000AC065 /* SubscriptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsView.swift; sourceTree = "<group>"; };
-		F493B582271CC1D7000AC065 /* SubscribeButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeButtonStyle.swift; sourceTree = "<group>"; };
 		F493B584271CC797000AC065 /* StatusInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusInfoView.swift; sourceTree = "<group>"; };
 		F4BA506227190F0400FC93E4 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		F4BC3425270E5B7800F66948 /* TipJarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarView.swift; sourceTree = "<group>"; };
@@ -197,33 +193,16 @@
 				F44787A12708F095006CD2FA /* TeamRankingsApp.swift */,
 				F4BA506227190F0400FC93E4 /* AppGroup.swift */,
 				F445CD51270D4243008A2DE1 /* TabController.swift */,
-				F44787B82709104C006CD2FA /* MainView.swift */,
-				F44787A32708F095006CD2FA /* RankingsView.swift */,
-				F4028018270BBC3F007330A4 /* RankingDetailView.swift */,
-				F44787BA27091113006CD2FA /* ComparisonView.swift */,
-				F445CD53270D4530008A2DE1 /* InfoView.swift */,
-				F44787B627090DB8006CD2FA /* TeamPickerView.swift */,
-				F445CD45270C69FD008A2DE1 /* SettingsView.swift */,
-				F4BC3425270E5B7800F66948 /* TipJarView.swift */,
-				F493B57A271CB493000AC065 /* ListTipOptionsView.swift */,
-				F493B57E271CC0BE000AC065 /* SubscriptionsView.swift */,
-				F492EE10271DA7C1003D4472 /* ListSubscriptionOptionsView.swift */,
-				F493B584271CC797000AC065 /* StatusInfoView.swift */,
-				F493B57C271CB4F7000AC065 /* BuyButtonStyle.swift */,
-				F493B582271CC1D7000AC065 /* SubscribeButtonStyle.swift */,
-				F4BC3427270E5D5300F66948 /* AboutView.swift */,
-				F445CD49270C6C35008A2DE1 /* AllTeams.swift */,
-				F445CD4B270C7250008A2DE1 /* String+Identifiable.swift */,
-				F445CD47270C6B74008A2DE1 /* MultiPicker.swift */,
-				F445CD4D270C73D4008A2DE1 /* MultiPickerView.swift */,
-				F429CA43270A0557005CDD2A /* ButtonStyles.swift */,
-				F44787B02708F44F006CD2FA /* Team.swift */,
-				F445CD43270C6683008A2DE1 /* FavoriteTeams.swift */,
-				F445CD4F270C7D08008A2DE1 /* FavoriteTeamsSelectionView.swift */,
-				F44787B22708FAF0006CD2FA /* TeamFetcher.swift */,
-				F44787B42708FD38006CD2FA /* LoopableStruct.swift */,
-				F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */,
+				F4BA5068271DA95400FC93E4 /* Views */,
 				F493B578271CAA3A000AC065 /* Store.swift */,
+				F44787B02708F44F006CD2FA /* Team.swift */,
+				F445CD49270C6C35008A2DE1 /* AllTeams.swift */,
+				F445CD43270C6683008A2DE1 /* FavoriteTeams.swift */,
+				F44787B22708FAF0006CD2FA /* TeamFetcher.swift */,
+				F44787B42708FD38006CD2FA /* LoopableProto.swift */,
+				F429CA43270A0557005CDD2A /* ButtonStyles.swift */,
+				F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */,
+				F445CD4B270C7250008A2DE1 /* String+Identifiable.swift */,
 				F493B576271CA94F000AC065 /* Products.plist */,
 				F493B574271CA60B000AC065 /* Products.storekit */,
 				F44787A52708F097006CD2FA /* Assets.xcassets */,
@@ -238,6 +217,29 @@
 				F44787A82708F097006CD2FA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F4BA5068271DA95400FC93E4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F44787B82709104C006CD2FA /* MainView.swift */,
+				F44787A32708F095006CD2FA /* RankingsView.swift */,
+				F4028018270BBC3F007330A4 /* RankingDetailView.swift */,
+				F44787BA27091113006CD2FA /* ComparisonView.swift */,
+				F445CD53270D4530008A2DE1 /* InfoView.swift */,
+				F44787B627090DB8006CD2FA /* TeamPickerView.swift */,
+				F445CD45270C69FD008A2DE1 /* SettingsView.swift */,
+				F445CD47270C6B74008A2DE1 /* MultiPicker.swift */,
+				F445CD4D270C73D4008A2DE1 /* MultiPickerView.swift */,
+				F445CD4F270C7D08008A2DE1 /* FavoriteTeamsSelectionView.swift */,
+				F4BC3425270E5B7800F66948 /* TipJarView.swift */,
+				F493B57A271CB493000AC065 /* ListTipOptionsView.swift */,
+				F493B57E271CC0BE000AC065 /* SubscriptionsView.swift */,
+				F492EE10271DA7C1003D4472 /* ListSubscriptionOptionsView.swift */,
+				F493B584271CC797000AC065 /* StatusInfoView.swift */,
+				F4BC3427270E5D5300F66948 /* AboutView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,7 +352,7 @@
 				F432F67C27121B0F0018277C /* TeamFetcher.swift in Sources */,
 				F432F6802712236E0018277C /* String+CamelCaseToWords.swift in Sources */,
 				F493B573271A7B1B000AC065 /* BottomFourWidget.swift in Sources */,
-				F432F67E27121B390018277C /* LoopableStruct.swift in Sources */,
+				F432F67E27121B390018277C /* LoopableProto.swift in Sources */,
 				F4BA506427190F0400FC93E4 /* AppGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,16 +377,14 @@
 				F445CD54270D4530008A2DE1 /* InfoView.swift in Sources */,
 				F493B57F271CC0BE000AC065 /* SubscriptionsView.swift in Sources */,
 				F445CD4C270C7250008A2DE1 /* String+Identifiable.swift in Sources */,
-				F493B583271CC1D7000AC065 /* SubscribeButtonStyle.swift in Sources */,
 				F445CD4A270C6C35008A2DE1 /* AllTeams.swift in Sources */,
-				F493B57D271CB4F7000AC065 /* BuyButtonStyle.swift in Sources */,
 				F44787A42708F095006CD2FA /* RankingsView.swift in Sources */,
 				F44787B92709104C006CD2FA /* MainView.swift in Sources */,
 				F493B57B271CB493000AC065 /* ListTipOptionsView.swift in Sources */,
 				F44787BB27091113006CD2FA /* ComparisonView.swift in Sources */,
 				F445CD44270C6683008A2DE1 /* FavoriteTeams.swift in Sources */,
 				F44787A22708F095006CD2FA /* TeamRankingsApp.swift in Sources */,
-				F44787B52708FD38006CD2FA /* LoopableStruct.swift in Sources */,
+				F44787B52708FD38006CD2FA /* LoopableProto.swift in Sources */,
 				F4028019270BBC3F007330A4 /* RankingDetailView.swift in Sources */,
 				F445CD52270D4243008A2DE1 /* TabController.swift in Sources */,
 				F493B585271CC797000AC065 /* StatusInfoView.swift in Sources */,

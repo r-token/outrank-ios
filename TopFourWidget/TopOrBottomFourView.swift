@@ -19,8 +19,14 @@ struct TopOrBottomFourView: View {
     let widgetTeam = UserDefaults(suiteName: "group.com.ryantoken.teamrankings")?.string(forKey: "WidgetTeam") ?? "Air Force"
     
     var sortedDictionary: [Dictionary<String, Int>.Element] {
+        var rankings = teamRankings
+        // remove 99999 (aka "Unknown") values from the widgets
+        for (key, value) in rankings where value == 99999 {
+            rankings.removeValue(forKey: key)
+        }
+        
         if type == WidgetType.topFour {
-            let teamRankingsSorted = teamRankings.sorted{ $0.value < $1.value }
+            let teamRankingsSorted = rankings.sorted{ $0.value < $1.value }
             if teamRankingsSorted.isEmpty {
                 return []
             } else {
@@ -28,7 +34,7 @@ struct TopOrBottomFourView: View {
                 return Array(topFourSorted)
             }
         } else {
-            let teamRankingsSorted = teamRankings.sorted{ $0.value > $1.value }
+            let teamRankingsSorted = rankings.sorted{ $0.value > $1.value }
             if teamRankingsSorted.isEmpty {
                 return []
             } else {
