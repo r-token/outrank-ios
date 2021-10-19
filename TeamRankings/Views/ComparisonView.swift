@@ -194,15 +194,19 @@ struct ComparisonView: View {
                 ActionSheet(title: Text("Sort Rankings"), message: Text("Choose a method for sorting the rankings."), buttons: [
                         .default(Text("Sort by stat alphabetically")) {
                             sortMethod = SortMethods.byStatAlphabetically
+                            HapticGenerator.playSuccessHaptic()
                         },
                         .default(Text("Sort by stat reverse alphabetically")) {
                             sortMethod = SortMethods.byStatReverseAlphabetically
+                            HapticGenerator.playSuccessHaptic()
                         },
                         .default(Text("Sort by ranking ascending")) {
                             sortMethod = SortMethods.byRankingAscending
+                            HapticGenerator.playSuccessHaptic()
                         },
                         .default(Text("Sort by ranking descending")) {
                             sortMethod = SortMethods.byRankingDescending
+                            HapticGenerator.playSuccessHaptic()
                         },
                         .cancel()
                     ]

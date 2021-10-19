@@ -12,16 +12,19 @@ struct TipJarView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Text("TeamRankings is free with no ads. If you find it useful, please consider supporting development by leaving a tip.")
-                .foregroundColor(.gray)
-                .padding()
-            
             List {
-                ForEach(store.tips, id: \.id) { tip in
-                    ListTipOptionsView(product: tip)
+                Section(header: Text("Tip Options")) {
+                    ForEach(store.tips, id: \.id) { tip in
+                        ListTipOptionsView(product: tip)
+                    }
                 }
-                .listStyle(GroupedListStyle())
+                
+                Section {
+                    Text("TeamRankings is free with no ads. If you find it useful, please consider supporting development by leaving a tip.")
+                        .foregroundColor(.gray)
+                }
             }
+            .listStyle(InsetGroupedListStyle())
             
             .navigationTitle("Tip Jar")
         }
