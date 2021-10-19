@@ -88,6 +88,7 @@ struct ComparisonView: View {
                     .buttonStyle(GrowingButton())
                 }
                 .animation(.default, value: animatingSwap)
+                .padding(.top, 5)
                 .padding(.horizontal, 25)
                 
                 HStack {
@@ -220,6 +221,7 @@ struct ComparisonView: View {
     
     func swapTeams() {
         animatingSwap.toggle()
+
         let tempTeamOne = teamOne
         let tempTeamTwo = teamTwo
         let tempTeamOneRankings = teamOneRankings
@@ -232,6 +234,8 @@ struct ComparisonView: View {
         
         UserDefaults.standard.set(tempTeamTwo, forKey: "TeamOne")
         UserDefaults.standard.set(tempTeamOne, forKey: "TeamTwo")
+        
+        HapticGenerator.playSuccessHaptic()
     }
     
     func getHumanReadableStat(for stat: String) -> String {

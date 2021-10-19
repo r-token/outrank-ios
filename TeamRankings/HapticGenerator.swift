@@ -1,0 +1,21 @@
+//
+//  HapticGenerator.swift
+//  TeamRankings
+//
+//  Created by Ryan Token on 10/18/21.
+//
+
+import Foundation
+import SwiftUI
+
+class HapticGenerator {
+    static func playSuccessHaptic() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+    }
+    
+    static func playErrorHaptic() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.error)
+    }
+}

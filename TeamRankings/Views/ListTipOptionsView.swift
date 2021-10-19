@@ -79,13 +79,16 @@ struct ListTipOptionsView: View {
 
     func buy() async {
         do {
+            HapticGenerator.playSuccessHaptic()
             if try await store.purchase(product) != nil {
                 print("Purchase was successful")
             }
         } catch StoreError.failedVerification {
+            HapticGenerator.playErrorHaptic()
             errorTitle = "Your purchase could not be verified by the App Store."
             isShowingError = true
         } catch {
+            HapticGenerator.playErrorHaptic()
             print("Failed purchase for \(product.id): \(error)")
         }
     }

@@ -124,12 +124,15 @@ struct ListSubscriptionOptionsView: View {
                     isPurchased = true
                 }
             } else {
+                HapticGenerator.playErrorHaptic()
                 print("huh?")
             }
         } catch StoreError.failedVerification {
+            HapticGenerator.playErrorHaptic()
             errorTitle = "Your purchase could not be verified by the App Store."
             print("failed verification")
         } catch {
+            HapticGenerator.playErrorHaptic()
             print("Failed purchase for \(product.id): \(error)")
         }
     }

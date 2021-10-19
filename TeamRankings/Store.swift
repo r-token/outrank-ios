@@ -124,6 +124,8 @@ class Store: ObservableObject {
     
     func purchase(_ product: Product) async throws -> Transaction? {
         //Begin a purchase.
+        HapticGenerator.playSuccessHaptic()
+        
         let result = try await product.purchase()
 
         switch result {

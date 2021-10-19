@@ -51,6 +51,7 @@
 		F493B585271CC797000AC065 /* StatusInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493B584271CC797000AC065 /* StatusInfoView.swift */; };
 		F4BA506327190F0400FC93E4 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA506227190F0400FC93E4 /* AppGroup.swift */; };
 		F4BA506427190F0400FC93E4 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA506227190F0400FC93E4 /* AppGroup.swift */; };
+		F4BA506A271E619A00FC93E4 /* HapticGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA5069271E619A00FC93E4 /* HapticGenerator.swift */; };
 		F4BC3426270E5B7800F66948 /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BC3425270E5B7800F66948 /* TipJarView.swift */; };
 		F4BC3428270E5D5300F66948 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BC3427270E5D5300F66948 /* AboutView.swift */; };
 /* End PBXBuildFile section */
@@ -121,6 +122,7 @@
 		F493B57E271CC0BE000AC065 /* SubscriptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsView.swift; sourceTree = "<group>"; };
 		F493B584271CC797000AC065 /* StatusInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusInfoView.swift; sourceTree = "<group>"; };
 		F4BA506227190F0400FC93E4 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
+		F4BA5069271E619A00FC93E4 /* HapticGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticGenerator.swift; sourceTree = "<group>"; };
 		F4BC3425270E5B7800F66948 /* TipJarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarView.swift; sourceTree = "<group>"; };
 		F4BC3427270E5D5300F66948 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,6 +203,7 @@
 				F44787B22708FAF0006CD2FA /* TeamFetcher.swift */,
 				F44787B42708FD38006CD2FA /* LoopableProto.swift */,
 				F429CA43270A0557005CDD2A /* ButtonStyles.swift */,
+				F4BA5069271E619A00FC93E4 /* HapticGenerator.swift */,
 				F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */,
 				F445CD4B270C7250008A2DE1 /* String+Identifiable.swift */,
 				F493B576271CA94F000AC065 /* Products.plist */,
@@ -387,6 +390,7 @@
 				F44787B52708FD38006CD2FA /* LoopableProto.swift in Sources */,
 				F4028019270BBC3F007330A4 /* RankingDetailView.swift in Sources */,
 				F445CD52270D4243008A2DE1 /* TabController.swift in Sources */,
+				F4BA506A271E619A00FC93E4 /* HapticGenerator.swift in Sources */,
 				F493B585271CC797000AC065 /* StatusInfoView.swift in Sources */,
 				F445CD46270C69FD008A2DE1 /* SettingsView.swift in Sources */,
 				F432F67F2712212D0018277C /* TopOrBottomFourView.swift in Sources */,

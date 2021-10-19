@@ -117,6 +117,7 @@ struct TeamPickerView: View {
                 
                 UserDefaults.standard.set(team, forKey: userDefaultsKey)
                 self.team = team
+                HapticGenerator.playSuccessHaptic()
             } catch {
                 print("Request failed with error: \(error)")
             }
