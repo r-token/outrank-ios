@@ -17,12 +17,43 @@ struct ComparisonView: View {
     @State private var isShowingTeamOnePickerView = false
     @State private var isShowingTeamTwoPickerView = false
     @State private var isShowingInfoSheet = false
+    @State private var isShowingSortActionSheet = false
     
     @State private var animatingSwap = false
     @State private var apiError = false
+    @State private var sortMethod = SortMethods.byStatAlphabetically
+    
+    enum SortMethods {
+        case byStatAlphabetically
+        case byStatReverseAlphabetically
+        case byRankingAscending
+        case byRankingDescending
+    }
     
     var sortedTeamOneRankings: [Dictionary<String, Int>.Element]{
-        return teamOneRankings.sorted{ $0.value < $1.value }
+        switch sortMethod {
+        case SortMethods.byStatAlphabetically:
+            return teamOneRankings.sorted{ $0.key < $1.key }
+        case SortMethods.byStatReverseAlphabetically:
+            return teamOneRankings.sorted{ $0.key > $1.key }
+        case SortMethods.byRankingAscending:
+            return teamOneRankings.sorted{ $0.value < $1.value }
+        case SortMethods.byRankingDescending:
+            return teamOneRankings.sorted{ $0.value > $1.value }
+        }
+    }
+    
+    var currentSortMethod: String {
+        switch sortMethod {
+        case SortMethods.byStatAlphabetically:
+            return "stat alphabetically"
+        case SortMethods.byStatReverseAlphabetically:
+            return "stat reverse alphabetically"
+        case SortMethods.byRankingAscending:
+            return "ranking ascending"
+        case SortMethods.byRankingDescending:
+            return "ranking descending"
+        }
     }
     
     var body: some View {
@@ -57,15 +88,7 @@ struct ComparisonView: View {
                     .buttonStyle(GrowingButton())
                 }
                 .animation(.default, value: animatingSwap)
-                .padding(.horizontal)
-                
-                HStack(spacing: 5) {
-                    Text("Sorted by \(teamOne)'s best rankings")
-                }
-                .padding(.top)
-                .font(.subheadline)
-                .foregroundColor(.gray)
-                .animation(.default, value: animatingSwap)
+                .padding(.horizontal, 25)
                 
                 HStack {
                     Text("Simple Average: \(getSimpleAverageFor(teamRankings: teamOneRankings))")
@@ -76,44 +99,46 @@ struct ComparisonView: View {
                 }
                 .foregroundColor(.gray)
                 .font(.subheadline)
-                .padding(.horizontal)
-                .padding(.top, 5)
+                .padding(.horizontal, 25)
+                .padding(.top, 15)
                 
                 List {
-                    ForEach(sortedTeamOneRankings, id: \.self.key) { item in
-                        VStack {
-                            Text(getHumanReadableStat(for: item.key))
-                                .font(.headline)
-                            
-                            Spacer()
-                            
-                            HStack {
-                                if item.value < teamTwoRankings[item.key] ?? 99999 {
-                                    Text(getHumanReadableRanking(for: item.value))
-                                        .foregroundColor(.green)
-                                } else if item.value > teamTwoRankings[item.key] ?? 99999 {
-                                    Text(getHumanReadableRanking(for: item.value))
-                                        .foregroundColor(.red)
-                                } else {
-                                    Text(getHumanReadableRanking(for: item.value))
-                                        .foregroundColor(.yellow)
-                                }
+                    Section(header: Text("Sorted by \(currentSortMethod)")) {
+                        ForEach(sortedTeamOneRankings, id: \.self.key) { item in
+                            VStack {
+                                Text(getHumanReadableStat(for: item.key))
+                                    .font(.headline)
                                 
                                 Spacer()
                                 
-                                if item.value > teamTwoRankings[item.key] ?? 99999 {
-                                    Text(getHumanReadableRanking(for: teamTwoRankings[item.key] ?? 99999))
-                                        .foregroundColor(.green)
-                                } else if item.value < teamTwoRankings[item.key] ?? 99999 {
-                                    Text(getHumanReadableRanking(for: teamTwoRankings[item.key] ?? 99999))
-                                        .foregroundColor(.red)
-                                } else {
-                                    Text(getHumanReadableRanking(for: teamTwoRankings[item.key] ?? 99999))
-                                        .foregroundColor(.yellow)
+                                HStack {
+                                    if item.value < teamTwoRankings[item.key] ?? 99999 {
+                                        Text(getHumanReadableRanking(for: item.value))
+                                            .foregroundColor(.green)
+                                    } else if item.value > teamTwoRankings[item.key] ?? 99999 {
+                                        Text(getHumanReadableRanking(for: item.value))
+                                            .foregroundColor(.red)
+                                    } else {
+                                        Text(getHumanReadableRanking(for: item.value))
+                                            .foregroundColor(.yellow)
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    if item.value > teamTwoRankings[item.key] ?? 99999 {
+                                        Text(getHumanReadableRanking(for: teamTwoRankings[item.key] ?? 99999))
+                                            .foregroundColor(.green)
+                                    } else if item.value < teamTwoRankings[item.key] ?? 99999 {
+                                        Text(getHumanReadableRanking(for: teamTwoRankings[item.key] ?? 99999))
+                                            .foregroundColor(.red)
+                                    } else {
+                                        Text(getHumanReadableRanking(for: teamTwoRankings[item.key] ?? 99999))
+                                            .foregroundColor(.yellow)
+                                    }
                                 }
+                                .padding(.horizontal)
+                                .padding(.vertical, 3)
                             }
-                            .padding(.horizontal)
-                            .padding(.vertical, 3)
                         }
                     }
                     
@@ -122,11 +147,13 @@ struct ComparisonView: View {
                             .foregroundColor(.gray)
                     }
                 }
+                .listStyle(InsetGroupedListStyle())
                 .refreshable {
                     await refreshRankings()
                 }
                 
                 .animation(.default, value: teamOneRankings)
+                .animation(.default, value: sortMethod)
             }
             
             .navigationTitle("Compare Teams")
@@ -138,6 +165,14 @@ struct ComparisonView: View {
                         isShowingInfoSheet.toggle()
                     }) {
                         Image(systemName: "info.circle")
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        isShowingSortActionSheet.toggle()
+                    }) {
+                        Image(systemName: "arrow.up.arrow.down")
                     }
                 }
             }
@@ -152,6 +187,25 @@ struct ComparisonView: View {
             
             .sheet(isPresented: $isShowingInfoSheet) {
                 InfoView(source: Source.compare)
+            }
+            
+            .actionSheet(isPresented: $isShowingSortActionSheet) {
+                ActionSheet(title: Text("Sort Rankings"), message: Text("Choose a method for sorting the rankings."), buttons: [
+                        .default(Text("Sort by stat alphabetically")) {
+                            sortMethod = SortMethods.byStatAlphabetically
+                        },
+                        .default(Text("Sort by stat reverse alphabetically")) {
+                            sortMethod = SortMethods.byStatReverseAlphabetically
+                        },
+                        .default(Text("Sort by ranking ascending")) {
+                            sortMethod = SortMethods.byRankingAscending
+                        },
+                        .default(Text("Sort by ranking descending")) {
+                            sortMethod = SortMethods.byRankingDescending
+                        },
+                        .cancel()
+                    ]
+                )
             }
             
             .task {

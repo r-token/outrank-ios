@@ -52,7 +52,7 @@ struct SubscriptionsView: View {
                 }
             }
         }
-        .listStyle(GroupedListStyle())
+        .listStyle(InsetGroupedListStyle())
         
         .navigationTitle("Subscriptions")
     }
