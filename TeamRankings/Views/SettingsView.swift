@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WidgetKit
+import StoreKit
 
 struct SettingsView: View {
     @EnvironmentObject var favoriteTeams: FavoriteTeams
@@ -53,6 +54,24 @@ struct SettingsView: View {
                 }
                 
                 Section {
+                    Button(action: {
+                        SKStoreReviewController.requestReviewInCurrentScene()
+                    }) {
+                        HStack {
+                            Image(systemName: "heart.square.fill")
+                                .font(.title)
+                                .foregroundColor(.red)
+                            Text("Rate")
+                                .foregroundColor(.primary)
+                            
+                            Spacer()
+                            
+                            Image(systemName: "chevron.right")
+                                .font(Font.footnote.weight(.bold))
+                                .foregroundColor(.lightGray)
+                        }
+                    }
+                    
                     NavigationLink(destination: TipJarView()) {
                         HStack {
                             Image(systemName: "centsign.square.fill")
