@@ -72,40 +72,35 @@ struct RankingDetailView: View {
     ]
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(humanReadableStat)
-                .font(.title)
-                .padding(.bottom)
+        List {
+            Section {
+                HStack {
+                    Text("\(team)'s Ranking:")
+                        .foregroundColor(.primary)
+                    
+                    Text(humanReadableRanking)
+                        .foregroundColor(ranking < 65 ? .green : .red)
+                }
+                .font(.headline)
+            }
             
-            HStack {
-                Text("\(team)'s Ranking:")
+            Section {
+                Text("Description:")
                     .font(.headline)
                     .foregroundColor(.primary)
                 
-                Text(humanReadableRanking)
-                    .font(.headline)
-                    .foregroundColor(ranking < 65 ? .green : .red)
+                Text(statDescriptions[stat] ?? "Description Unknown.")
+                    .foregroundColor(.gray)
             }
-            .padding(.bottom, 20)
             
-            Text("Description:")
-                .font(.headline)
-                .foregroundColor(.primary)
-                .padding(.bottom, 5)
-            
-            Text(statDescriptions[stat] ?? "Description Unknown.")
-                .foregroundColor(.gray)
-                .padding(.bottom, 20)
-            
-            Text("All Rankings For This Stat:")
-                .font(.headline)
-                .foregroundColor(.primary)
-            
-            List {
+            Section {
+                Text("All Rankings For This Stat:")
+                    .font(.headline)
+                    .foregroundColor(.primary)
+                
                 ForEach(sortedRankings, id: \.self.key) { item in
                     HStack(alignment: .center, spacing: 8) {
                         Text(Conversions.getHumanReadableTeam(from: item.key))
-                            .font(.headline)
                         
                         Spacer()
                         
@@ -113,13 +108,24 @@ struct RankingDetailView: View {
                             .foregroundColor(item.value < 65 ? .green : .red)
                     }
                 }
+                
+                if apiError {
+                    Text("😕 Error loading rankings for \(humanReadableStat).")
+                        .foregroundColor(.gray)
+                }
             }
-            .listStyle(.plain)
         }
-        .padding()
+        .animation(.default, value: statRankings)
         
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
+        
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text(humanReadableStat)
+                    .font(.headline)
+            }
+        }
         
         .task {
             if statRankings.isEmpty {
@@ -147,7 +153,7 @@ struct RankingDetailView: View {
 
 struct RankingDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        RankingDetailView(team: "Tulsa", stat: "FewestPenaltyYardsPerGame", humanReadableStat: "Fewest Penalty Yards", ranking: 19, humanReadableRanking: "19th")
+        RankingDetailView(team: "Tulsa", stat: "FewestPenaltyYardsPerGame", humanReadableStat: "Fewest Penalty Yards Per Game", ranking: 19, humanReadableRanking: "19th")
     }
 }
 

@@ -239,7 +239,7 @@ struct ComparisonView: View {
         UserDefaults.standard.set(tempTeamTwo, forKey: "TeamOne")
         UserDefaults.standard.set(tempTeamOne, forKey: "TeamTwo")
         
-        HapticGenerator.playSuccessHaptic()
+        HapticGenerator.playWarningHaptic()
     }
     
     func getSimpleAverageFor(teamRankings: [String:Int]) -> String {

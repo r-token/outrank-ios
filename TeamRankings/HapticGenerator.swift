@@ -14,6 +14,11 @@ class HapticGenerator {
         generator.notificationOccurred(.success)
     }
     
+    static func playWarningHaptic() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.warning)
+    }
+    
     static func playErrorHaptic() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.error)
