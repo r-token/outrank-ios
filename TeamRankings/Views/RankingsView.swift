@@ -56,14 +56,14 @@ struct RankingsView: View {
             List {
                 Section(header: Text("Sorted by \(currentSortMethod)")) {
                     ForEach(sortedDictionary, id: \.self.key) { item in
-                        NavigationLink(destination: RankingDetailView(team: currentTeam, stat: item.key, humanReadableStat: getHumanReadableStat(for: item.key), ranking: item.value, humanReadableRanking: getHumanReadableRanking(for: item.value))) {
+                        NavigationLink(destination: RankingDetailView(team: currentTeam, stat: item.key, humanReadableStat: Conversions.getHumanReadableStat(for: item.key), ranking: item.value, humanReadableRanking: Conversions.getHumanReadableRanking(for: item.value))) {
                             HStack(alignment: .center, spacing: 8) {
-                                Text(getHumanReadableStat(for: item.key))
+                                Text(Conversions.getHumanReadableStat(for: item.key))
                                     .font(.headline)
                                 
                                 Spacer()
                                 
-                                Text(getHumanReadableRanking(for: item.value))
+                                Text(Conversions.getHumanReadableRanking(for: item.value))
                                     .foregroundColor(item.value < 65 ? .green : .red)
                             }
                         }
@@ -154,31 +154,6 @@ struct RankingsView: View {
             } else {
                 print("We already have team data, not fetching onAppear")
             }
-        }
-    }
-    
-    func getHumanReadableStat(for stat: String) -> String {
-        if stat != "DefensiveTDs" {
-            let cleanStat = stat.camelCaseToWords()
-            return cleanStat
-        } else {
-            return "Defensive TDs"
-        }
-    }
-    
-    func getHumanReadableRanking(for ranking: Int) -> String {
-        if ranking == 11 || ranking == 12 || ranking == 13 || ranking == 111 || ranking == 112 || ranking == 113 {
-            return "\(ranking)th"
-        } else if ranking % 10 == 1 {
-            return "\(ranking)st"
-        } else if ranking % 10 == 2 {
-            return "\(ranking)nd"
-        } else if ranking % 10 == 3 {
-            return "\(ranking)rd"
-        } else if ranking == 99999 {
-            return "Unknown"
-        } else {
-            return "\(ranking)th"
         }
     }
     

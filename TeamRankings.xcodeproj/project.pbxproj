@@ -41,6 +41,10 @@
 		F44787B727090DB8006CD2FA /* TeamPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B627090DB8006CD2FA /* TeamPickerView.swift */; };
 		F44787B92709104C006CD2FA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787B82709104C006CD2FA /* MainView.swift */; };
 		F44787BB27091113006CD2FA /* ComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44787BA27091113006CD2FA /* ComparisonView.swift */; };
+		F45475EE272113400052E22E /* StatFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45475ED272113400052E22E /* StatFetcher.swift */; };
+		F45475F0272115010052E22E /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45475EF272115010052E22E /* Stat.swift */; };
+		F45475F227211B510052E22E /* Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45475F127211B510052E22E /* Conversions.swift */; };
+		F45475F327211C120052E22E /* Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45475F127211B510052E22E /* Conversions.swift */; };
 		F492EE11271DA7C1003D4472 /* ListSubscriptionOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492EE10271DA7C1003D4472 /* ListSubscriptionOptionsView.swift */; };
 		F493B573271A7B1B000AC065 /* BottomFourWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493B572271A7B1B000AC065 /* BottomFourWidget.swift */; };
 		F493B575271CA60B000AC065 /* Products.storekit in Resources */ = {isa = PBXBuildFile; fileRef = F493B574271CA60B000AC065 /* Products.storekit */; };
@@ -113,6 +117,9 @@
 		F44787B627090DB8006CD2FA /* TeamPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPickerView.swift; sourceTree = "<group>"; };
 		F44787B82709104C006CD2FA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F44787BA27091113006CD2FA /* ComparisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonView.swift; sourceTree = "<group>"; };
+		F45475ED272113400052E22E /* StatFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatFetcher.swift; sourceTree = "<group>"; };
+		F45475EF272115010052E22E /* Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
+		F45475F127211B510052E22E /* Conversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversions.swift; sourceTree = "<group>"; };
 		F492EE10271DA7C1003D4472 /* ListSubscriptionOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListSubscriptionOptionsView.swift; sourceTree = "<group>"; };
 		F493B572271A7B1B000AC065 /* BottomFourWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomFourWidget.swift; sourceTree = "<group>"; };
 		F493B574271CA60B000AC065 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Products.storekit; sourceTree = "<group>"; };
@@ -198,9 +205,12 @@
 				F4BA5068271DA95400FC93E4 /* Views */,
 				F493B578271CAA3A000AC065 /* Store.swift */,
 				F44787B02708F44F006CD2FA /* Team.swift */,
+				F45475EF272115010052E22E /* Stat.swift */,
 				F445CD49270C6C35008A2DE1 /* AllTeams.swift */,
 				F445CD43270C6683008A2DE1 /* FavoriteTeams.swift */,
 				F44787B22708FAF0006CD2FA /* TeamFetcher.swift */,
+				F45475ED272113400052E22E /* StatFetcher.swift */,
+				F45475F127211B510052E22E /* Conversions.swift */,
 				F44787B42708FD38006CD2FA /* LoopableProto.swift */,
 				F429CA43270A0557005CDD2A /* ButtonStyles.swift */,
 				F4BA5069271E619A00FC93E4 /* HapticGenerator.swift */,
@@ -353,6 +363,7 @@
 				F432F67A271218BF0018277C /* TopOrBottomFourView.swift in Sources */,
 				F4388251270AA5120089518A /* TopFourWidget.swift in Sources */,
 				F432F67C27121B0F0018277C /* TeamFetcher.swift in Sources */,
+				F45475F327211C120052E22E /* Conversions.swift in Sources */,
 				F432F6802712236E0018277C /* String+CamelCaseToWords.swift in Sources */,
 				F493B573271A7B1B000AC065 /* BottomFourWidget.swift in Sources */,
 				F432F67E27121B390018277C /* LoopableProto.swift in Sources */,
@@ -364,7 +375,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F45475F227211B510052E22E /* Conversions.swift in Sources */,
 				F445CD4E270C73D4008A2DE1 /* MultiPickerView.swift in Sources */,
+				F45475F0272115010052E22E /* Stat.swift in Sources */,
 				F429CA44270A0557005CDD2A /* ButtonStyles.swift in Sources */,
 				F4BC3428270E5D5300F66948 /* AboutView.swift in Sources */,
 				F44787B32708FAF0006CD2FA /* TeamFetcher.swift in Sources */,
@@ -387,6 +400,7 @@
 				F44787BB27091113006CD2FA /* ComparisonView.swift in Sources */,
 				F445CD44270C6683008A2DE1 /* FavoriteTeams.swift in Sources */,
 				F44787A22708F095006CD2FA /* TeamRankingsApp.swift in Sources */,
+				F45475EE272113400052E22E /* StatFetcher.swift in Sources */,
 				F44787B52708FD38006CD2FA /* LoopableProto.swift in Sources */,
 				F4028019270BBC3F007330A4 /* RankingDetailView.swift in Sources */,
 				F445CD52270D4243008A2DE1 /* TabController.swift in Sources */,
@@ -415,7 +429,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = TopFourWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = DJAHJZFYK7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TopFourWidget/Info.plist;
@@ -444,7 +458,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = TopFourWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = DJAHJZFYK7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TopFourWidget/Info.plist;
@@ -590,7 +604,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TeamRankings/TeamRankings.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"TeamRankings/Preview Content\"";
 				DEVELOPMENT_TEAM = DJAHJZFYK7;
 				ENABLE_PREVIEWS = YES;
@@ -624,7 +638,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TeamRankings/TeamRankings.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"TeamRankings/Preview Content\"";
 				DEVELOPMENT_TEAM = DJAHJZFYK7;
 				ENABLE_PREVIEWS = YES;

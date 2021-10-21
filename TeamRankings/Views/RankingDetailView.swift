@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct RankingDetailView: View {
+    @State private var statRankings = [String:Int]()
+    @State private var apiError = false
+    
     let team: String
     let stat: String
     let humanReadableStat: String
     let ranking: Int
     let humanReadableRanking: String
+    
+    var sortedRankings: [Dictionary<String, Int>.Element]{
+        return statRankings.sorted{ $0.value < $1.value }
+    }
     
     let statDescriptions = [
         "BlockedKicks": "Total number of kicks a team has blocked.",
@@ -55,7 +62,7 @@ struct RankingDetailView: View {
         "ScoringDefense": "Average number of points a defense allows per game. Lower number = fewer points allowed.",
         "ScoringOffense": "Average number of points an offense scores per game.",
         "FumblesLost": "Total number of fumbles a team has lost.",
-        "TeamPassingEfficiencyDefense": "Another ridiculous calculation. Go look at 'Team Passing Efficiency' and this stat is just how good a given team is at keeping opposing teams' Team Passing Efficiency low.",
+        "TeamPassingEfficiencyDefense": "Another ridiculous calculation. Go look at the description for 'Team Passing Efficiency', and this stat is just how good a given team is at keeping opposing teams' Team Passing Efficiency low.",
         "CompletionPercentage": "Percentage of the time a team completes pass attempts.",
         "TotalOffense": "Average number of yards an offense gains per game.",
         "PassingYardsPerCompletion": "Average number of passing yards gained per completion.",
@@ -70,15 +77,6 @@ struct RankingDetailView: View {
                 .font(.title)
                 .padding(.bottom)
             
-            Text("Description:")
-                .font(.headline)
-                .foregroundColor(.primary)
-                .padding(.bottom, 5)
-            
-            Text(statDescriptions[stat] ?? "Description Unknown.")
-                .foregroundColor(.gray)
-                .padding(.bottom, 20)
-            
             HStack {
                 Text("\(team)'s Ranking:")
                     .font(.headline)
@@ -88,13 +86,62 @@ struct RankingDetailView: View {
                     .font(.headline)
                     .foregroundColor(ranking < 65 ? .green : .red)
             }
+            .padding(.bottom, 20)
             
-            Spacer()
+            Text("Description:")
+                .font(.headline)
+                .foregroundColor(.primary)
+                .padding(.bottom, 5)
+            
+            Text(statDescriptions[stat] ?? "Description Unknown.")
+                .foregroundColor(.gray)
+                .padding(.bottom, 20)
+            
+            Text("All Rankings For This Stat:")
+                .font(.headline)
+                .foregroundColor(.primary)
+            
+            List {
+                ForEach(sortedRankings, id: \.self.key) { item in
+                    HStack(alignment: .center, spacing: 8) {
+                        Text(Conversions.getHumanReadableTeam(from: item.key))
+                            .font(.headline)
+                        
+                        Spacer()
+                        
+                        Text(Conversions.getHumanReadableRanking(for: item.value))
+                            .foregroundColor(item.value < 65 ? .green : .red)
+                    }
+                }
+            }
+            .listStyle(.plain)
         }
         .padding()
         
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
+        
+        .task {
+            if statRankings.isEmpty {
+                await getRankingsForStat()
+            } else {
+                print("We already have stat ranking data for this stat, not fetching onAppear")
+            }
+        }
+    }
+    
+    func getRankingsForStat() async {
+        Task {
+            print("fetching rankings for stat")
+            do {
+                let fetchedRankings = try await StatFetcher.getStatRankingsFor(stat: stat)
+                statRankings = try fetchedRankings.allProperties()
+                apiError = false
+            } catch {
+                print("Request failed with error: \(error)")
+                apiError = true
+            }
+        }
     }
 }
 

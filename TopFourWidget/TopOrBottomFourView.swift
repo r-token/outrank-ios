@@ -56,41 +56,41 @@ struct TopOrBottomFourView: View {
             
             if !sortedDictionary.isEmpty {
                 HStack {
-                    Text("\(getHumanReadableStat(for: sortedDictionary[0].key)):")
+                    Text("\(Conversions.getHumanReadableStat(for: sortedDictionary[0].key)):")
                     
                     Spacer()
                     
-                    Text(getHumanReadableRanking(for: sortedDictionary[0].value))
+                    Text(Conversions.getHumanReadableRanking(for: sortedDictionary[0].value))
                         .foregroundColor(type == WidgetType.topFour ? .green : .red)
                     
                 }
                 
                 HStack {
                     
-                    Text("\(getHumanReadableStat(for: sortedDictionary[1].key)):")
+                    Text("\(Conversions.getHumanReadableStat(for: sortedDictionary[1].key)):")
                     
                     Spacer()
                     
-                    Text(getHumanReadableRanking(for: sortedDictionary[1].value))
+                    Text(Conversions.getHumanReadableRanking(for: sortedDictionary[1].value))
                         .foregroundColor(type == WidgetType.topFour ? .green : .red)
                 }
                 
                 HStack {
-                    Text("\(getHumanReadableStat(for: sortedDictionary[2].key)):")
+                    Text("\(Conversions.getHumanReadableStat(for: sortedDictionary[2].key)):")
                     
                     Spacer()
                     
-                    Text(getHumanReadableRanking(for: sortedDictionary[2].value))
+                    Text(Conversions.getHumanReadableRanking(for: sortedDictionary[2].value))
                         .foregroundColor(type == WidgetType.topFour ? .green : .red)
                     
                 }
                 
                 HStack {
-                    Text("\(getHumanReadableStat(for: sortedDictionary[3].key)):")
+                    Text("\(Conversions.getHumanReadableStat(for: sortedDictionary[3].key)):")
                     
                     Spacer()
                     
-                    Text(getHumanReadableRanking(for: sortedDictionary[3].value))
+                    Text(Conversions.getHumanReadableRanking(for: sortedDictionary[3].value))
                         .foregroundColor(type == WidgetType.topFour ? .green : .red)
                 }
             } else {
@@ -100,31 +100,6 @@ struct TopOrBottomFourView: View {
         .padding()
         .font(.headline)
         .foregroundColor(.primary)
-    }
-    
-    func getHumanReadableStat(for stat: String) -> String {
-        if stat != "DefensiveTDs" {
-            let cleanStat = stat.camelCaseToWords()
-            return cleanStat
-        } else {
-            return "Defensive TDs"
-        }
-    }
-    
-    func getHumanReadableRanking(for ranking: Int) -> String {
-        if ranking == 11 || ranking == 12 || ranking == 13 || ranking == 111 || ranking == 112 || ranking == 113 {
-            return "\(ranking)th"
-        } else if ranking % 10 == 1 {
-            return "\(ranking)st"
-        } else if ranking % 10 == 2 {
-            return "\(ranking)nd"
-        } else if ranking % 10 == 3 {
-            return "\(ranking)rd"
-        } else if ranking == 99999 {
-            return "Unknown"
-        } else {
-            return "\(ranking)th"
-        }
     }
 }
 

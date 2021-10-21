@@ -107,33 +107,33 @@ struct ComparisonView: View {
                     Section(header: Text("Sorted by \(currentSortMethod)")) {
                         ForEach(sortedTeamOneRankings, id: \.self.key) { item in
                             VStack {
-                                Text(getHumanReadableStat(for: item.key))
+                                Text(Conversions.getHumanReadableStat(for: item.key))
                                     .font(.headline)
                                 
                                 Spacer()
                                 
                                 HStack {
                                     if item.value < teamTwoRankings[item.key] ?? 99999 {
-                                        Text(getHumanReadableRanking(for: item.value))
+                                        Text(Conversions.getHumanReadableRanking(for: item.value))
                                             .foregroundColor(.green)
                                     } else if item.value > teamTwoRankings[item.key] ?? 99999 {
-                                        Text(getHumanReadableRanking(for: item.value))
+                                        Text(Conversions.getHumanReadableRanking(for: item.value))
                                             .foregroundColor(.red)
                                     } else {
-                                        Text(getHumanReadableRanking(for: item.value))
+                                        Text(Conversions.getHumanReadableRanking(for: item.value))
                                             .foregroundColor(.yellow)
                                     }
                                     
                                     Spacer()
                                     
                                     if item.value > teamTwoRankings[item.key] ?? 99999 {
-                                        Text(getHumanReadableRanking(for: teamTwoRankings[item.key] ?? 99999))
+                                        Text(Conversions.getHumanReadableRanking(for: teamTwoRankings[item.key] ?? 99999))
                                             .foregroundColor(.green)
                                     } else if item.value < teamTwoRankings[item.key] ?? 99999 {
-                                        Text(getHumanReadableRanking(for: teamTwoRankings[item.key] ?? 99999))
+                                        Text(Conversions.getHumanReadableRanking(for: teamTwoRankings[item.key] ?? 99999))
                                             .foregroundColor(.red)
                                     } else {
-                                        Text(getHumanReadableRanking(for: teamTwoRankings[item.key] ?? 99999))
+                                        Text(Conversions.getHumanReadableRanking(for: teamTwoRankings[item.key] ?? 99999))
                                             .foregroundColor(.yellow)
                                     }
                                 }
@@ -240,31 +240,6 @@ struct ComparisonView: View {
         UserDefaults.standard.set(tempTeamOne, forKey: "TeamTwo")
         
         HapticGenerator.playSuccessHaptic()
-    }
-    
-    func getHumanReadableStat(for stat: String) -> String {
-        if stat != "DefensiveTDs" {
-            let cleanStat = stat.camelCaseToWords()
-            return cleanStat
-        } else {
-            return "Defensive TDs"
-        }
-    }
-    
-    func getHumanReadableRanking(for ranking: Int) -> String {
-        if ranking == 11 || ranking == 12 || ranking == 13 || ranking == 111 || ranking == 112 || ranking == 113 {
-            return "\(ranking)th"
-        } else if ranking % 10 == 1 {
-            return "\(ranking)st"
-        } else if ranking % 10 == 2 {
-            return "\(ranking)nd"
-        } else if ranking % 10 == 3 {
-            return "\(ranking)rd"
-        } else if ranking == 99999 {
-            return "Unknown"
-        } else {
-            return "\(ranking)th"
-        }
     }
     
     func getSimpleAverageFor(teamRankings: [String:Int]) -> String {

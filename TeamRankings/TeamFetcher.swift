@@ -8,7 +8,6 @@
 import Foundation
 
 struct TeamFetcher {
-    
     enum TeamFetcherError: Error {
         case invalidURL
         case missingData
@@ -64,5 +63,4 @@ struct TeamFetcher {
         }
         requestTask.resume()
     }
-    
 }
