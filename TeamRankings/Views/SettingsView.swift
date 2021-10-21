@@ -24,7 +24,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section {
+                Section(header: Text("Preferences")) {
                     MultiPicker(
                         label: FavoriteTeamsLabel(),
                         allTeams: allTeams,
@@ -53,7 +53,7 @@ struct SettingsView: View {
                    }
                 }
                 
-                Section {
+                Section(header: Text("Support")) {
                     Button(action: {
                         SKStoreReviewController.requestReviewInCurrentScene()
                     }) {
@@ -63,12 +63,6 @@ struct SettingsView: View {
                                 .foregroundColor(.red)
                             Text("Rate")
                                 .foregroundColor(.primary)
-                            
-                            Spacer()
-                            
-                            Image(systemName: "chevron.right")
-                                .font(Font.footnote.weight(.bold))
-                                .foregroundColor(.lightGray)
                         }
                     }
                     
@@ -89,7 +83,9 @@ struct SettingsView: View {
                             Text("Subscribe")
                         }
                     }
-                    
+                }
+                
+                Section(header: Text("General")) {
                     NavigationLink(destination: AboutView()) {
                         Image(systemName: "bell.square.fill")
                             .font(.title)
