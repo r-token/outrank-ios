@@ -14,6 +14,7 @@ struct SettingsView: View {
     @StateObject var store: Store = Store()
     
     @State private var widgetTeam = UserDefaults(suiteName: "group.com.ryantoken.teamrankings")?.string(forKey: "WidgetTeam") ?? "Air Force"
+    @State private var isShowingAboutScreen = false
     
     let allTeams = AllTeams().getTeams()
     
@@ -86,13 +87,22 @@ struct SettingsView: View {
                 }
                 
                 Section(header: Text("General")) {
-                    NavigationLink(destination: AboutView()) {
-                        Image(systemName: "bell.square.fill")
-                            .font(.title)
-                            .foregroundColor(.blue)
-                        Text("About")
+                    Button(action: {
+                        isShowingAboutScreen.toggle()
+                    }) {
+                        HStack {
+                            Image(systemName: "person.crop.square.fill")
+                                .font(.title)
+                                .foregroundColor(.blue)
+                            Text("About")
+                                .foregroundColor(.primary)
+                        }
                     }
                 }
+            }
+            
+            .sheet(isPresented: $isShowingAboutScreen) {
+                AboutView()
             }
             
             .navigationTitle("Settings")
