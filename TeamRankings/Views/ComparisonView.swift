@@ -226,6 +226,7 @@ struct ComparisonView: View {
                 }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     func swapTeams() {

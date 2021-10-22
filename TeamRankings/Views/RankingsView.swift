@@ -75,6 +75,7 @@ struct RankingsView: View {
                     }
                 }
             }
+            .listStyle(.insetGrouped)
             .refreshable {
                 await refreshRankings()
             }
@@ -146,6 +147,8 @@ struct RankingsView: View {
                     ]
                 )
             }
+            
+            iPadWelcomeView(type: iPadWelcomeView.WelcomeViewType.rankings)
         }
         
         .task {

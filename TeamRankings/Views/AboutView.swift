@@ -12,7 +12,7 @@ struct AboutView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 5) {
+            VStack(spacing: 7) {
                 Image("TeamRankings")
                     .resizable()
                     .scaledToFit()
@@ -27,6 +27,7 @@ struct AboutView: View {
                 Text("Made with ❤️ by an independent developer")
                     .foregroundColor(.gray)
                     .padding(.horizontal)
+                    .padding(.bottom, 5)
                     .multilineTextAlignment(.center)
                     .accessibilityLabel("Made with love by an independent developer")
                 
@@ -50,8 +51,9 @@ struct AboutView: View {
                                     .clipShape(RoundedRectangle(cornerRadius: 11))
                                 
                                 Spacer()
+                                    .frame(width: 15)
                                 
-                                VStack(alignment: .leading, spacing: 5) {
+                                VStack(alignment: .leading, spacing: 3) {
                                     Text("CatchUp – Keep in Touch")
                                         .font(.headline)
                                         .foregroundColor(.primary)

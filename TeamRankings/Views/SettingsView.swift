@@ -89,6 +89,19 @@ struct SettingsView: View {
                 
                 Section(header: Text("General")) {
                     Button(action: {
+                        sendFeatureRequestEmail()
+                    }) {
+                        HStack {
+                            Image(systemName: "bolt.square.fill")
+                                .font(.title)
+                                .foregroundColor(.mint)
+                            Text("Feature Request")
+                                .foregroundColor(.primary)
+                        }
+                    }
+                    .accessibilityLabel("Send an email with a feature request")
+                    
+                    Button(action: {
                         isShowingAboutScreen.toggle()
                     }) {
                         HStack {
@@ -108,8 +121,23 @@ struct SettingsView: View {
             }
             
             .navigationTitle("Settings")
+            
+            iPadWelcomeView(type: iPadWelcomeView.WelcomeViewType.settings)
         }
         .environmentObject(store)
+    }
+    
+    func sendFeatureRequestEmail() {
+        let email = "teamrankingsapp@gmail.com.com"
+        let subject = "TeamRankings Feature Request"
+                    
+        let coded = "mailto:\(email)?subject=\(subject)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            
+        if let emailURL:NSURL = NSURL(string: coded!) {
+            if UIApplication.shared.canOpenURL(emailURL as URL){
+                UIApplication.shared.open(emailURL as URL)
+            }
+       }
     }
 }
 
