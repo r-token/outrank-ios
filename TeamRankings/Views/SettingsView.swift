@@ -75,6 +75,7 @@ struct SettingsView: View {
                             Text("Leave a Tip")
                         }
                     }
+                    .accessibilityLabel("Leave a Tip")
                     
                     NavigationLink(destination: SubscriptionsView()) {
                         HStack {
@@ -98,6 +99,7 @@ struct SettingsView: View {
                                 .foregroundColor(.primary)
                         }
                     }
+                    .accessibilityLabel("About")
                 }
             }
             

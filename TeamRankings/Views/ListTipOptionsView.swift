@@ -32,6 +32,7 @@ struct ListTipOptionsView: View {
                 .frame(width: 50, height: 50)
                 .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
                 .padding(.trailing, 20)
+                .accessibility(hidden: true)
             if purchasingEnabled {
                 productDetail
                 Spacer()
@@ -41,6 +42,7 @@ struct ListTipOptionsView: View {
                 productDetail
             }
         }
+        
         .alert(isPresented: $isShowingError, content: {
             Alert(title: Text(errorTitle), message: nil, dismissButton: .default(Text("Okay")))
         })
@@ -70,6 +72,7 @@ struct ListTipOptionsView: View {
                 .foregroundColor(.white)
                 .bold()
         }
+        .accessibilityLabel("Tip \(product.displayPrice)")
         .onAppear {
             Task {
                 try? await store.isPurchased(product.id)

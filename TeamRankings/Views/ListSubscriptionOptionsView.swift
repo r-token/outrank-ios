@@ -47,6 +47,7 @@ struct ListSubscriptionOptionsView: View {
                     .bold()
                 Text(product.description)
             }
+            .accessibilityLabel(product.description)
         } else {
             Text(product.description)
                 .frame(alignment: .leading)
@@ -82,6 +83,7 @@ struct ListSubscriptionOptionsView: View {
                 .font(.system(size: 12))
                 .padding(EdgeInsets(top: -8.0, leading: 0.0, bottom: -4.0, trailing: 0.0))
         }
+        .accessibilityLabel("\(product.displayPrice) per year")
     }
 
     var buyButton: some View {

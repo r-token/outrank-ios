@@ -66,6 +66,7 @@ struct ComparisonView: View {
                         Text(teamOne)
                     }
                     .buttonStyle(GrowingButton())
+                    .accessibilityLabel("\(teamOne), Change Team One")
                     
                     Spacer()
                     
@@ -76,6 +77,7 @@ struct ComparisonView: View {
                             .font(.title)
                             .foregroundColor(.blue)
                     }
+                    .accessibilityLabel("Swap Teams")
                     
                     
                     Spacer()
@@ -86,6 +88,7 @@ struct ComparisonView: View {
                         Text(teamTwo)
                     }
                     .buttonStyle(GrowingButton())
+                    .accessibilityLabel("\(teamTwo), Change Team Two")
                 }
                 .animation(.default, value: animatingSwap)
                 .padding(.top, 5)
@@ -93,10 +96,12 @@ struct ComparisonView: View {
                 
                 HStack {
                     Text("Simple Average: \(getSimpleAverageFor(teamRankings: teamOneRankings))")
+                        .accessibilityLabel("\(teamOne)'s Average Ranking: \(getSimpleAverageFor(teamRankings: teamOneRankings))")
                     
                     Spacer()
                     
                     Text("Simple Average: \(getSimpleAverageFor(teamRankings: teamTwoRankings))")
+                        .accessibilityLabel("\(teamTwo)'s Average Ranking: \(getSimpleAverageFor(teamRankings: teamTwoRankings))")
                 }
                 .foregroundColor(.gray)
                 .font(.subheadline)

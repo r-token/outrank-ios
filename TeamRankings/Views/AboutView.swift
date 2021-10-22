@@ -28,6 +28,7 @@ struct AboutView: View {
                     .foregroundColor(.gray)
                     .padding(.horizontal)
                     .multilineTextAlignment(.center)
+                    .accessibilityLabel("Made with love by an independent developer")
                 
                 Form {
                     Section {
@@ -61,6 +62,7 @@ struct AboutView: View {
                                 }
                             }
                         }
+                        .accessibilityLabel("Try out this developer's other app: CatchUp – Keep in Touch")
                     }
                 }
             }
