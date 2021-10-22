@@ -128,7 +128,7 @@ struct SettingsView: View {
     }
     
     func sendFeatureRequestEmail() {
-        let email = "teamrankingsapp@gmail.com.com"
+        let email = "teamrankingsapp@gmail.com"
         let subject = "TeamRankings Feature Request"
                     
         let coded = "mailto:\(email)?subject=\(subject)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
