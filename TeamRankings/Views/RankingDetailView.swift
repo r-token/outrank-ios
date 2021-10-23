@@ -107,6 +107,7 @@ struct RankingDetailView: View {
                         Text(Conversions.getHumanReadableRanking(for: item.value))
                             .foregroundColor(item.value < 65 ? .green : .red)
                     }
+                    .font(team == Conversions.getHumanReadableTeam(from: item.key) ? .headline : .body)
                 }
                 
                 if apiError {

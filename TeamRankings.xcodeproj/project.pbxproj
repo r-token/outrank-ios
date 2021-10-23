@@ -61,6 +61,7 @@
 		F4BC3426270E5B7800F66948 /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BC3425270E5B7800F66948 /* TipJarView.swift */; };
 		F4BC3428270E5D5300F66948 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BC3427270E5D5300F66948 /* AboutView.swift */; };
 		F4D9B0782722F79400AF6EA1 /* iPadWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D9B0772722F79400AF6EA1 /* iPadWelcomeView.swift */; };
+		F4D9B07A27244FA900AF6EA1 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D9B07927244FA900AF6EA1 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,7 @@
 		F4BC3425270E5B7800F66948 /* TipJarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarView.swift; sourceTree = "<group>"; };
 		F4BC3427270E5D5300F66948 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		F4D9B0772722F79400AF6EA1 /* iPadWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadWelcomeView.swift; sourceTree = "<group>"; };
+		F4D9B07927244FA900AF6EA1 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +219,7 @@
 				F44787B22708FAF0006CD2FA /* TeamFetcher.swift */,
 				F45475ED272113400052E22E /* StatFetcher.swift */,
 				F45475F127211B510052E22E /* Conversions.swift */,
+				F4D9B07927244FA900AF6EA1 /* Utils.swift */,
 				F44787B42708FD38006CD2FA /* LoopableProto.swift */,
 				F429CA43270A0557005CDD2A /* ButtonStyles.swift */,
 				F4BA5069271E619A00FC93E4 /* HapticGenerator.swift */,
@@ -397,6 +400,7 @@
 				F44787B12708F44F006CD2FA /* Team.swift in Sources */,
 				F4BA506327190F0400FC93E4 /* AppGroup.swift in Sources */,
 				F4BC3426270E5B7800F66948 /* TipJarView.swift in Sources */,
+				F4D9B07A27244FA900AF6EA1 /* Utils.swift in Sources */,
 				F445CD50270C7D08008A2DE1 /* FavoriteTeamsSelectionView.swift in Sources */,
 				F445CD48270C6B74008A2DE1 /* MultiPicker.swift in Sources */,
 				F492EE11271DA7C1003D4472 /* ListSubscriptionOptionsView.swift in Sources */,
@@ -441,7 +445,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = TopFourWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = DJAHJZFYK7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TopFourWidget/Info.plist;
@@ -470,7 +474,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = TopFourWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = DJAHJZFYK7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TopFourWidget/Info.plist;
@@ -616,7 +620,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TeamRankings/TeamRankings.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"TeamRankings/Preview Content\"";
 				DEVELOPMENT_TEAM = DJAHJZFYK7;
 				ENABLE_PREVIEWS = YES;
@@ -651,7 +655,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TeamRankings/TeamRankings.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"TeamRankings/Preview Content\"";
 				DEVELOPMENT_TEAM = DJAHJZFYK7;
 				ENABLE_PREVIEWS = YES;

@@ -107,6 +107,28 @@ struct RankingsView: View {
                     }) {
                         Image(systemName: "arrow.up.arrow.down")
                     }
+                    .actionSheet(isPresented: $isShowingSortActionSheet) {
+                        ActionSheet(title: Text("Sort Rankings"), message: Text("Choose a method for sorting the rankings."), buttons: [
+                                .default(Text("Sort by stat alphabetically")) {
+                                    sortMethod = SortMethods.byStatAlphabetically
+                                    HapticGenerator.playSuccessHaptic()
+                                },
+                                .default(Text("Sort by stat reverse alphabetically")) {
+                                    sortMethod = SortMethods.byStatReverseAlphabetically
+                                    HapticGenerator.playSuccessHaptic()
+                                },
+                                .default(Text("Sort by ranking ascending")) {
+                                    sortMethod = SortMethods.byRankingAscending
+                                    HapticGenerator.playSuccessHaptic()
+                                },
+                                .default(Text("Sort by ranking descending")) {
+                                    sortMethod = SortMethods.byRankingDescending
+                                    HapticGenerator.playSuccessHaptic()
+                                },
+                                .cancel()
+                            ]
+                        )
+                    }
                 }
             }
             .id(randomId)
@@ -123,29 +145,6 @@ struct RankingsView: View {
                     .onDisappear {
                         randomId = UUID() // this solves the SwiftUI bug that causes sheets in toolbars to not present consistently
                     }
-            }
-            
-            .actionSheet(isPresented: $isShowingSortActionSheet) {
-                ActionSheet(title: Text("Sort Rankings"), message: Text("Choose a method for sorting the rankings."), buttons: [
-                        .default(Text("Sort by stat alphabetically")) {
-                            sortMethod = SortMethods.byStatAlphabetically
-                            HapticGenerator.playSuccessHaptic()
-                        },
-                        .default(Text("Sort by stat reverse alphabetically")) {
-                            sortMethod = SortMethods.byStatReverseAlphabetically
-                            HapticGenerator.playSuccessHaptic()
-                        },
-                        .default(Text("Sort by ranking ascending")) {
-                            sortMethod = SortMethods.byRankingAscending
-                            HapticGenerator.playSuccessHaptic()
-                        },
-                        .default(Text("Sort by ranking descending")) {
-                            sortMethod = SortMethods.byRankingDescending
-                            HapticGenerator.playSuccessHaptic()
-                        },
-                        .cancel()
-                    ]
-                )
             }
             
             iPadWelcomeView(type: iPadWelcomeView.WelcomeViewType.rankings)

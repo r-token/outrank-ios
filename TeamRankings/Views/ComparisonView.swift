@@ -50,9 +50,9 @@ struct ComparisonView: View {
         case SortMethods.byStatReverseAlphabetically:
             return "stat reverse alphabetically"
         case SortMethods.byRankingAscending:
-            return "ranking ascending"
+            return "\(teamOne) ranking ascending"
         case SortMethods.byRankingDescending:
-            return "ranking descending"
+            return "\(teamOne) ranking descending"
         }
     }
     
@@ -95,13 +95,13 @@ struct ComparisonView: View {
                 .padding(.horizontal, 25)
                 
                 HStack {
-                    Text("Simple Average: \(getSimpleAverageFor(teamRankings: teamOneRankings))")
-                        .accessibilityLabel("\(teamOne)'s Average Ranking: \(getSimpleAverageFor(teamRankings: teamOneRankings))")
+                    Text("Simple Average: \(Utils.getSimpleAverageFor(teamOneRankings))")
+                        .accessibilityLabel("\(teamOne)'s Average Ranking: \(Utils.getSimpleAverageFor(teamOneRankings))")
                     
                     Spacer()
                     
-                    Text("Simple Average: \(getSimpleAverageFor(teamRankings: teamTwoRankings))")
-                        .accessibilityLabel("\(teamTwo)'s Average Ranking: \(getSimpleAverageFor(teamRankings: teamTwoRankings))")
+                    Text("Simple Average: \(Utils.getSimpleAverageFor(teamTwoRankings))")
+                        .accessibilityLabel("\(teamTwo)'s Average Ranking: \(Utils.getSimpleAverageFor(teamTwoRankings))")
                 }
                 .foregroundColor(.gray)
                 .font(.subheadline)
@@ -165,7 +165,7 @@ struct ComparisonView: View {
             .navigationTitle("Compare Teams")
             .navigationBarTitleDisplayMode(.inline)
             
-            .toolbar {
+            .toolbar() {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         isShowingInfoSheet.toggle()
@@ -179,6 +179,28 @@ struct ComparisonView: View {
                         isShowingSortActionSheet.toggle()
                     }) {
                         Image(systemName: "arrow.up.arrow.down")
+                    }
+                    .actionSheet(isPresented: $isShowingSortActionSheet) {
+                        ActionSheet(title: Text("Sort Rankings"), message: Text("Choose a method for sorting the rankings."), buttons: [
+                                .default(Text("Sort by stat alphabetically")) {
+                                    sortMethod = SortMethods.byStatAlphabetically
+                                    HapticGenerator.playSuccessHaptic()
+                                },
+                                .default(Text("Sort by stat reverse alphabetically")) {
+                                    sortMethod = SortMethods.byStatReverseAlphabetically
+                                    HapticGenerator.playSuccessHaptic()
+                                },
+                                .default(Text("Sort by ranking ascending")) {
+                                    sortMethod = SortMethods.byRankingAscending
+                                    HapticGenerator.playSuccessHaptic()
+                                },
+                                .default(Text("Sort by ranking descending")) {
+                                    sortMethod = SortMethods.byRankingDescending
+                                    HapticGenerator.playSuccessHaptic()
+                                },
+                                .cancel()
+                            ]
+                        )
                     }
                 }
             }
@@ -195,29 +217,6 @@ struct ComparisonView: View {
                 InfoView(source: Source.compare)
             }
             
-            .actionSheet(isPresented: $isShowingSortActionSheet) {
-                ActionSheet(title: Text("Sort Rankings"), message: Text("Choose a method for sorting the rankings."), buttons: [
-                        .default(Text("Sort by stat alphabetically")) {
-                            sortMethod = SortMethods.byStatAlphabetically
-                            HapticGenerator.playSuccessHaptic()
-                        },
-                        .default(Text("Sort by stat reverse alphabetically")) {
-                            sortMethod = SortMethods.byStatReverseAlphabetically
-                            HapticGenerator.playSuccessHaptic()
-                        },
-                        .default(Text("Sort by ranking ascending")) {
-                            sortMethod = SortMethods.byRankingAscending
-                            HapticGenerator.playSuccessHaptic()
-                        },
-                        .default(Text("Sort by ranking descending")) {
-                            sortMethod = SortMethods.byRankingDescending
-                            HapticGenerator.playSuccessHaptic()
-                        },
-                        .cancel()
-                    ]
-                )
-            }
-            
             .task {
                 if teamOneRankings.isEmpty && teamTwoRankings.isEmpty {
                     await refreshRankings()
@@ -226,6 +225,7 @@ struct ComparisonView: View {
                 }
             }
         }
+        
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
@@ -246,20 +246,6 @@ struct ComparisonView: View {
         UserDefaults.standard.set(tempTeamOne, forKey: "TeamTwo")
         
         HapticGenerator.playWarningHaptic()
-    }
-    
-    func getSimpleAverageFor(teamRankings: [String:Int]) -> String {
-        if teamRankings.isEmpty {
-            return ""
-        } else {
-            var rankings = Array(teamRankings.values)
-            rankings.removeAll { number in
-                return number == 99999
-            }
-            let sumRankings = rankings.reduce(0, +)
-            let averageRankings = sumRankings / rankings.count
-            return String(averageRankings)
-        }
     }
     
     func refreshRankings() async {
