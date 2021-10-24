@@ -6,27 +6,23 @@
 //
 
 import SwiftUI
-
-import SwiftUI
+import CoreData
 
 struct MultiPickerView<Selectable: Identifiable & Hashable>: View {
-    @EnvironmentObject var favoriteTeams: FavoriteTeams
+    @Environment(\.managedObjectContext) private var moc
+    @FetchRequest(entity: Favorite.entity(), sortDescriptors: [], animation: .default) var favorites: FetchedResults<Favorite>
     
     let allTeams: [Selectable]
     let teamToString: (Selectable) -> String
 
     var selectedCount: Int
-    
-    var favorites: [String] {
-        return Array(favoriteTeams.getFavorites()).sorted()
-    }
 
     var body: some View {
         List {
             Section(header: Text("Favorite Teams")) {
-                ForEach(favorites) { team in
-                    Button(action: { toggleSelection(team: team) }) {
-                        FavoriteTeamsSelectionView(team: team)
+                ForEach(favorites) { favorite in
+                    Button(action: { toggleSelection(team: favorite.wrappedTeam) }) {
+                        FavoriteTeamsSelectionView(team: favorite.wrappedTeam)
                             .font(.headline)
                     }
                 }
@@ -47,17 +43,66 @@ struct MultiPickerView<Selectable: Identifiable & Hashable>: View {
                 }
             }
         }
-        .animation(.default, value: favorites)
         
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
     }
 
     private func toggleSelection(team: String) {
-        if favoriteTeams.contains(team) {
-            favoriteTeams.remove(team)
+        if favoriteTeamsContains(team) {
+            removeFavorite(team: team)
         } else {
-            favoriteTeams.add(team)
+            addFavorite(team: team)
+        }
+    }
+    
+    func favoriteTeamsContains(_ team: String) -> Bool {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Favorite")
+        let predicate = NSPredicate(format: "team == %@", team)
+        request.predicate = predicate
+        request.fetchLimit = 1
+
+        do{
+            let count = try moc.count(for: request)
+            if(count == 0){
+                return false
+            }
+            else{
+                return true
+            }
+          }
+        catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        return false
+    }
+    
+    func addFavorite(team: String) {
+        let favorite = Favorite(context: moc)
+        favorite.team = team
+        
+        try? moc.save()
+    }
+    
+    func removeFavorite(team: String) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Favorite")
+        
+        let result = try? moc.fetch(fetchRequest)
+        let favorites = result as! [Favorite]
+        
+        for favorite in favorites {
+            if favorite.wrappedTeam == team {
+                moc.delete(favorite)
+            }
+        }
+        
+        do {
+            try moc.save()
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        } catch {
+
         }
     }
 }
@@ -69,8 +114,6 @@ struct MultiPickerView_Previews: PreviewProvider {
     }
 
     @State static var selected: Set<IdentifiableString> = Set(["A", "C"].map { IdentifiableString(string: $0) })
-    
-    static let favoriteTeams = FavoriteTeams()
 
     static var previews: some View {
         NavigationView {
@@ -80,6 +123,5 @@ struct MultiPickerView_Previews: PreviewProvider {
                 selectedCount: 4
             )
         }
-        .environmentObject(favoriteTeams)
     }
 }

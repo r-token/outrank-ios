@@ -10,7 +10,8 @@ import WidgetKit
 import StoreKit
 
 struct SettingsView: View {
-    @EnvironmentObject var favoriteTeams: FavoriteTeams
+    @FetchRequest(entity: Favorite.entity(), sortDescriptors: [], animation: .default) var favorites: FetchedResults<Favorite>
+    
     @StateObject var store: Store = Store()
     
     @State private var widgetTeam = UserDefaults(suiteName: "group.com.ryantoken.teamrankings")?.string(forKey: "WidgetTeam") ?? "Air Force"
@@ -19,7 +20,7 @@ struct SettingsView: View {
     let allTeams = AllTeams().getTeams()
     
     var selectedCount: Int {
-        return favoriteTeams.getFavorites().count
+        return favorites.count
     }
     
     var body: some View {
@@ -153,10 +154,7 @@ struct FavoriteTeamsLabel: View {
 }
 
 struct SettingsView_Previews: PreviewProvider {
-    static let favoriteTeams = FavoriteTeams()
-    
     static var previews: some View {
         SettingsView()
-            .environmentObject(favoriteTeams)
     }
 }

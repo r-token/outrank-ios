@@ -8,19 +8,17 @@
 import SwiftUI
 
 struct TeamPickerView: View {
+    @Environment(\.managedObjectContext) private var moc
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject var favoriteTeams: FavoriteTeams
     @EnvironmentObject private var tabController: TabController
+    
+    @FetchRequest(entity: Favorite.entity(), sortDescriptors: [], animation: .default) var favorites: FetchedResults<Favorite>
     
     @Binding var team: String
     @Binding var teamRankings: [String:Int]
     
     let type: TeamPickerTypes
     let allTeams = AllTeams().getTeams()
-    
-    var favorites: [String] {
-        return Array(favoriteTeams.getFavorites()).sorted()
-    }
     
     enum TeamPickerTypes {
         case rankings
@@ -44,12 +42,12 @@ struct TeamPickerView: View {
             VStack {
                 List {
                     Section(header: Text("Favorite Teams")) {
-                        ForEach(favorites) { team in
+                        ForEach(favorites) { favorite in
                             Button(action: {
-                                chooseTeam(team: team)
+                                chooseTeam(team: favorite.wrappedTeam)
                                 dismiss()
                             }) {
-                                Text(team)
+                                Text(favorite.wrappedTeam)
                                     .font(.headline)
                                     .foregroundColor(.primary)
                             }
@@ -80,12 +78,7 @@ struct TeamPickerView: View {
                                     chooseTeam(team: team)
                                     dismiss()
                                 }) {
-                                    favoriteTeams.contains(team) ?
-                                        Text(team)
-                                        .font(.headline)
-                                        .foregroundColor(.primary)
-                                    :
-                                        Text(team)
+                                    Text(team)
                                         .font(.body)
                                         .foregroundColor(.primary)
                                 }
@@ -93,7 +86,6 @@ struct TeamPickerView: View {
                         }
                     }
                 }
-                .animation(.default, value: favorites)
                 
                 .navigationTitle("Choose Team")
                 
@@ -125,7 +117,15 @@ struct TeamPickerView: View {
     }
     
     func removeFromFavorites(at offsets: IndexSet) {
-        let index = offsets[offsets.startIndex]
-        favoriteTeams.remove(favorites[index])
+        for offset in offsets {
+            // find this book in our fetch request'
+            let favorite = favorites[offset]
+            
+            // delete it from the context
+            moc.delete(favorite)
+        }
+        
+        // save the new context
+        try? moc.save()
     }
 }

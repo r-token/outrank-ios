@@ -8,17 +8,13 @@
 import SwiftUI
 
 struct MultiPicker<LabelView: View, Selectable: Identifiable & Hashable>: View {
-    @EnvironmentObject var favoriteTeams: FavoriteTeams
+    @FetchRequest(entity: Favorite.entity(), sortDescriptors: [], animation: .default) var favorites: FetchedResults<Favorite>
     
     let label: LabelView
     let allTeams: [Selectable]
     let teamToString: (Selectable) -> String
 
     var selectedCount: Int
-    
-    var favorites: [String] {
-        return Array(favoriteTeams.getFavorites()).sorted()
-    }
 
     var body: some View {
         NavigationLink(destination: MultiPickerView()) {
@@ -26,7 +22,7 @@ struct MultiPicker<LabelView: View, Selectable: Identifiable & Hashable>: View {
                 label
                 Spacer()
                 if favorites.count == 1 {
-                    Text(favorites[0])
+                    Text(favorites[0].wrappedTeam)
                         .foregroundColor(.gray)
                 } else {
                     Text("\(selectedCount) Teams")

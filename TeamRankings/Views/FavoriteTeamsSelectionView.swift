@@ -6,14 +6,17 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct FavoriteTeamsSelectionView: View {
-    @EnvironmentObject var favoriteTeams: FavoriteTeams
+    @Environment(\.managedObjectContext) private var moc
+    @FetchRequest(entity: Favorite.entity(), sortDescriptors: []) var favorites: FetchedResults<Favorite>
+    
     let team: String
     
     var body: some View {
         HStack {
-            favoriteTeams.contains(team) ?
+            favoriteTeamsContains(team) ?
                 Text(team)
                 .font(.headline)
                 .foregroundColor(.primary)
@@ -25,9 +28,31 @@ struct FavoriteTeamsSelectionView: View {
             Spacer()
 
             VStack {
-                favoriteTeams.contains(team) ? Image(systemName: "star.fill") : Image(systemName: "star")
+                favoriteTeamsContains(team) ? Image(systemName: "star.fill") : Image(systemName: "star")
             }
             .foregroundColor(.yellow)
         }
+    }
+    
+    func favoriteTeamsContains(_ team: String) -> Bool {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Favorite")
+        let predicate = NSPredicate(format: "team == %@", team)
+        request.predicate = predicate
+        request.fetchLimit = 1
+
+        do{
+            let count = try moc.count(for: request)
+            if(count == 0){
+                return false
+            }
+            else{
+                return true
+            }
+          }
+        catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        return false
     }
 }

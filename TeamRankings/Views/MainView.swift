@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject private var tabController = TabController()
-    @ObservedObject var favoriteTeams = FavoriteTeams()
     
     init() {
         let barAppearance = UIBarAppearance()
@@ -37,7 +36,6 @@ struct MainView: View {
                     Label("Settings", systemImage: "gear")
                 }
         }
-        .environmentObject(favoriteTeams)
         .environmentObject(tabController)
     }
 }
