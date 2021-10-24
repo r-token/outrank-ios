@@ -50,6 +50,7 @@
 		F46FEF9C2725D4DD00BDEC1A /* Favorite+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46FEF9A2725D4DD00BDEC1A /* Favorite+CoreDataClass.swift */; };
 		F46FEF9D2725D4DD00BDEC1A /* Favorite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46FEF9B2725D4DD00BDEC1A /* Favorite+CoreDataProperties.swift */; };
 		F46FEF9F2725D6B300BDEC1A /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46FEF9E2725D6B300BDEC1A /* FilteredList.swift */; };
+		F46FEFA12725EC8800BDEC1A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F46FEFA02725EC8800BDEC1A /* CloudKit.framework */; };
 		F492EE11271DA7C1003D4472 /* ListSubscriptionOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492EE10271DA7C1003D4472 /* ListSubscriptionOptionsView.swift */; };
 		F493B573271A7B1B000AC065 /* BottomFourWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493B572271A7B1B000AC065 /* BottomFourWidget.swift */; };
 		F493B575271CA60B000AC065 /* Products.storekit in Resources */ = {isa = PBXBuildFile; fileRef = F493B574271CA60B000AC065 /* Products.storekit */; };
@@ -133,6 +134,8 @@
 		F46FEF9A2725D4DD00BDEC1A /* Favorite+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F46FEF9B2725D4DD00BDEC1A /* Favorite+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F46FEF9E2725D6B300BDEC1A /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
+		F46FEFA02725EC8800BDEC1A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		F46FEFA22725ECF100BDEC1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F492EE10271DA7C1003D4472 /* ListSubscriptionOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListSubscriptionOptionsView.swift; sourceTree = "<group>"; };
 		F493B572271A7B1B000AC065 /* BottomFourWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomFourWidget.swift; sourceTree = "<group>"; };
 		F493B574271CA60B000AC065 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Products.storekit; sourceTree = "<group>"; };
@@ -163,6 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F46FEFA12725EC8800BDEC1A /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +176,7 @@
 		F438824A270AA5120089518A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F46FEFA02725EC8800BDEC1A /* CloudKit.framework */,
 				F438824B270AA5120089518A /* WidgetKit.framework */,
 				F438824D270AA5120089518A /* SwiftUI.framework */,
 			);
@@ -213,6 +218,7 @@
 		F44787A02708F095006CD2FA /* TeamRankings */ = {
 			isa = PBXGroup;
 			children = (
+				F46FEFA22725ECF100BDEC1A /* Info.plist */,
 				F44787A12708F095006CD2FA /* TeamRankingsApp.swift */,
 				F4BA506227190F0400FC93E4 /* AppGroup.swift */,
 				F445CD51270D4243008A2DE1 /* TabController.swift */,
@@ -639,6 +645,7 @@
 				DEVELOPMENT_TEAM = DJAHJZFYK7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TeamRankings/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -674,6 +681,7 @@
 				DEVELOPMENT_TEAM = DJAHJZFYK7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TeamRankings/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

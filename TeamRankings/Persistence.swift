@@ -18,6 +18,7 @@ struct PersistenceController {
             let newFavorite = Favorite(context: viewContext)
             newFavorite.team = "Tulsa"
         }
+        
         do {
             try viewContext.save()
         } catch {
@@ -29,13 +30,13 @@ struct PersistenceController {
         return result
     }()
 
-    let container: NSPersistentContainer
+    let container: NSPersistentCloudKitContainer
 
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "TeamRankings")
+        container = NSPersistentCloudKitContainer(name: "TeamRankings")
         
         // allow the MOC to handle same-data collisions by overwriting what's already there with the new version
-        // adding multiple 'Harry Potter's on the main screen now and then saving will only add ONE actual Harry Potter data instance to the MOC
+        // adding multiple 'Tulsa's on the main screen now and then saving will only add ONE actual Tulsa data instance to the MOC
         // note that this requires you to add a constraint to the xcdatamodeld core data entity
         container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         
