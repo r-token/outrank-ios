@@ -51,6 +51,13 @@ struct RankingsView: View {
         }
     }
     
+    init() {
+        let tabBarAppearance = UIBarAppearance()
+        tabBarAppearance.configureWithOpaqueBackground()
+        
+        UITabBar.appearance().scrollEdgeAppearance = .init(barAppearance: tabBarAppearance)
+    }
+    
     var body: some View {
         NavigationView {
             List {
@@ -90,6 +97,7 @@ struct RankingsView: View {
                         isShowingTeamPickerView.toggle()
                     }) {
                         Text("Choose Team")
+                            .foregroundColor(.primary)
                     }
                 }
                 
@@ -98,6 +106,7 @@ struct RankingsView: View {
                         isShowingInfoSheet.toggle()
                     }) {
                         Image(systemName: "info.circle")
+                            .foregroundColor(.primary)
                     }
                 }
                 
@@ -106,6 +115,7 @@ struct RankingsView: View {
                         isShowingSortActionSheet.toggle()
                     }) {
                         Image(systemName: "arrow.up.arrow.down")
+                            .foregroundColor(.primary)
                     }
                     .actionSheet(isPresented: $isShowingSortActionSheet) {
                         ActionSheet(title: Text("Sort Rankings"), message: Text("Choose a method for sorting the rankings."), buttons: [
@@ -149,6 +159,7 @@ struct RankingsView: View {
             
             iPadWelcomeView(type: iPadWelcomeView.WelcomeViewType.rankings)
         }
+        .accentColor(.primary)
         
         .task {
             if teamRankings.isEmpty {

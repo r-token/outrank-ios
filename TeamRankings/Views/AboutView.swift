@@ -22,7 +22,7 @@ struct AboutView: View {
                 Text("TeamRankings")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .foregroundColor(.blue)
+                    .foregroundColor(.primary)
                 
                 Text("Made with ❤️ by an independent developer")
                     .foregroundColor(.gray)
@@ -73,9 +73,11 @@ struct AboutView: View {
             .navigationBarTitleDisplayMode(.inline)
             
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Done") {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
                         dismiss()
+                    }) {
+                        Text("Done")
                     }
                 }
             }

@@ -58,9 +58,11 @@ struct InfoView: View {
                 .navigationTitle("Info")
                 
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button("Done") {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
                             dismiss()
+                        }) {
+                            Text("Done")
                         }
                     }
                 }
@@ -104,9 +106,11 @@ struct InfoView: View {
                 .navigationTitle("Info")
                 
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button("Done") {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
                             dismiss()
+                        }) {
+                            Text("Done")
                         }
                     }
                 }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ComparisonView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @State private var teamOne = UserDefaults.standard.string(forKey: "TeamOne") ?? "Tulsa"
     @State private var teamTwo = UserDefaults.standard.string(forKey: "TeamTwo") ?? "SMU"
     
@@ -75,7 +77,7 @@ struct ComparisonView: View {
                     }) {
                         Image(systemName: "arrow.left.arrow.right.square")
                             .font(.title)
-                            .foregroundColor(.blue)
+                            .foregroundColor(.green)
                     }
                     .accessibilityLabel("Swap Teams")
                     
@@ -161,6 +163,7 @@ struct ComparisonView: View {
                 .animation(.default, value: teamOneRankings)
                 .animation(.default, value: sortMethod)
             }
+            .padding(.top, 10)
             
             .navigationTitle("Compare Teams")
             .navigationBarTitleDisplayMode(.inline)
@@ -171,6 +174,7 @@ struct ComparisonView: View {
                         isShowingInfoSheet.toggle()
                     }) {
                         Image(systemName: "info.circle")
+                            .foregroundColor(.primary)
                     }
                 }
                 
@@ -179,6 +183,7 @@ struct ComparisonView: View {
                         isShowingSortActionSheet.toggle()
                     }) {
                         Image(systemName: "arrow.up.arrow.down")
+                            .foregroundColor(.primary)
                     }
                     .actionSheet(isPresented: $isShowingSortActionSheet) {
                         ActionSheet(title: Text("Sort Rankings"), message: Text("Choose a method for sorting the rankings."), buttons: [
