@@ -59,11 +59,13 @@
 		F493B57B271CB493000AC065 /* ListTipOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493B57A271CB493000AC065 /* ListTipOptionsView.swift */; };
 		F493B57F271CC0BE000AC065 /* SubscriptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493B57E271CC0BE000AC065 /* SubscriptionsView.swift */; };
 		F493B585271CC797000AC065 /* StatusInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F493B584271CC797000AC065 /* StatusInfoView.swift */; };
+		F49CF9BE27260474002327C3 /* Favorite+FetchRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49CF9BD27260474002327C3 /* Favorite+FetchRequests.swift */; };
 		F4BA506327190F0400FC93E4 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA506227190F0400FC93E4 /* AppGroup.swift */; };
 		F4BA506427190F0400FC93E4 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA506227190F0400FC93E4 /* AppGroup.swift */; };
 		F4BA506A271E619A00FC93E4 /* HapticGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA5069271E619A00FC93E4 /* HapticGenerator.swift */; };
 		F4BC3426270E5B7800F66948 /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BC3425270E5B7800F66948 /* TipJarView.swift */; };
 		F4BC3428270E5D5300F66948 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BC3427270E5D5300F66948 /* AboutView.swift */; };
+		F4C938EF27263FBD005C1AC6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434EC6B272226D3004C8440 /* Colors.swift */; };
 		F4D9B0782722F79400AF6EA1 /* iPadWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D9B0772722F79400AF6EA1 /* iPadWelcomeView.swift */; };
 		F4D9B07A27244FA900AF6EA1 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D9B07927244FA900AF6EA1 /* Utils.swift */; };
 /* End PBXBuildFile section */
@@ -144,6 +146,7 @@
 		F493B57A271CB493000AC065 /* ListTipOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTipOptionsView.swift; sourceTree = "<group>"; };
 		F493B57E271CC0BE000AC065 /* SubscriptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsView.swift; sourceTree = "<group>"; };
 		F493B584271CC797000AC065 /* StatusInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusInfoView.swift; sourceTree = "<group>"; };
+		F49CF9BD27260474002327C3 /* Favorite+FetchRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+FetchRequests.swift"; sourceTree = "<group>"; };
 		F4BA506227190F0400FC93E4 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		F4BA5069271E619A00FC93E4 /* HapticGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticGenerator.swift; sourceTree = "<group>"; };
 		F4BC3425270E5B7800F66948 /* TipJarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarView.swift; sourceTree = "<group>"; };
@@ -240,6 +243,7 @@
 				F429CA43270A0557005CDD2A /* ButtonStyles.swift */,
 				F4BA5069271E619A00FC93E4 /* HapticGenerator.swift */,
 				F434EC6B272226D3004C8440 /* Colors.swift */,
+				F49CF9BD27260474002327C3 /* Favorite+FetchRequests.swift */,
 				F434EC6927222458004C8440 /* SKStoreReviewController+RequestReview.swift */,
 				F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */,
 				F445CD4B270C7250008A2DE1 /* String+Identifiable.swift */,
@@ -388,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F432F67D27121B2D0018277C /* Team.swift in Sources */,
+				F4C938EF27263FBD005C1AC6 /* Colors.swift in Sources */,
 				F432F67A271218BF0018277C /* TopOrBottomFourView.swift in Sources */,
 				F4388251270AA5120089518A /* TopFourWidget.swift in Sources */,
 				F432F67C27121B0F0018277C /* TeamFetcher.swift in Sources */,
@@ -413,6 +418,7 @@
 				F434EC6A27222458004C8440 /* SKStoreReviewController+RequestReview.swift in Sources */,
 				F493B579271CAA3A000AC065 /* Store.swift in Sources */,
 				F46FEF952725D21700BDEC1A /* TeamRankings.xcdatamodeld in Sources */,
+				F49CF9BE27260474002327C3 /* Favorite+FetchRequests.swift in Sources */,
 				F44787B727090DB8006CD2FA /* TeamPickerView.swift in Sources */,
 				F44787B12708F44F006CD2FA /* Team.swift in Sources */,
 				F4BA506327190F0400FC93E4 /* AppGroup.swift in Sources */,

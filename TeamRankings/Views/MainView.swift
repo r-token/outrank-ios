@@ -10,12 +10,6 @@ import SwiftUI
 struct MainView: View {
     @StateObject private var tabController = TabController()
     
-    init() {
-        let barAppearance = UIBarAppearance()
-        barAppearance.configureWithOpaqueBackground()
-        UITabBar.appearance().scrollEdgeAppearance = .init(barAppearance: barAppearance)
-    }
-    
     var body: some View {
         TabView(selection: $tabController.activeTab) {
             RankingsView()
@@ -36,6 +30,7 @@ struct MainView: View {
                     Label("Settings", systemImage: "gear")
                 }
         }
+        
         .environmentObject(tabController)
     }
 }

@@ -10,7 +10,8 @@ import CoreData
 
 struct MultiPickerView<Selectable: Identifiable & Hashable>: View {
     @Environment(\.managedObjectContext) private var moc
-    @FetchRequest(entity: Favorite.entity(), sortDescriptors: [], animation: .default) var favorites: FetchedResults<Favorite>
+    @FetchRequest(fetchRequest: Favorite.allFavoritesFetchRequest, animation: .default)
+    var favorites: FetchedResults<Favorite>
     
     let allTeams: [Selectable]
     let teamToString: (Selectable) -> String

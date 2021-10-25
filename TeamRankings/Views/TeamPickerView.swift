@@ -12,7 +12,8 @@ struct TeamPickerView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var tabController: TabController
     
-    @FetchRequest(entity: Favorite.entity(), sortDescriptors: [], animation: .default) var favorites: FetchedResults<Favorite>
+    @FetchRequest(fetchRequest: Favorite.allFavoritesFetchRequest, animation: .default)
+    var favorites: FetchedResults<Favorite>
     
     @Binding var team: String
     @Binding var teamRankings: [String:Int]
@@ -90,9 +91,11 @@ struct TeamPickerView: View {
                 .navigationTitle("Choose Team")
                 
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button("Done") {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
                             dismiss()
+                        }) {
+                            Text("Done")
                         }
                     }
                 }

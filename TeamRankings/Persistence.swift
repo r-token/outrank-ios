@@ -34,11 +34,7 @@ struct PersistenceController {
 
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "TeamRankings")
-        
-        // allow the MOC to handle same-data collisions by overwriting what's already there with the new version
-        // adding multiple 'Tulsa's on the main screen now and then saving will only add ONE actual Tulsa data instance to the MOC
-        // note that this requires you to add a constraint to the xcdatamodeld core data entity
-        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        container.viewContext.automaticallyMergesChangesFromParent = true
         
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")

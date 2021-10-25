@@ -11,7 +11,6 @@ import CoreData
 
 
 extension Favorite {
-
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Favorite> {
         return NSFetchRequest<Favorite>(entityName: "Favorite")
     }
@@ -21,7 +20,6 @@ extension Favorite {
     public var wrappedTeam: String {
         return team ?? "Unknown"
     }
-
 }
 
 extension Favorite : Identifiable {

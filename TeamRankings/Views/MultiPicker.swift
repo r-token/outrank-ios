@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MultiPicker<LabelView: View, Selectable: Identifiable & Hashable>: View {
-    @FetchRequest(entity: Favorite.entity(), sortDescriptors: [], animation: .default) var favorites: FetchedResults<Favorite>
+    @FetchRequest(fetchRequest: Favorite.allFavoritesFetchRequest, animation: .default)
+    var favorites: FetchedResults<Favorite>
     
     let label: LabelView
     let allTeams: [Selectable]
@@ -57,7 +58,8 @@ struct MultiPicker_Previews: PreviewProvider {
                     teamToString: { $0.string },
                     selectedCount: 4
                 )
-            }.navigationTitle("Settings")
+            }
         }
+        .accentColor(.primary)
     }
 }

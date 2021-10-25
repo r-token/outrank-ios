@@ -13,8 +13,8 @@ struct GrowingButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
+            .background(colorScheme == .light ? Color.evenLighterDarkGreen : Color.somewhatLighterDarkGreen)
+            .foregroundColor(colorScheme == .light ? .white : .lighterGray)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .shadow(color: colorScheme == .light ? .gray : .black, radius: 5, x: 0, y: 5)
             .font(.headline)
@@ -25,7 +25,7 @@ struct GrowingButton: ButtonStyle {
 
 struct BuyButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
-        var bgColor: Color = Color.blue
+        var bgColor: Color = Color.green
         bgColor = configuration.isPressed ? bgColor.opacity(0.7) : bgColor.opacity(1)
 
         return configuration.label
@@ -45,7 +45,7 @@ struct SubscribeButtonStyle: ButtonStyle {
     }
 
     func makeBody(configuration: Self.Configuration) -> some View {
-        var bgColor: Color = isPurchased ? Color.green : Color.blue
+        var bgColor: Color = isPurchased ? Color.green : Color.somewhatLighterDarkGreen
         bgColor = configuration.isPressed ? bgColor.opacity(0.7) : bgColor.opacity(1)
 
         return configuration.label

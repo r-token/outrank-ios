@@ -10,7 +10,8 @@ import CoreData
 
 struct FavoriteTeamsSelectionView: View {
     @Environment(\.managedObjectContext) private var moc
-    @FetchRequest(entity: Favorite.entity(), sortDescriptors: []) var favorites: FetchedResults<Favorite>
+    @FetchRequest(fetchRequest: Favorite.allFavoritesFetchRequest, animation: .default)
+    var favorites: FetchedResults<Favorite>
     
     let team: String
     
