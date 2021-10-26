@@ -94,7 +94,7 @@ struct TopFourWidget_Previews: PreviewProvider {
 }
 
 @main
-struct TeamRankingsBumndle: WidgetBundle {
+struct TeamRankingsBundle: WidgetBundle {
     @WidgetBundleBuilder
     var body: some Widget {
         TopFourWidget()
