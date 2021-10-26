@@ -120,7 +120,7 @@
 		F44787A32708F095006CD2FA /* RankingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsView.swift; sourceTree = "<group>"; };
 		F44787A52708F097006CD2FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F44787A82708F097006CD2FA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		F44787AF2708F123006CD2FA /* TeamRankings.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeamRankings.entitlements; sourceTree = "<group>"; };
+		F44787AF2708F123006CD2FA /* Outrank.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Outrank.entitlements; sourceTree = "<group>"; };
 		F44787B02708F44F006CD2FA /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		F44787B22708FAF0006CD2FA /* TeamFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamFetcher.swift; sourceTree = "<group>"; };
 		F44787B42708FD38006CD2FA /* LoopableProto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopableProto.swift; sourceTree = "<group>"; };
@@ -226,7 +226,7 @@
 				F46FEF912725D1DB00BDEC1A /* Persistence.swift */,
 				F46FEF9A2725D4DD00BDEC1A /* Favorite+CoreDataClass.swift */,
 				F46FEF9B2725D4DD00BDEC1A /* Favorite+CoreDataProperties.swift */,
-				F44787AF2708F123006CD2FA /* TeamRankings.entitlements */,
+				F44787AF2708F123006CD2FA /* Outrank.entitlements */,
 				F4BA5068271DA95400FC93E4 /* Views */,
 				F493B578271CAA3A000AC065 /* Store.swift */,
 				F44787B02708F44F006CD2FA /* Team.swift */,
@@ -640,7 +640,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Outrank/TeamRankings.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Outrank/Outrank.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"Outrank/Preview Content\"";
@@ -676,7 +676,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Outrank/TeamRankings.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Outrank/Outrank.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"Outrank/Preview Content\"";
