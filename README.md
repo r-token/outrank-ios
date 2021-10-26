@@ -1,3 +1,3 @@
-# TeamRankings.app
+# Outrank.app
 
-An iOS/iPadOS/Mac app to help you find how your college football team stacks up against the rest.
+An iOS/iPadOS/macOS app to help you check where your favorite college football teams stack up against the rest.
