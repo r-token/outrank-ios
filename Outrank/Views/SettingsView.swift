@@ -16,6 +16,7 @@ struct SettingsView: View {
     
     @State private var widgetTeam = UserDefaults(suiteName: "group.com.ryantoken.teamrankings")?.string(forKey: "WidgetTeam") ?? "Air Force"
     @State private var isShowingAboutScreen = false
+    @State private var isShowingPrivacyActionSheet = false
     
     let allTeams = AllTeams().getTeams()
     
@@ -114,6 +115,32 @@ struct SettingsView: View {
                         }
                     }
                     .accessibilityLabel("About")
+                    
+                    Button(action: {
+                        isShowingPrivacyActionSheet.toggle()
+                    }) {
+                        HStack {
+                            Image(systemName: "lock.square.fill")
+                                .font(.title)
+                                .foregroundColor(.gray)
+                            Text("Terms & Privacy Policy")
+                                .foregroundColor(.primary)
+                        }
+                    }
+                    .accessibilityLabel("Terms of Use and Privacy Policy")
+                    
+                    .actionSheet(isPresented: $isShowingPrivacyActionSheet) {
+                        ActionSheet(title: Text("Terms of Use and Privacy Policy"), buttons: [
+                                .default(Text("Terms of Use")) {
+                                    openTermsOfUseLink()
+                                },
+                                .default(Text("Privacy Policy")) {
+                                    openPrivacyPolicyLink()
+                                },
+                                .cancel()
+                            ]
+                        )
+                    }
                 }
             }
             
@@ -139,6 +166,18 @@ struct SettingsView: View {
                 UIApplication.shared.open(emailURL as URL)
             }
        }
+    }
+    
+    func openPrivacyPolicyLink() {
+        if let url = URL(string: "https://ryantoken.com/privacy-policy") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    func openTermsOfUseLink() {
+        if let url = URL(string: "https://ryantoken.com/terms-of-use") {
+            UIApplication.shared.open(url)
+        }
     }
 }
 
