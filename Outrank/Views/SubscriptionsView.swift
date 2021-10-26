@@ -55,6 +55,14 @@ struct SubscriptionsView: View {
         .listStyle(InsetGroupedListStyle())
         
         .navigationTitle("Subscriptions")
+        
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Restore Purchases") {
+                    restorePurchases()
+                }
+            }
+        }
     }
     
     @MainActor
@@ -106,5 +114,9 @@ struct SubscriptionsView: View {
         } catch {
             print("Could not update subscription status \(error)")
         }
+    }
+    
+    func restorePurchases() {
+        SKPaymentQueue.default().restoreCompletedTransactions()
     }
 }
