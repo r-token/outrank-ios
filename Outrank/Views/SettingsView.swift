@@ -58,7 +58,7 @@ struct SettingsView: View {
                 
                 Section(header: Text("Support")) {
                     Button(action: {
-                        SKStoreReviewController.requestReviewInCurrentScene()
+                        requestReviewManually()
                     }) {
                         HStack {
                             Image(systemName: "heart.square.fill")
@@ -153,6 +153,13 @@ struct SettingsView: View {
             iPadWelcomeView(type: iPadWelcomeView.WelcomeViewType.settings)
         }
         .environmentObject(store)
+    }
+    
+    func requestReviewManually() {
+        guard let writeReviewURL = URL(string: "https://apps.apple.com/us/app/outrank/id1588983785?action=write-review") else {
+            fatalError("Expected a valid URL")
+        }
+        UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
     }
     
     func sendFeatureRequestEmail() {
