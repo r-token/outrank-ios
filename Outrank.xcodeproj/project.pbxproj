@@ -45,6 +45,9 @@
 		F45475F0272115010052E22E /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45475EF272115010052E22E /* Stat.swift */; };
 		F45475F227211B510052E22E /* Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45475F127211B510052E22E /* Conversions.swift */; };
 		F45475F327211C120052E22E /* Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45475F127211B510052E22E /* Conversions.swift */; };
+		F4610EE7272E142200F56889 /* Date+ISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4610EE6272E142200F56889 /* Date+ISO8601.swift */; };
+		F4610EE8272E142900F56889 /* Date+ISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4610EE6272E142200F56889 /* Date+ISO8601.swift */; };
+		F4610EEA272E1BD800F56889 /* HistoricalFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4610EE9272E1BD800F56889 /* HistoricalFetcher.swift */; };
 		F46FEF922725D1DB00BDEC1A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46FEF912725D1DB00BDEC1A /* Persistence.swift */; };
 		F46FEF952725D21700BDEC1A /* TeamRankings.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F46FEF932725D21700BDEC1A /* TeamRankings.xcdatamodeld */; };
 		F46FEF9C2725D4DD00BDEC1A /* Favorite+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46FEF9A2725D4DD00BDEC1A /* Favorite+CoreDataClass.swift */; };
@@ -130,6 +133,8 @@
 		F45475ED272113400052E22E /* StatFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatFetcher.swift; sourceTree = "<group>"; };
 		F45475EF272115010052E22E /* Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
 		F45475F127211B510052E22E /* Conversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversions.swift; sourceTree = "<group>"; };
+		F4610EE6272E142200F56889 /* Date+ISO8601.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ISO8601.swift"; sourceTree = "<group>"; };
+		F4610EE9272E1BD800F56889 /* HistoricalFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalFetcher.swift; sourceTree = "<group>"; };
 		F46FEF912725D1DB00BDEC1A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		F46FEF942725D21700BDEC1A /* TeamRankings.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TeamRankings.xcdatamodel; sourceTree = "<group>"; };
 		F46FEF9A2725D4DD00BDEC1A /* Favorite+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -233,6 +238,7 @@
 				F45475EF272115010052E22E /* Stat.swift */,
 				F445CD49270C6C35008A2DE1 /* AllTeams.swift */,
 				F44787B22708FAF0006CD2FA /* TeamFetcher.swift */,
+				F4610EE9272E1BD800F56889 /* HistoricalFetcher.swift */,
 				F45475ED272113400052E22E /* StatFetcher.swift */,
 				F45475F127211B510052E22E /* Conversions.swift */,
 				F4D9B07927244FA900AF6EA1 /* Utils.swift */,
@@ -241,6 +247,7 @@
 				F434EC6B272226D3004C8440 /* Colors.swift */,
 				F4BA5069271E619A00FC93E4 /* HapticGenerator.swift */,
 				F49CF9BD27260474002327C3 /* Favorite+FetchRequests.swift */,
+				F4610EE6272E142200F56889 /* Date+ISO8601.swift */,
 				F434EC6927222458004C8440 /* SKStoreReviewController+RequestReview.swift */,
 				F429CA3B27095BE5005CDD2A /* String+CamelCaseToWords.swift */,
 				F445CD4B270C7250008A2DE1 /* String+Identifiable.swift */,
@@ -398,6 +405,7 @@
 				F493B573271A7B1B000AC065 /* BottomFourWidget.swift in Sources */,
 				F432F67E27121B390018277C /* LoopableProto.swift in Sources */,
 				F4BA506427190F0400FC93E4 /* AppGroup.swift in Sources */,
+				F4610EE8272E142900F56889 /* Date+ISO8601.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,12 +429,14 @@
 				F4BA506327190F0400FC93E4 /* AppGroup.swift in Sources */,
 				F4BC3426270E5B7800F66948 /* TipJarView.swift in Sources */,
 				F4D9B07A27244FA900AF6EA1 /* Utils.swift in Sources */,
+				F4610EEA272E1BD800F56889 /* HistoricalFetcher.swift in Sources */,
 				F445CD50270C7D08008A2DE1 /* FavoriteTeamsSelectionView.swift in Sources */,
 				F445CD48270C6B74008A2DE1 /* MultiPicker.swift in Sources */,
 				F492EE11271DA7C1003D4472 /* ListSubscriptionOptionsView.swift in Sources */,
 				F445CD54270D4530008A2DE1 /* InfoView.swift in Sources */,
 				F493B57F271CC0BE000AC065 /* SubscriptionsView.swift in Sources */,
 				F445CD4C270C7250008A2DE1 /* String+Identifiable.swift in Sources */,
+				F4610EE7272E142200F56889 /* Date+ISO8601.swift in Sources */,
 				F445CD4A270C6C35008A2DE1 /* AllTeams.swift in Sources */,
 				F44787A42708F095006CD2FA /* RankingsView.swift in Sources */,
 				F44787B92709104C006CD2FA /* MainView.swift in Sources */,

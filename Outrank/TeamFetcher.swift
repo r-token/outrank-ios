@@ -15,9 +15,19 @@ struct TeamFetcher {
     
     static func getTeamRankingsFor(team: String) async throws -> Team {
         print("getting rankings for \(team)")
-        let endpoint = "https://tapbejtlgh.execute-api.us-east-2.amazonaws.com/dev/singleTeamQuery?team=\(team)"
+        
+        let earlyDate = Calendar.current.date(
+          byAdding: .hour,
+          value: -12,
+          to: Date())
+        
+        let isoDate = Date.ISOStringFromDate(date: earlyDate!)
+        print(isoDate)
+        
+        let endpoint = "https://tapbejtlgh.execute-api.us-east-2.amazonaws.com/dev/singleTeamQueryV2?team=\(team)"
         let cleanEndpoint = endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let finalEndpoint = cleanEndpoint.replacingOccurrences(of: "&", with: "%26")
+        let endpointWithoutAmpersands = cleanEndpoint.replacingOccurrences(of: "&", with: "%26")
+        let finalEndpoint = endpointWithoutAmpersands+"&date=\(isoDate)"
         print(finalEndpoint)
         
         guard let url = URL(string: finalEndpoint) else {
@@ -35,9 +45,18 @@ struct TeamFetcher {
     
     static func dispatchQueueGetTeamRankingsFor(team: String, completion: @escaping ([String:Int]) -> Void) -> Void {
         print("refreshing data via dispatchQueue")
-        let endpoint = "https://tapbejtlgh.execute-api.us-east-2.amazonaws.com/dev/singleTeamQuery?team=\(team)"
+        
+        let earlyDate = Calendar.current.date(
+          byAdding: .hour,
+          value: -12,
+          to: Date())
+        
+        let isoDate = Date.ISOStringFromDate(date: earlyDate!)
+        
+        let endpoint = "https://tapbejtlgh.execute-api.us-east-2.amazonaws.com/dev/singleTeamQueryV2?team=\(team)"
         let cleanEndpoint = endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let finalEndpoint = cleanEndpoint.replacingOccurrences(of: "&", with: "%26")
+        let endpointWithoutAmpersands = cleanEndpoint.replacingOccurrences(of: "&", with: "%26")
+        let finalEndpoint = endpointWithoutAmpersands+"&date=\(isoDate)"
         print(finalEndpoint)
         
         guard let url = URL(string: finalEndpoint) else {
