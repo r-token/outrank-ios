@@ -15,9 +15,42 @@ struct TeamFetcher {
     
     static func getTeamRankingsFor(team: String) async throws -> Team {
         print("getting rankings for \(team)")
-        let endpoint = "https://tapbejtlgh.execute-api.us-east-2.amazonaws.com/dev/singleTeamQuery?team=\(team)"
+        
+        // if it's earlier than 10:00am, get yesterday's data from 8:00am or later
+        // if it's 10:00am or later local time, just get the data from today at 9:00 (14:00 UTC)
+        var date = Date()
+        let calendar = Calendar.current
+        var year = calendar.component(.year, from: date)
+        var month = calendar.component(.month, from: date)
+        var hour = calendar.component(.hour, from: date)
+        var day = calendar.component(.day, from: date)
+        
+        if hour < 10 {
+            date = Date().dayBefore
+            year = calendar.component(.year, from: date)
+            month = calendar.component(.month, from: date)
+            hour = 8
+            day = calendar.component(.day, from: date)
+        } else {
+            hour = 9
+        }
+        
+        var components = DateComponents()
+        components.year = year
+        components.month = month
+        components.day = day
+        components.hour = hour
+        components.minute = 0
+        date = Calendar.current.date(from: components) ?? Date.now
+        print(date)
+        
+        let isoDate = Date.ISOStringFromDate(date: date)
+        print(isoDate)
+        
+        let endpoint = "https://tapbejtlgh.execute-api.us-east-2.amazonaws.com/dev/singleTeamQueryV2?team=\(team)"
         let cleanEndpoint = endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let finalEndpoint = cleanEndpoint.replacingOccurrences(of: "&", with: "%26")
+        let endpointWithoutAmpersands = cleanEndpoint.replacingOccurrences(of: "&", with: "%26")
+        let finalEndpoint = endpointWithoutAmpersands+"&date=\(isoDate)"
         print(finalEndpoint)
         
         guard let url = URL(string: finalEndpoint) else {
@@ -35,9 +68,42 @@ struct TeamFetcher {
     
     static func dispatchQueueGetTeamRankingsFor(team: String, completion: @escaping ([String:Int]) -> Void) -> Void {
         print("refreshing data via dispatchQueue")
-        let endpoint = "https://tapbejtlgh.execute-api.us-east-2.amazonaws.com/dev/singleTeamQuery?team=\(team)"
+        
+        // if it's earlier than 10:00am, get yesterday's data from 8:00am or later
+        // if it's 10:00am or later local time, just get the data from today at 9:00 (14:00 UTC)
+        var date = Date()
+        let calendar = Calendar.current
+        var year = calendar.component(.year, from: date)
+        var month = calendar.component(.month, from: date)
+        var hour = calendar.component(.hour, from: date)
+        var day = calendar.component(.day, from: date)
+        
+        if hour < 10 {
+            date = Date().dayBefore
+            year = calendar.component(.year, from: date)
+            month = calendar.component(.month, from: date)
+            hour = 8
+            day = calendar.component(.day, from: date)
+        } else {
+            hour = 9
+        }
+        
+        var components = DateComponents()
+        components.year = year
+        components.month = month
+        components.day = day
+        components.hour = hour
+        components.minute = 0
+        date = Calendar.current.date(from: components) ?? Date.now
+        print(date)
+        
+        let isoDate = Date.ISOStringFromDate(date: date)
+        print(isoDate)
+        
+        let endpoint = "https://tapbejtlgh.execute-api.us-east-2.amazonaws.com/dev/singleTeamQueryV2?team=\(team)"
         let cleanEndpoint = endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let finalEndpoint = cleanEndpoint.replacingOccurrences(of: "&", with: "%26")
+        let endpointWithoutAmpersands = cleanEndpoint.replacingOccurrences(of: "&", with: "%26")
+        let finalEndpoint = endpointWithoutAmpersands+"&date=\(isoDate)"
         print(finalEndpoint)
         
         guard let url = URL(string: finalEndpoint) else {
