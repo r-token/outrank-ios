@@ -50,6 +50,8 @@
 		F4610EEA272E1BD800F56889 /* HistoricalFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4610EE9272E1BD800F56889 /* HistoricalFetcher.swift */; };
 		F4610EF5272F3E4100F56889 /* Date+DayBefore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4610EF4272F3E4100F56889 /* Date+DayBefore.swift */; };
 		F4610EF6272F3E4100F56889 /* Date+DayBefore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4610EF4272F3E4100F56889 /* Date+DayBefore.swift */; };
+		F46DAAAD273870FD00F9536D /* TrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46DAAAC273870FD00F9536D /* TrendsView.swift */; };
+		F46DAAAF2738719600F9536D /* AllStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46DAAAE2738719600F9536D /* AllStats.swift */; };
 		F46FEF922725D1DB00BDEC1A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46FEF912725D1DB00BDEC1A /* Persistence.swift */; };
 		F46FEF952725D21700BDEC1A /* TeamRankings.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F46FEF932725D21700BDEC1A /* TeamRankings.xcdatamodeld */; };
 		F46FEF9C2725D4DD00BDEC1A /* Favorite+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46FEF9A2725D4DD00BDEC1A /* Favorite+CoreDataClass.swift */; };
@@ -138,6 +140,8 @@
 		F4610EE6272E142200F56889 /* Date+ISO8601.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ISO8601.swift"; sourceTree = "<group>"; };
 		F4610EE9272E1BD800F56889 /* HistoricalFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalFetcher.swift; sourceTree = "<group>"; };
 		F4610EF4272F3E4100F56889 /* Date+DayBefore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+DayBefore.swift"; sourceTree = "<group>"; };
+		F46DAAAC273870FD00F9536D /* TrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsView.swift; sourceTree = "<group>"; };
+		F46DAAAE2738719600F9536D /* AllStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStats.swift; sourceTree = "<group>"; };
 		F46FEF912725D1DB00BDEC1A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		F46FEF942725D21700BDEC1A /* TeamRankings.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TeamRankings.xcdatamodel; sourceTree = "<group>"; };
 		F46FEF9A2725D4DD00BDEC1A /* Favorite+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -240,6 +244,7 @@
 				F44787B02708F44F006CD2FA /* Team.swift */,
 				F45475EF272115010052E22E /* Stat.swift */,
 				F445CD49270C6C35008A2DE1 /* AllTeams.swift */,
+				F46DAAAE2738719600F9536D /* AllStats.swift */,
 				F44787B22708FAF0006CD2FA /* TeamFetcher.swift */,
 				F4610EE9272E1BD800F56889 /* HistoricalFetcher.swift */,
 				F45475ED272113400052E22E /* StatFetcher.swift */,
@@ -282,6 +287,7 @@
 				F44787BA27091113006CD2FA /* ComparisonView.swift */,
 				F445CD53270D4530008A2DE1 /* InfoView.swift */,
 				F44787B627090DB8006CD2FA /* TeamPickerView.swift */,
+				F46DAAAC273870FD00F9536D /* TrendsView.swift */,
 				F445CD45270C69FD008A2DE1 /* SettingsView.swift */,
 				F445CD47270C6B74008A2DE1 /* MultiPicker.swift */,
 				F445CD4D270C73D4008A2DE1 /* MultiPickerView.swift */,
@@ -443,6 +449,7 @@
 				F493B57F271CC0BE000AC065 /* SubscriptionsView.swift in Sources */,
 				F445CD4C270C7250008A2DE1 /* String+Identifiable.swift in Sources */,
 				F4610EE7272E142200F56889 /* Date+ISO8601.swift in Sources */,
+				F46DAAAD273870FD00F9536D /* TrendsView.swift in Sources */,
 				F445CD4A270C6C35008A2DE1 /* AllTeams.swift in Sources */,
 				F44787A42708F095006CD2FA /* RankingsView.swift in Sources */,
 				F44787B92709104C006CD2FA /* MainView.swift in Sources */,
@@ -452,6 +459,7 @@
 				F44787A22708F095006CD2FA /* OutrankApp.swift in Sources */,
 				F46FEF922725D1DB00BDEC1A /* Persistence.swift in Sources */,
 				F45475EE272113400052E22E /* StatFetcher.swift in Sources */,
+				F46DAAAF2738719600F9536D /* AllStats.swift in Sources */,
 				F44787B52708FD38006CD2FA /* LoopableProto.swift in Sources */,
 				F4028019270BBC3F007330A4 /* RankingDetailView.swift in Sources */,
 				F445CD52270D4243008A2DE1 /* TabController.swift in Sources */,

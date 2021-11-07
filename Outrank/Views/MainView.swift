@@ -24,6 +24,12 @@ struct MainView: View {
                     Label("Compare", systemImage: "eyeglasses")
                 }
             
+            TrendsView()
+                .tag(Tab.trends)
+                .tabItem {
+                    Label("Trends", systemImage: "chart.line.uptrend.xyaxis")
+                }
+            
             SettingsView()
                 .tag(Tab.settings)
                 .tabItem {

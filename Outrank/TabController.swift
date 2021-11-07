@@ -10,6 +10,7 @@ import SwiftUI
 enum Tab {
     case rankings
     case compare
+    case trends
     case settings
 }
 

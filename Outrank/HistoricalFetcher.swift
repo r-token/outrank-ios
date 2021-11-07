@@ -13,7 +13,7 @@ struct HistoricalFetcher {
         case missingData
     }
     
-    static func getHistoricalRankingsFor(team: String, isoDate: String) async throws -> Team {
+    static func getHistoricalRankingsFor(team: String, isoDate: String) async throws -> [Team] {
         print("getting rankings for \(team) after \(isoDate)")
         
         let endpoint = "https://tapbejtlgh.execute-api.us-east-2.amazonaws.com/dev/historicalRankingsQuery?team=\(team)"
@@ -31,7 +31,8 @@ struct HistoricalFetcher {
         let (data, _) = try await URLSession.shared.data(from: url)
 
         // Parse the JSON data
-        let historicalRankings = try JSONDecoder().decode(Team.self, from: data)
+        let historicalRankings = try JSONDecoder().decode([Team].self, from: data)
+
         return historicalRankings
     }
     
