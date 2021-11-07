@@ -259,8 +259,11 @@ struct ComparisonView: View {
                 async let teamOneFetched = try TeamFetcher.getTeamRankingsFor(team: teamOne)
                 async let teamTwoFetched = try TeamFetcher.getTeamRankingsFor(team: teamTwo)
                 
-                let rankingsForTeamOne = try await teamOneFetched.allProperties()
-                let rankingsForTeamTwo = try await teamTwoFetched.allProperties()
+                var rankingsForTeamOne = try await teamOneFetched.allProperties()
+                var rankingsForTeamTwo = try await teamTwoFetched.allProperties()
+                
+                rankingsForTeamOne.removeValue(forKey: "date")
+                rankingsForTeamTwo.removeValue(forKey: "date")
                 
                 teamOneRankings = rankingsForTeamOne
                 teamTwoRankings = rankingsForTeamTwo

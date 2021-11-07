@@ -175,7 +175,9 @@ struct RankingsView: View {
             print("fetching new data")
             do {
                 let fetchedRankings = try await TeamFetcher.getTeamRankingsFor(team: currentTeam)
-                teamRankings = try fetchedRankings.allProperties()
+                var rankings = try fetchedRankings.allProperties()
+                rankings.removeValue(forKey: "date")
+                teamRankings = rankings
                 apiError = false
             } catch {
                 print("Request failed with error: \(error)")
