@@ -17,7 +17,7 @@ struct TeamFetcher {
         print("getting rankings for \(team)")
         
         // if it's earlier than 10:00am, get yesterday's data from 8:00am or later
-        // if it's 10:00am or later local time, just get the data from today at 9:00 (14:00 UTC)
+        // if it's 10:00am or later local time, just get the data from today at 8:00 (14:00 UTC)
         var date = Date()
         let calendar = Calendar.current
         var year = calendar.component(.year, from: date)
@@ -26,13 +26,15 @@ struct TeamFetcher {
         var day = calendar.component(.day, from: date)
         
         if hour < 10 {
+            print("it's earlier than 10:00am local time")
             date = Date().dayBefore
             year = calendar.component(.year, from: date)
             month = calendar.component(.month, from: date)
             hour = 8
             day = calendar.component(.day, from: date)
         } else {
-            hour = 9
+            print("it's 10:00am or later local time")
+            hour = 8
         }
         
         var components = DateComponents()
@@ -42,12 +44,13 @@ struct TeamFetcher {
         components.hour = hour
         components.minute = 0
         date = Calendar.current.date(from: components) ?? Date.now
-        print(date)
+        print("api date: \(date)")
+        print("current date: \(Date.now)")
         
         let isoDate = Date.ISOStringFromDate(date: date)
         print(isoDate)
         
-        let endpoint = "https://tapbejtlgh.execute-api.us-east-2.amazonaws.com/dev/singleTeamQueryV2?team=\(team)"
+        let endpoint = "https://8e7g6ojh8b.execute-api.us-east-2.amazonaws.com/singleTeamQueryV2?team=\(team)"
         let cleanEndpoint = endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         let endpointWithoutAmpersands = cleanEndpoint.replacingOccurrences(of: "&", with: "%26")
         let finalEndpoint = endpointWithoutAmpersands+"&date=\(isoDate)"
