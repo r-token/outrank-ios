@@ -60,16 +60,73 @@ struct TrendsView: View {
                 }
                 
                 if #available(iOS 16.0, *) {
-                    Chart(allTeamRankings) { day in
-                        if getRankingForThatDay(rankingsThatDay: day) != 99999 && dateIsInSeason(isoDateString: day.date) {
-                            LineMark(
-                                x: .value("Day", getReadableDateFrom(isoDateString: day.date)),
-                                y: .value("Ranking", getRankingForThatDay(rankingsThatDay: day))
-                            )
-                            .foregroundStyle(by: .value("Stat", Conversions.getHumanReadableStat(for: selectedStat)))
-                            .symbol(by: .value("Stat", Conversions.getHumanReadableStat(for: selectedStat)))
+                    Chart {
+                        ForEach(allTeamRankings) { day in
+                            if getRankingForThatDay(rankingsThatDay: day) != 99999 && dateIsInSeason(isoDateString: day.date) {
+                                LineMark(
+                                    x: .value("Date", day.date),
+                                    y: .value("Ranking", getRankingForThatDay(rankingsThatDay: day))
+                                )
+                                .foregroundStyle(Color(.green))
+                                .foregroundStyle(by: .value("Stat", Conversions.getHumanReadableStat(for: selectedStat)))
+                                .symbol(by: .value("Stat", Conversions.getHumanReadableStat(for: selectedStat)))
+                                .accessibilityLabel(Conversions.getHumanReadableStat(for: selectedStat))
+                                .accessibilityValue(String(getRankingForThatDay(rankingsThatDay: day)))
+                            }
                         }
                     }
+                    .chartXAxis {
+                        AxisMarks { value in
+                            if selectedDateRange == "pastWeek" {
+                                if let monthAndDay = getReadableDateFrom(isoDateString: value.as(String.self) ?? "") {
+                                    AxisGridLine()
+                                    AxisTick()
+                                    AxisValueLabel {
+                                        Text(monthAndDay)
+                                    }
+                                } else {
+                                    AxisGridLine()
+                                }
+                            } else if selectedDateRange == "pastMonth" {
+                                if let monthAndDay = getReadableDateFrom(isoDateString: value.as(String.self) ?? "") {
+                                    AxisGridLine()
+                                    AxisTick()
+                                    if let lastChar = monthAndDay.last {
+                                        if Int(String(lastChar)) ?? 0 % 2 == 0 {
+                                            AxisValueLabel {
+                                                Text(monthAndDay)
+                                            }
+                                        } else {
+                                            AxisGridLine()
+                                        }
+                                    } else {
+                                        AxisGridLine()
+                                    }
+                                } else {
+                                    AxisGridLine()
+                                }
+                            } else if selectedDateRange == "pastSeason" || selectedDateRange == "allTime" {
+                                AxisGridLine()
+                            }
+                        }
+                    }
+                    
+                    .chartYAxis {
+                        let gridLineInterval = 10.0 // Grid lines every 10 degrees
+                        let labelInterval = 20.0 // But only label every other one
+                        AxisMarks(values: .stride(by: gridLineInterval)) { value in
+                            AxisGridLine()
+                            AxisTick()
+                            if let axisValue = value.as(Double.self),
+                               axisValue.truncatingRemainder(dividingBy: labelInterval) == 0.0 {
+                                AxisValueLabel(String(format: "%2.0f", axisValue))
+                            }
+                            
+                        }
+                    }
+                    
+                    .chartLegend(.hidden)
+                    .chartYScale(domain: 0 ... 130)
                     
                     Spacer()
                         .frame(height: 20)
@@ -164,26 +221,20 @@ struct TrendsView: View {
     }
     
     func dateIsInSeason(isoDateString: String) -> Bool {
-//        let formatter = ISO8601DateFormatter()
-//        formatter.formatOptions.insert(.withFractionalSeconds)
-//        let date = formatter.date(from: isoDateString) ?? Date.now
-//        let calendarDate = Calendar.current.dateComponents([.day, .year, .month], from: date)
-//
-//        // let year = calendarDate.year
-//        let month = calendarDate.month ?? 7
-//        let day = calendarDate.day ?? 0
-//
-//        if month == 1 || month >= 8 {
-//            if month == 8 && day > 15 {
-//                return true
-//            } else {
-//                return false
-//            }
-//        } else {
-//            return false
-//        }
-        
-        return true
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions.insert(.withFractionalSeconds)
+        let date = formatter.date(from: isoDateString) ?? Date.now
+        let calendarDate = Calendar.current.dateComponents([.day, .year, .month], from: date)
+
+        // let year = calendarDate.year
+        let month = calendarDate.month ?? 7
+        // let day = calendarDate.day ?? 0
+
+        if month == 1 || month >= 8 {
+            return true
+        } else {
+            return false
+        }
     }
     
     func getRankingForThatDay(rankingsThatDay: Team) -> Int {
