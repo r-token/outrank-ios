@@ -17,6 +17,21 @@ class Conversions {
         }
     }
     
+    static func getHumanReadableDateRange(for dateRange: String) -> String {
+        switch dateRange {
+        case "pastWeek":
+            return "Past Week"
+        case "pastMonth":
+            return "Past Month"
+        case "pastSeason":
+            return "Past Season"
+        case "allTime":
+            return "All Time"
+        default:
+            return "Unknown"
+        }
+    }
+    
     static func getHumanReadableRanking(for ranking: Int) -> String {
         if ranking == 11 || ranking == 12 || ranking == 13 || ranking == 111 || ranking == 112 || ranking == 113 {
             return "\(ranking)th"

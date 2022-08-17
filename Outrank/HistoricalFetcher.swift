@@ -16,7 +16,7 @@ struct HistoricalFetcher {
     static func getHistoricalRankingsFor(team: String, isoDate: String) async throws -> [Team] {
         print("getting rankings for \(team) after \(isoDate)")
         
-        let endpoint = "https://tapbejtlgh.execute-api.us-east-2.amazonaws.com/dev/historicalRankingsQuery?team=\(team)"
+        let endpoint = "https://8e7g6ojh8b.execute-api.us-east-2.amazonaws.com/historicalRankingsQuery?team=\(team)"
         let cleanEndpoint = endpoint.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         let endpointWithoutAmpersands = cleanEndpoint.replacingOccurrences(of: "&", with: "%26")
         let finalEndpoint = endpointWithoutAmpersands+"&date=\(isoDate)"
