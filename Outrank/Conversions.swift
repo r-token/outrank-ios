@@ -121,6 +121,8 @@ class Conversions {
           return "Iowa"
         case "IowaSt":
           return "Iowa St."
+        case "JamesMadison":
+          return "James Madison"
         case "Kansas":
           return "Kansas"
         case "KansasSt":

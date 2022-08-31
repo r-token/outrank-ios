@@ -58,6 +58,7 @@ struct AllTeams {
           "Indiana",
           "Iowa",
           "Iowa St.",
+          "James Madison",
           "Kansas",
           "Kansas St.",
           "Kent St.",

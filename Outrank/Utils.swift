@@ -17,8 +17,12 @@ class Utils {
                 return number == 99999
             }
             let sumRankings = rankings.reduce(0, +)
-            let averageRankings = sumRankings / rankings.count
-            return String(averageRankings)
+            if sumRankings != 0 {
+                let averageRankings = sumRankings / rankings.count
+                return String(averageRankings)
+            } else {
+                return "0"
+            }
         }
     }
 }
