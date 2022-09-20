@@ -151,10 +151,18 @@ struct RankingsView: View {
             }
             
             .sheet(isPresented: $isShowingInfoSheet) {
-                InfoView(source: Source.rankings)
-                    .onDisappear {
-                        randomId = UUID() // this solves the SwiftUI bug that causes sheets in toolbars to not present consistently
-                    }
+                if #available(iOS 16.0, *) {
+                    InfoView(source: Source.rankings)
+                        .presentationDetents([.medium])
+                        .onDisappear {
+                            randomId = UUID() // this solves the SwiftUI bug that causes sheets in toolbars to not present consistently
+                        }
+                } else {
+                    InfoView(source: Source.rankings)
+                        .onDisappear {
+                            randomId = UUID() // this solves the SwiftUI bug that causes sheets in toolbars to not present consistently
+                        }
+                }
             }
             
             iPadWelcomeView(type: iPadWelcomeView.WelcomeViewType.rankings)

@@ -21,7 +21,7 @@ struct InfoView: View {
             switch source {
             case .rankings:
                 VStack(alignment: .leading) {
-                    Text("**Rankings** page colors")
+                    Text("Rankings page colors")
                         .font(.headline)
                         .padding(.horizontal)
                     
@@ -53,7 +53,6 @@ struct InfoView: View {
                     Spacer()
                 }
                 .padding(.top)
-                .padding()
                 
                 .navigationTitle("Info")
                 
@@ -69,7 +68,7 @@ struct InfoView: View {
                 
             case .compare:
                 VStack(alignment: .leading) {
-                    Text("**Comparison** page colors")
+                    Text("Compare page colors")
                         .font(.headline)
                         .padding(.horizontal)
                     
@@ -101,7 +100,6 @@ struct InfoView: View {
                     Spacer()
                 }
                 .padding(.top)
-                .padding()
                 
                 .navigationTitle("Info")
                 

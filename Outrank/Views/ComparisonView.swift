@@ -219,7 +219,13 @@ struct ComparisonView: View {
             }
             
             .sheet(isPresented: $isShowingInfoSheet) {
-                InfoView(source: Source.compare)
+                if #available(iOS 16.0, *) {
+                    InfoView(source: Source.compare)
+                        .presentationDetents([.medium])
+                } else {
+                    InfoView(source: Source.compare)
+
+                }
             }
             
             .task {
