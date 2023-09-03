@@ -39,7 +39,33 @@ struct AboutView: View {
                     }
                     .padding(5)
                     
-                    Section(header: Text("Try my other app")) {
+                    Section(header: Text("Try my other apps")) {
+                        Button(action: {
+                            openHotLocalFoodAppStoreLink()
+                        }) {
+                            HStack {
+                                Image("HLF")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 60, height: 60)
+                                    .clipShape(RoundedRectangle(cornerRadius: 11))
+                                
+                                Spacer()
+                                    .frame(width: 15)
+                                
+                                VStack(alignment: .leading, spacing: 3) {
+                                    Text("Hot Local Food")
+                                        .font(.headline)
+                                        .foregroundColor(.primary)
+                                    
+                                    Text("Find love, then eat it")
+                                        .multilineTextAlignment(.leading)
+                                        .foregroundColor(.gray)
+                                }
+                            }
+                        }
+                        .accessibilityLabel("Try out this developer's other app: Hot Local Food")
+                        
                         Button(action: {
                             openCatchUpAppStoreLink()
                         }) {
@@ -58,7 +84,7 @@ struct AboutView: View {
                                         .font(.headline)
                                         .foregroundColor(.primary)
                                     
-                                    Text("Stay in touch with those who matter most.")
+                                    Text("Stay in touch with those who matter most")
                                         .multilineTextAlignment(.leading)
                                         .foregroundColor(.gray)
                                 }
@@ -86,6 +112,12 @@ struct AboutView: View {
     
     func openCatchUpAppStoreLink() {
         if let url = URL(string: "itms-apps://apps.apple.com/us/app/catchup-keep-in-touch/id1358023550") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    func openHotLocalFoodAppStoreLink() {
+        if let url = URL(string: "itms-apps://apps.apple.com/us/app/hot-local-food/id1621818779") {
             UIApplication.shared.open(url)
         }
     }

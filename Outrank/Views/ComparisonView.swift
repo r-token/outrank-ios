@@ -260,22 +260,20 @@ struct ComparisonView: View {
     }
     
     func refreshRankings() async {
-        Task {
-            do {
-                async let teamOneFetched = try TeamFetcher.getTeamRankingsFor(team: teamOne)
-                async let teamTwoFetched = try TeamFetcher.getTeamRankingsFor(team: teamTwo)
-                
-                let rankingsForTeamOne = try await teamOneFetched.allProperties()
-                let rankingsForTeamTwo = try await teamTwoFetched.allProperties()
-                
-                teamOneRankings = rankingsForTeamOne
-                teamTwoRankings = rankingsForTeamTwo
-                
-                apiError = false
-            } catch {
-                print("Request failed with error: \(error)")
-                apiError = true
-            }
+        do {
+            async let teamOneFetched = try TeamFetcher.getTeamRankingsFor(team: teamOne)
+            async let teamTwoFetched = try TeamFetcher.getTeamRankingsFor(team: teamTwo)
+            
+            let rankingsForTeamOne = try await teamOneFetched.allProperties()
+            let rankingsForTeamTwo = try await teamTwoFetched.allProperties()
+            
+            teamOneRankings = rankingsForTeamOne
+            teamTwoRankings = rankingsForTeamTwo
+            
+            apiError = false
+        } catch {
+            print("Request failed with error: \(error)")
+            apiError = true
         }
     }
 }

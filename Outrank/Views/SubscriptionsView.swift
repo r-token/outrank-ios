@@ -39,11 +39,9 @@ struct SubscriptionsView: View {
                         .foregroundColor(.gray)
                 }
             }
-            .onAppear {
-                Task {
-                    //When this view appears, get the latest subscription status.
-                    await updateSubscriptionStatus()
-                }
+            .task {
+                //When this view appears, get the latest subscription status.
+                await updateSubscriptionStatus()
             }
             .onChange(of: store.purchasedIdentifiers) { _ in
                 Task {

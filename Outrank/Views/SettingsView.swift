@@ -66,6 +66,9 @@ struct SettingsView: View {
                                 .foregroundColor(.red)
                             Text("Rate")
                                 .foregroundColor(.primary)
+                            Spacer()
+                            Image(systemName: "arrow.up.forward")
+                                .foregroundColor(.lightGray)
                         }
                     }
                     
@@ -99,6 +102,9 @@ struct SettingsView: View {
                                 .foregroundColor(.mint)
                             Text("Feature Request")
                                 .foregroundColor(.primary)
+                            Spacer()
+                            Image(systemName: "arrow.up.forward")
+                                .foregroundColor(.lightGray)
                         }
                     }
                     .accessibilityLabel("Send an email with a feature request")

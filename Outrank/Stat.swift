@@ -139,4 +139,6 @@ struct Stat: Codable, Loopable {
     var Georgia: Int
     var Virginia: Int
     var JamesMadison: Int
+    var SamHouston: Int
+    var JacksonvilleSt: Int
 }

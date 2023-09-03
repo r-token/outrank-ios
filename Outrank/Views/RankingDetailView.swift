@@ -138,16 +138,14 @@ struct RankingDetailView: View {
     }
     
     func getRankingsForStat() async {
-        Task {
-            print("fetching rankings for stat")
-            do {
-                let fetchedRankings = try await StatFetcher.getStatRankingsFor(stat: stat)
-                statRankings = try fetchedRankings.allProperties()
-                apiError = false
-            } catch {
-                print("Request failed with error: \(error)")
-                apiError = true
-            }
+        print("fetching rankings for stat")
+        do {
+            let fetchedRankings = try await StatFetcher.getStatRankingsFor(stat: stat)
+            statRankings = try fetchedRankings.allProperties()
+            apiError = false
+        } catch {
+            print("Request failed with error: \(error)")
+            apiError = true
         }
     }
 }

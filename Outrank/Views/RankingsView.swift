@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct RankingsView: View {
+    @Environment(\.requestReview) var requestReview
+    @AppStorage("AppUsedCount") private var appUsedCount = 0
+    
     @State private var currentTeam = UserDefaults.standard.string(forKey: "CurrentTeam") ?? "Air Force"
     @State private var teamRankings = [String:Int]()
     @State private var sortMethod = SortMethods.byStatAlphabetically
@@ -176,19 +179,24 @@ struct RankingsView: View {
                 print("We already have team data, not fetching onAppear")
             }
         }
+        
+        .onAppear {
+            appUsedCount += 1
+        }
     }
     
     func refreshRankings() async {
-        Task {
-            print("fetching new data")
-            do {
-                let fetchedRankings = try await TeamFetcher.getTeamRankingsFor(team: currentTeam)
-                teamRankings = try fetchedRankings.allProperties()
-                apiError = false
-            } catch {
-                print("Request failed with error: \(error)")
-                apiError = true
+        print("fetching new data")
+        do {
+            let fetchedRankings = try await TeamFetcher.getTeamRankingsFor(team: currentTeam)
+            teamRankings = try fetchedRankings.allProperties()
+            apiError = false
+            if appUsedCount > 5 {
+                await requestReview()
             }
+        } catch {
+            print("Request failed with error: \(error)")
+            apiError = true
         }
     }
 }

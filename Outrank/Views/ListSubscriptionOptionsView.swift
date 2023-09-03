@@ -106,10 +106,8 @@ struct ListSubscriptionOptionsView: View {
                 }
             }
         }
-        .onAppear {
-            Task {
-                isPurchased = (try? await store.isPurchased(product.id)) ?? false
-            }
+        .task {
+            isPurchased = (try? await store.isPurchased(product.id)) ?? false
         }
         .onChange(of: store.purchasedIdentifiers) { identifiers in
             Task {
