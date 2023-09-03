@@ -69,6 +69,7 @@ struct SettingsView: View {
                             Spacer()
                             Image(systemName: "arrow.up.forward")
                                 .foregroundColor(.lightGray)
+                                .font(.headline)
                         }
                     }
                     
@@ -105,6 +106,7 @@ struct SettingsView: View {
                             Spacer()
                             Image(systemName: "arrow.up.forward")
                                 .foregroundColor(.lightGray)
+                                .font(.headline)
                         }
                     }
                     .accessibilityLabel("Send an email with a feature request")

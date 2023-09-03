@@ -62,6 +62,7 @@ struct InfoView: View {
                             dismiss()
                         }) {
                             Text("Done")
+                                .bold()
                         }
                     }
                 }
@@ -109,6 +110,7 @@ struct InfoView: View {
                             dismiss()
                         }) {
                             Text("Done")
+                                .bold()
                         }
                     }
                 }

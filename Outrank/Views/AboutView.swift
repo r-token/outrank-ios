@@ -104,6 +104,7 @@ struct AboutView: View {
                         dismiss()
                     }) {
                         Text("Done")
+                            .bold()
                     }
                 }
             }

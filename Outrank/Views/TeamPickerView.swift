@@ -96,6 +96,7 @@ struct TeamPickerView: View {
                             dismiss()
                         }) {
                             Text("Done")
+                                .bold()
                         }
                     }
                 }
