@@ -11,8 +11,13 @@ import SwiftUI
 struct OutrankApp: App {
     let persistenceController = PersistenceController.shared
     
+    init() {
+        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = .systemBlue
+    }
+    
     var body: some Scene {
         WindowGroup {
+            
             MainView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
