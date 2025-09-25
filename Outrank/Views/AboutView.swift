@@ -41,6 +41,32 @@ struct AboutView: View {
                     
                     Section(header: Text("Try my other apps")) {
                         Button(action: {
+                            openCatchUpAppStoreLink()
+                        }) {
+                            HStack {
+                                Image("CatchUp")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 60, height: 60)
+                                    .clipShape(RoundedRectangle(cornerRadius: 11))
+
+                                Spacer()
+                                    .frame(width: 15)
+
+                                VStack(alignment: .leading, spacing: 3) {
+                                    Text("CatchUp – Keep in Touch")
+                                        .font(.headline)
+                                        .foregroundColor(.primary)
+
+                                    Text("Stay in touch with those who matter most")
+                                        .multilineTextAlignment(.leading)
+                                        .foregroundColor(.gray)
+                                }
+                            }
+                        }
+                        .accessibilityLabel("Try out this developer's other app: CatchUp – Keep in Touch")
+                        
+                        Button(action: {
                             openHotLocalFoodAppStoreLink()
                         }) {
                             HStack {
@@ -65,32 +91,6 @@ struct AboutView: View {
                             }
                         }
                         .accessibilityLabel("Try out this developer's other app: Hot Local Food")
-                        
-                        Button(action: {
-                            openCatchUpAppStoreLink()
-                        }) {
-                            HStack {
-                                Image("CatchUp")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 60, height: 60)
-                                    .clipShape(RoundedRectangle(cornerRadius: 11))
-                                
-                                Spacer()
-                                    .frame(width: 15)
-                                
-                                VStack(alignment: .leading, spacing: 3) {
-                                    Text("CatchUp – Keep in Touch")
-                                        .font(.headline)
-                                        .foregroundColor(.primary)
-                                    
-                                    Text("Stay in touch with those who matter most")
-                                        .multilineTextAlignment(.leading)
-                                        .foregroundColor(.gray)
-                                }
-                            }
-                        }
-                        .accessibilityLabel("Try out this developer's other app: CatchUp – Keep in Touch")
                     }
                 }
             }
