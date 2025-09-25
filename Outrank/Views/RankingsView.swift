@@ -192,7 +192,7 @@ struct RankingsView: View {
             teamRankings = try fetchedRankings.allProperties()
             apiError = false
             if appUsedCount > 5 {
-                await requestReview()
+                requestReview()
             }
         } catch {
             print("Request failed with error: \(error)")

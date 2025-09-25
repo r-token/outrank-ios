@@ -12,8 +12,8 @@ import StoreKit
 struct SettingsView: View {
     @FetchRequest(entity: Favorite.entity(), sortDescriptors: [], animation: .default) var favorites: FetchedResults<Favorite>
     
-    @StateObject var store: Store = Store()
-    
+    @State private var store: Store = Store()
+
     @State private var widgetTeam = UserDefaults(suiteName: "group.com.ryantoken.teamrankings")?.string(forKey: "WidgetTeam") ?? "Air Force"
     @State private var isShowingAboutScreen = false
     @State private var isShowingPrivacyActionSheet = false
@@ -47,12 +47,12 @@ struct SettingsView: View {
                             Text(team)
                         }
                     }
-                    .onChange(of: widgetTeam) { newWidgetTeam in
+                    .onChange(of: widgetTeam) {
                           // Save widget team to App Group userdefaults
-                        UserDefaults(suiteName: "group.com.ryantoken.teamrankings")?.set(newWidgetTeam, forKey: "WidgetTeam")
+                        UserDefaults(suiteName: "group.com.ryantoken.teamrankings")?.set(widgetTeam, forKey: "WidgetTeam")
                         WidgetCenter.shared.reloadAllTimelines()
                         
-                        print("shared user defaults for widget team is now \(newWidgetTeam)")
+                        print("shared user defaults for widget team is now \(widgetTeam)")
                    }
                 }
                 
@@ -160,7 +160,7 @@ struct SettingsView: View {
             
             iPadWelcomeView(type: iPadWelcomeView.WelcomeViewType.settings)
         }
-        .environmentObject(store)
+        .environment(store)
     }
     
     func requestReviewManually() {

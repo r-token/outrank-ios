@@ -9,7 +9,7 @@ import SwiftUI
 import StoreKit
 
 struct ListTipOptionsView: View {
-    @EnvironmentObject var store: Store
+    @Environment(Store.self) private var store
     @State var errorTitle = ""
     @State var isShowingError: Bool = false
 

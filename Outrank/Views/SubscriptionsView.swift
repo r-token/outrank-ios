@@ -9,8 +9,8 @@ import SwiftUI
 import StoreKit
 
 struct SubscriptionsView: View {
-    @EnvironmentObject var store: Store
-    
+    @Environment(Store.self) private var store
+
     @State var currentSubscription: Product?
     @State var status: Product.SubscriptionInfo.Status?
     
@@ -43,7 +43,7 @@ struct SubscriptionsView: View {
                 //When this view appears, get the latest subscription status.
                 await updateSubscriptionStatus()
             }
-            .onChange(of: store.purchasedIdentifiers) { _ in
+            .onChange(of: store.purchasedIdentifiers) {
                 Task {
                     //When `purchasedIdentifiers` changes, get the latest subscription status.
                     await updateSubscriptionStatus()

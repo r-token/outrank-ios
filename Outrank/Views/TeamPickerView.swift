@@ -10,8 +10,8 @@ import SwiftUI
 struct TeamPickerView: View {
     @Environment(\.managedObjectContext) private var moc
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject private var tabController: TabController
-    
+    @Environment(TabController.self) private var tabController
+
     @FetchRequest(fetchRequest: Favorite.allFavoritesFetchRequest, animation: .default)
     var favorites: FetchedResults<Favorite>
     

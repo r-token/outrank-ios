@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+@MainActor
 class HapticGenerator {
     static func playSuccessHaptic() {
         let generator = UINotificationFeedbackGenerator()

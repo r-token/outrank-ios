@@ -9,7 +9,7 @@ import SwiftUI
 import StoreKit
 
 struct StatusInfoView: View {
-    @EnvironmentObject var store: Store
+    @Environment(Store.self) private var store
 
     let product: Product
     let status: Product.SubscriptionInfo.Status

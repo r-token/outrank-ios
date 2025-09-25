@@ -13,8 +13,9 @@ enum Tab {
     case settings
 }
 
-class TabController: ObservableObject {
-    @Published var activeTab = Tab.rankings
+@Observable
+class TabController {
+    var activeTab = Tab.rankings
 
     func open(_ tab: Tab) {
         activeTab = tab

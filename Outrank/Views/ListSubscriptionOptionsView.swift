@@ -9,7 +9,7 @@ import SwiftUI
 import StoreKit
 
 struct ListSubscriptionOptionsView: View {
-    @EnvironmentObject var store: Store
+    @Environment(Store.self) private var store
     @State var isPurchased: Bool = false
     @State var errorTitle = ""
     @State var isShowingError: Bool = false
@@ -109,9 +109,9 @@ struct ListSubscriptionOptionsView: View {
         .task {
             isPurchased = (try? await store.isPurchased(product.id)) ?? false
         }
-        .onChange(of: store.purchasedIdentifiers) { identifiers in
+        .onChange(of: store.purchasedIdentifiers) {
             Task {
-                isPurchased = identifiers.contains(product.id)
+                isPurchased = store.purchasedIdentifiers.contains(product.id)
             }
         }
     }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject private var tabController = TabController()
+    @State private var tabController = TabController()
     
     var body: some View {
         TabView(selection: $tabController.activeTab) {
@@ -17,21 +17,20 @@ struct MainView: View {
                 .tabItem {
                     Label("Rankings", systemImage: "list.bullet.rectangle.portrait")
                 }
-            
+
             ComparisonView()
                 .tag(Tab.compare)
                 .tabItem {
                     Label("Compare", systemImage: "eyeglasses")
                 }
-            
+
             SettingsView()
                 .tag(Tab.settings)
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
         }
-        
-        .environmentObject(tabController)
+        .environment(tabController)
     }
 }
 

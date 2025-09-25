@@ -28,11 +28,12 @@ public enum SubscriptionTier: Int, Comparable {
     }
 }
 
-class Store: ObservableObject {
-    @Published private(set) var tips: [Product]
-    @Published private(set) var subscriptions: [Product]
+@MainActor @Observable
+class Store {
+    private(set) var tips: [Product]
+    private(set) var subscriptions: [Product]
     
-    @Published private(set) var purchasedIdentifiers = Set<String>()
+    private(set) var purchasedIdentifiers = Set<String>()
     
     var updateListenerTask: Task<Void, Error>? = nil
     
@@ -66,16 +67,12 @@ class Store: ObservableObject {
         }
     }
     
-    deinit {
-        updateListenerTask?.cancel()
-    }
-    
     func listenForTransactions() -> Task<Void, Error> {
         return Task.detached {
             //Iterate through any transactions which didn't come from a direct call to `purchase()`.
             for await result in Transaction.updates {
                 do {
-                    let transaction = try self.checkVerified(result)
+                    let transaction = try await self.checkVerified(result)
 
                     //Deliver content to the user.
                     await self.updatePurchasedIdentifiers(transaction)

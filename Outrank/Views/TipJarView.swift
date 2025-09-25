@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct TipJarView: View {
-    @EnvironmentObject var store: Store
-    
+    @Environment(Store.self) private var store
+
     var body: some View {
         VStack(spacing: 0) {
             List {

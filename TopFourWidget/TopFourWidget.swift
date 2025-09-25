@@ -29,28 +29,40 @@ struct TopFourProvider: TimelineProvider {
         }
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        TeamFetcher.dispatchQueueGetTeamRankingsFor(team: UserDefaults(suiteName: "group.com.ryantoken.teamrankings")?.string(forKey: "WidgetTeam") ?? "Air Force") { (teamRankings) in
+    func getTimeline(in context: Context, completion: @escaping @Sendable (Timeline<Entry>) -> ()) {
+        Task.detached {
+            do {
+                let team = try await TeamFetcher.getTeamRankingsFor(
+                    team: UserDefaults(suiteName: "group.com.ryantoken.teamrankings")?.string(forKey: "WidgetTeam") ?? "Air Force"
+                )
 
-            // update at 10:00am daily
-            let now = Date()
-            let calendar = Calendar.current
-            var dateComponents = DateComponents()
-            dateComponents.year = calendar.component(.year, from: now)
-            dateComponents.month = calendar.component(.month, from: now)
-            dateComponents.day = calendar.component(.day, from: now) + 1
-            dateComponents.hour = 10
-            dateComponents.minute = 0
-            dateComponents.second = 0
-            let nextUpdate = calendar.date(from: dateComponents)
-            
-            let entry = TopFourEntry(date: now, teamRankings: teamRankings)
-            
-            let entries = [entry]
-            
-            //your timeline with one entry that will refresh after given date
-            let timeline = Timeline(entries: entries, policy: .after(nextUpdate!))
-            completion(timeline)
+                let teamRankings = try team.allProperties()
+
+                // update at 10:00am daily
+                let now = Date()
+                let calendar = Calendar.current
+                var dateComponents = DateComponents()
+                dateComponents.year = calendar.component(.year, from: now)
+                dateComponents.month = calendar.component(.month, from: now)
+                dateComponents.day = calendar.component(.day, from: now) + 1
+                dateComponents.hour = 10
+                dateComponents.minute = 0
+                dateComponents.second = 0
+                let nextUpdate = calendar.date(from: dateComponents)
+
+                let entry = TopFourEntry(date: now, teamRankings: teamRankings)
+                let entries = [entry]
+                let timeline = Timeline(entries: entries, policy: .after(nextUpdate!))
+
+                completion(timeline)
+
+            } catch {
+                print("Error fetching team rankings: \(error)")
+                // Create a fallback timeline
+                let entry = TopFourEntry(date: Date(), teamRankings: [:])
+                let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(3600)))
+                completion(timeline)
+            }
         }
     }
 }
