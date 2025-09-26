@@ -54,13 +54,6 @@ struct RankingsView: View {
         }
     }
     
-    init() {
-        let tabBarAppearance = UIBarAppearance()
-        tabBarAppearance.configureWithOpaqueBackground()
-        
-        UITabBar.appearance().scrollEdgeAppearance = .init(barAppearance: tabBarAppearance)
-    }
-    
     var body: some View {
         NavigationView {
             List {
@@ -85,7 +78,7 @@ struct RankingsView: View {
                     }
                 }
             }
-            .listStyle(.insetGrouped)
+            // .listStyle(.insetGrouped)
             .refreshable {
                 await refreshRankings()
             }
